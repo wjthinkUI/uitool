@@ -3,7 +3,9 @@ export const AdminLogin = () => {
 
     return (
         <>
-            <p>admin login</p>
+            <h1 className="text-3xl font-bold underline">
+                Hello world!    
+            </h1>
         </>
     );
 }
