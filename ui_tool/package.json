@@ -13,6 +13,7 @@
     "format:check": "prettier --check 'src/**/*.{js,jsx,css,scss}'"
   },
   "dependencies": {
+    "pretendard": "^1.3.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",

@@ -1,10 +1,23 @@
+import { useState } from 'react';
 import CardCircle from '../atom/cardCircle';
 import CardSquareNomal from '../atom/cardSquareNormal';
 import CardSquareWide from '../atom/cardSquareWide';
 import CardSquareBig from '../atom/cardSquareBig';
-const TestPage = () => {
+import LinkSettingModal from '../atom/linkSettingModal';
+
+const TESTelement = () => {
   return (
-    <div>
+    <div className="m-8">
+      <div>test</div>
+      <div>test2</div>
+    </div>
+  );
+};
+
+const TestPage = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  return (
+    <div className="flex">
       <CardSquareNomal
         title="1:1방문"
         period="주 1회 / 과목당 10분"
@@ -24,6 +37,25 @@ const TestPage = () => {
 전문 선생님의 학습 관리로 자기주도 학습을 성장시
 킬 수 있습니다."
       />
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+        className="flex-shrink-0 h-20 bg-primary-500 w-30"
+      >
+        모달열기
+      </button>
+      {showModal && (
+        <LinkSettingModal
+          height="min"
+          title="페이지 복제"
+          onCancel={() => {
+            setShowModal(false);
+          }}
+        >
+          <TESTelement />
+        </LinkSettingModal>
+      )}
     </div>
   );
 };
