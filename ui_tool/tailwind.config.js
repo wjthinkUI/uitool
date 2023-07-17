@@ -37,7 +37,72 @@ export default {
     },
     fontFamily: {
       'basic': 'Pretendard',
-    }
+    },
+    fontSize: {
+      h1: [
+        '32px', {lineHeight: '38.4px'}
+      ],
+      h2: [
+        '28px', {lineHeight: '33.6px'}
+      ],
+      h3: [
+        '24px', {lineHeight: '28.8px'}
+      ],
+      h4: [
+        '20px', {lineHeight: '24px'}
+      ],
+      body1B: [
+        '20px', {lineHeight: '24px', fontWeight: '700'}
+      ],
+      body2B: [
+        '18px', {lineHeight: '21.6px', fontWeight: '700'}
+      ],
+      body3B: [
+        '16px', {lineHeight: '19.2px', fontWeight: '700'}
+      ],
+      body4B: [
+        '14px', {lineHeight: '16.8px', fontWeight: '700'}
+      ],
+      body5B: [
+        '12px', {lineHeight: '14.4px', fontWeight: '700'}
+      ],
+      body1m: [
+        '20px', {lineHeight: '24px', fontWeight: '500'}
+      ],
+      body2m: [
+        '18px', {lineHeight: '21.6px', fontWeight: '500'}
+      ],
+      body3m: [
+        '16px', {lineHeight: '19.2px', fontWeight: '500'}
+      ],
+      body4m: [
+        '14px', {lineHeight: '16.8px', fontWeight: '500'}
+      ],
+      body5m: [
+        '12px', {lineHeight: '14.4px', fontWeight: '500'}
+      ],
+      body1r: [
+        '20px', {lineHeight: '24px', fontWeight: '400'}
+      ],
+      body2r: [
+        '18px', {lineHeight: '21.6px', fontWeight: '400'}
+      ],
+      body3r: [
+        '16px', {lineHeight: '19.2px', fontWeight: '400'}
+      ],
+      body4r: [
+        '14px', {lineHeight: '16.8px', fontWeight: '400'}
+      ],
+      body5r: [
+        '12px', {lineHeight: '14.4px', fontWeight: '400'}
+      ],
+      caption10m: [
+        '10px', {lineHeight: '11.93px', fontWeight: '500'}
+      ],
+      caption10r: [
+        '10px', {lineHeight: '11.93px', fontWeight: '400'}
+      ]
+    },
   },
   plugins: [],
 }
