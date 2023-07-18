@@ -2,6 +2,7 @@ import { TabLeft, TabRight } from "../atom/Tab";
 import { ChipGray, ChipWhite, ChipOrange } from '../atom/Chip';
 import { CheckBox } from "../atom/checkBox";
 import { List } from "../molec/list";
+import { WjHeader } from "../molec/header";
 
 export const AdminLogin = () => {
 
@@ -17,6 +18,7 @@ export const AdminLogin = () => {
             <ChipOrange text="zizizi" />
             <CheckBox />
             <List name="웅진짱" date="2020-02-02 12.34.56" query="/page/vouse"/>
+            <WjHeader />
         </>
     );
 }
