@@ -5,14 +5,17 @@ import { Link } from "react-router-dom";
 export const WjHeader = () => {
 
     return (
-        <header className="flex flex-row items-center content-center">
+        <header className="flex flex-row items-center content-center justify-between w-8/12">
             <Link to='/'>
                 <Wjlogo width='162px' height='87px' />
             </Link>
+            <div>
             <Link to='#'>
                 마이페이지
                 </Link>
+                <span> | </span>
             <Link to='#'>로그아웃</Link>
+            </div>
         </header>
     )
 }
