@@ -1,21 +1,24 @@
-import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
-
+import TestPage from './pages/testPage';
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <AdminLogin/> ,
+    path: '/',
+    element: <AdminLogin />,
+  },
+  {
+    path: '/test',
+    element: <TestPage />,
   },
 ]);
 
 function App() {
-
   return (
     <>
       <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
