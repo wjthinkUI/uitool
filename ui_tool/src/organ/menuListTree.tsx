@@ -1,14 +1,63 @@
 import { Tree } from "antd"
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree"
-import { List } from "../molec/list"
+import { ChildrenMenuList, ParentsMenuList } from "../molec/menuList"
+
 
 const treeData: DataNode[] = [
+    {
+        title: <ParentsMenuList name={'웅진부끄러'} />,
+        key: '0-0',
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 아기'}/>,
+        key: '0-0-0'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 도비'}/>,
+        key: '0-0-1'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 바비'}/>,
+        key: '0-0-2'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 켄'}/>,
+        key: '0-0-3'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 저기'}/>,
+        key: '0-0-4'
+    },
+    {
+        title: <ParentsMenuList name={'웅진부끄러'} />,
+        key: '0-0',
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 아기'}/>,
+        key: '0-0-0'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 도비'}/>,
+        key: '0-0-1'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 바비'}/>,
+        key: '0-0-2'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 켄'}/>,
+        key: '0-0-3'
+    },
+    {
+        title: <ChildrenMenuList name={'웅진부끄러 저기'}/>,
+        key: '0-0-4'
+    },
 ]
 
 export const MenuListTree = () => {
 
     return (
-        <div className="w-[1220px] h-[1704px] rounded-[26px] bg-grayscale-50 border border-grayscale-200 border-dashed w-[60vw]">
+        <div className="flex flex-col items-end">
             <Tree 
                 treeData={treeData}
             />

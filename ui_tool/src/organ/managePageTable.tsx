@@ -1,4 +1,4 @@
-import { List, ListProps } from "../molec/list";
+import { PageList, ListProps } from "../molec/pageList";
 import { ListHeader } from "../molec/listHeader";
 
 interface DataType extends ListProps {
@@ -58,7 +58,7 @@ export const ManagePageTable = () => {
     return (
         <>
         <ListHeader />
-        {pageData.map((v) => <List key={v.key} name={v.name} date={v.date} query={v.query} menu={v.menu} />)}
+        {pageData.map((v) => <PageList key={v.key} name={v.name} date={v.date} query={v.query} menu={v.menu} />)}
         </>
     )
 }
