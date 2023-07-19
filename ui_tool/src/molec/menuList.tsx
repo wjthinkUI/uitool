@@ -9,7 +9,7 @@ export interface ListInnerData {
 export const ParentsMenuList = (props: ListInnerData) => {
 
     return (
-        <div className='w-[1150px] h-[70px] pb-0 flex flex-row content-center justify-between items-center border border-grayscale-300 rounded'>
+        <div className='w-[1150px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50'>
             <div className='w-[70px] h-[70px] items-center justify-center flex border-grayscale-300 border-r'>
                 <ArrowIcon />
             </div>
@@ -27,7 +27,7 @@ export const ParentsMenuList = (props: ListInnerData) => {
 export const ChildrenMenuList = (props: ListInnerData) => {
 
     return (
-        <div className='w-[1080px] h-[70px] pb-0 flex flex-row content-center justify-between items-center border border-grayscale-300 rounded'>
+        <div className='w-[1080px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50'>
                 <p className='ml-[20px] grow text-grayscale-600 text-body2m'>{props.name}</p>
                 <div className='w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300'>
                     <SettingIcon />

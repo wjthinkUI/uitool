@@ -14,7 +14,7 @@ export interface ListProps {
 export const PageList = (props: ListProps) => {
 
     return (
-        <div className="w-[1220px] justify-between border-y border-grayscale-300 px-5 py-4 relative flex flex-row content-center">
+        <div className="w-[1220px] justify-between bg-grayscale-0 border-y border-grayscale-300 px-5 py-4 relative flex flex-row content-center">
             <CheckBox />
             <p>
                 {props.name}
