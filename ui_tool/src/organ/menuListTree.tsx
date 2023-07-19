@@ -1,5 +1,5 @@
 import { Tree } from "antd"
-import type { DataNode, DirectoryTreeProps } from "antd/es/tree"
+import type { DataNode } from "antd/es/tree"
 import { ChildrenMenuList, ParentsMenuList } from "../molec/menuList"
 
 
