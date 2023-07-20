@@ -1,0 +1,6 @@
+사용하고자 하는 페이지에서
+
+import { ReactComponent as Reservation } from "assets/icon-24-reservation.svg";
+
+<Reservation />;
+ 
