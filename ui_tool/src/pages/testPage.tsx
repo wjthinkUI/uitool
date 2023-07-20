@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ModalDuplication } from '../organism/Modal/ModalDuplication';
-
+import { ModalDetail } from '../organism/Modal/ModalDetail';
+import { ModalLinkSetting } from '../organism/Modal/ModalLinkSetting';
 const TestPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
@@ -32,7 +33,9 @@ const TestPage = () => {
       >
         모달열기
       </button>
-      {showModal && <ModalDuplication />}
+      {/* {showModal && <ModalDuplication />} */}
+      {/* {showModal && <ModalDetail />} */}
+      {showModal && <ModalLinkSetting />}
     </div>
   );
 };
