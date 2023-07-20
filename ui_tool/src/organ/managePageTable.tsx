@@ -1,5 +1,5 @@
-import { PageList, ListProps } from "../molec/pageList";
-import { ListHeader } from "../molec/listHeader";
+import { ListPage, ListProps } from "../molecule/List/ListPages";
+import { ListHeader } from "../molecule/List/ListHeader";
 
 interface DataType extends ListProps {
     key: React.Key;
@@ -58,7 +58,7 @@ export const ManagePageTable = () => {
     return (
         <>
         <ListHeader />
-        {pageData.map((v) => <PageList key={v.key} name={v.name} date={v.date} query={v.query} menu={v.menu} />)}
+        {pageData.map((v) => <ListPage key={v.key} name={v.name} date={v.date} query={v.query} menu={v.menu} />)}
         </>
     )
 }

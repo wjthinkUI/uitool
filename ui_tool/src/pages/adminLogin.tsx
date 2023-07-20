@@ -1,7 +1,7 @@
 import { TabLeft, TabRight } from "../atom/Tab";
 import { ChipGray, ChipWhite, ChipOrange } from '../atom/Chip';
-import { CheckBox } from "../atom/checkBox";
-import { WjHeader } from "../molec/header";
+import { CheckBox } from "../atom/CheckBox";
+import { WjHeader } from "../molecule/Header";
 
 export const AdminLogin = () => {
 

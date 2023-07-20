@@ -1,12 +1,12 @@
-import { ReactComponent as ArrowIcon } from '../assets/icon_arrow.svg'
-import { ReactComponent as SettingIcon } from '../assets/icon_setting.svg'
-import { ReactComponent as CloseIcon } from '../assets/icon_close.svg'
+import { ReactComponent as ArrowIcon } from '../../assets/icon_arrow.svg'
+import { ReactComponent as SettingIcon } from '../../assets/icon_setting.svg'
+import { ReactComponent as CloseIcon } from '../../assets/icon_close.svg'
 
 export interface ListInnerData {
     name: string,
 }
 
-export const ParentsMenuList = (props: ListInnerData) => {
+export const ListParentsMenu = (props: ListInnerData) => {
 
     return (
         <div className='w-[1150px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50'>
@@ -24,7 +24,7 @@ export const ParentsMenuList = (props: ListInnerData) => {
     )
 }
 
-export const ChildrenMenuList = (props: ListInnerData) => {
+export const ListChildrenMenu = (props: ListInnerData) => {
 
     return (
         <div className='w-[1080px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50'>

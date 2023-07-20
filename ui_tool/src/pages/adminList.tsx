@@ -1,7 +1,7 @@
 import { ManagePageTable } from "../organ/managePageTable"
 import { MenuListTree } from "../organ/menuListTree"
 import { TabLeft, TabRight } from "../atom/Tab"
-import { WjHeader } from "../molec/header"
+import { WjHeader } from "../molecule/Header"
 
 
 export const AdminList = () => {
