@@ -1,5 +1,5 @@
-import { ListPage, ListProps } from "../molecule/List/ListPages";
-import { ListHeader } from "../molecule/List/ListHeader";
+import { ListPage, ListProps } from "../../molecule/List/ListPages";
+import { ListHeader } from "../../molecule/List/ListHeader";
 
 interface DataType extends ListProps {
     key: React.Key;

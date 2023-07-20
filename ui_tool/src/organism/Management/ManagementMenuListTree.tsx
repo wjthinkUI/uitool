@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { ListChildrenMenu, ListParentsMenu } from "../molecule/List/ListMenuTwoTypes"
+import { ListChildrenMenu, ListParentsMenu } from "../../molecule/List/ListMenuTwoTypes"
 
 interface treeDataProps {
         title: ReactNode,
@@ -57,7 +57,7 @@ const treeData: treeDataProps[] = [
     },
 ]
 
-export const MenuListTree = () => {
+export const ManageMenuListTree = () => {
 
     return (
         <div className="flex flex-col items-end gap-2">
