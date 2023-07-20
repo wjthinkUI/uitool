@@ -54,11 +54,11 @@ const pageData: DataType[] = [
 ]
 
 export const ManagePageTable = () => {
-
+    
     return (
         <>
         <ListHeader />
-        {pageData.map((v) => <ListPage key={v.key} name={v.name} date={v.date} query={v.query} menu={v.menu} />)}
+        {pageData.map(({key, name, query, menu, date}) => <ListPage key={key} name={name} date={date} query={query} menu={menu} />)}
         </>
     )
 }

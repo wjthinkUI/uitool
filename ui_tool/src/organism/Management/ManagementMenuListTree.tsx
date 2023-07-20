@@ -61,7 +61,7 @@ export const ManageMenuListTree = () => {
 
     return (
         <div className="flex flex-col items-end gap-2">
-            {treeData.map((v) => <div key={v.key}>{v.title}</div>)}
+            {treeData.map(({key, title}) => <div key={key}>{title}</div>)}
         </div>
     )
 }

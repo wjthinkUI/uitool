@@ -11,17 +11,17 @@ export interface ListProps {
 }
 
 /**list atom : 최상위 div w-1220px 수정해야 할 듯 */
-export const ListPage = (props: ListProps) => {
+export const ListPage = ({name, date, query, menu}: ListProps) => {
 
     return (
         <div className="w-[1220px] justify-between bg-grayscale-0 border-y border-grayscale-300 px-5 py-4 relative flex flex-row content-center">
             <CheckBox />
             <p>
-                {props.name}
+                {name}
             </p>
-            <p>{props.query}</p>
-            <ChipGray text={props.menu} />
-            <p>{props.date}</p>
+            <p>{query}</p>
+            <ChipGray text={menu} />
+            <p>{date}</p>
             <div className="flex flex-row gap-2">
                 <ChipWhite text="상세" />
                 <ChipWhite text="복제" />
