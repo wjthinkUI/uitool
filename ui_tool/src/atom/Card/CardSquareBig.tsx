@@ -3,7 +3,7 @@ interface SquareBigProps {
   description: string;
 }
 
-const CardSquareBig = ({ title, description }: SquareBigProps) => {
+export const CardSquareBig = ({ title, description }: SquareBigProps) => {
   return (
     <div className="cursor-pointer w-[360px] h-[433px] flex flex-col items-center m-5 font-noto">
       <div className="w-[360px] h-[270px] bg-grayscale-200 mb-5"></div>
@@ -19,5 +19,3 @@ const CardSquareBig = ({ title, description }: SquareBigProps) => {
     </div>
   );
 };
-
-export default CardSquareBig;
