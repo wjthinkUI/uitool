@@ -3,7 +3,7 @@ interface SquareWideProps {
   description: string;
 }
 
-const CardSquareWide = ({ title, description }: SquareWideProps) => {
+export const CardSquareWide = ({ title, description }: SquareWideProps) => {
   return (
     <div className="cursor-pointer w-[273.59px] h-[277.39px] flex flex-col flex-shrink-0 items-center m-2 font-noto">
       <div className="w-[157px] h-[157px] bg-grayscale-200 mb-5"></div>
@@ -14,5 +14,3 @@ const CardSquareWide = ({ title, description }: SquareWideProps) => {
     </div>
   );
 };
-
-export default CardSquareWide;
