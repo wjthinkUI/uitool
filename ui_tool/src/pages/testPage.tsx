@@ -3,6 +3,8 @@ import { ModalDuplication } from '../organism/Modal/ModalDuplication';
 import { ModalDetail } from '../organism/Modal/ModalDetail';
 import { ModalLinkSetting } from '../organism/Modal/ModalLinkSetting';
 import { ModalBlockDesign } from '../organism/Modal/ModalBlockDesign';
+import { ReactComponent as Hamburger } from '../assets/icon_NavHamburger.svg';
+import { ReactComponent as Search } from '../assets/icon_NavSearch.svg';
 import { Table } from '../atom/Modal/tempTable';
 const TestPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -39,6 +41,8 @@ const TestPage = () => {
       {/* {showModal && <ModalDetail />} */}
       {showModal && <ModalLinkSetting />}
       {/* <ModalBlockDesign /> */}
+      <Hamburger />
+      <Search />
       <div className="container mx-auto">
         <h1 className="mt-4 text-3xl font-semibold text-center">8x5 Table</h1>
         <Table />

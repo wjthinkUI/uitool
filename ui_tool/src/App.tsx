@@ -1,7 +1,7 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
-import { AdminList } from './pages/adminList';
+import { AdminManageList } from './pages/adminManageList/adminList';
 import TestPage from './pages/testPage';
 const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/adminlist',
-    element: <AdminList />,
+    element: <AdminManageList />,
   }
 ]);
 
