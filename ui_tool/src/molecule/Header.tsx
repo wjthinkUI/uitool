@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const WjHeader = () => {
 
     return (
-        <header className="flex flex-row items-center content-center justify-between w-8/12">
+        <header className="flex flex-row items-center content-center justify-between px-10 py-5">
             <Link to='/'>
                 <Wjlogo width='162px' height='87px' />
             </Link>
