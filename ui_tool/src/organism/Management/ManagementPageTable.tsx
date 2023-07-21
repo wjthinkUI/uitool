@@ -1,7 +1,7 @@
 import { ListPage, ListProps } from "../../molecule/List/ListPages";
 import { ListHeader } from "../../molecule/List/ListHeader";
 import { Input, ConfigProvider, Pagination } from "antd";
-import { useState, SetStateAction } from 'react';
+import { useState, SetStateAction, useEffect } from 'react';
 
 interface DataType extends ListProps {
     key: React.Key;
@@ -146,7 +146,8 @@ const pageData: DataType[] = [
 ]
 
 export const ManagePageTable = () => {
-    const [datas, setDatas] = useState(pageData);
+    const [datas, setDatas] = useState(pageData.slice(0, 10));
+    const [current, setCurrent] = useState(1);
 
     const { Search } = Input;
     const onSearch = (value: string) => {
@@ -162,9 +163,12 @@ export const ManagePageTable = () => {
             setDatas(pageData);
         }
     }
-    const pageChange = (page: number) => {
-        setDatas(pageData.slice((page-1)*10, page*10))
+    const pageChange = (current: number) => {
+        setDatas(pageData.slice((current-1)*10, current*10))
     }
+    useEffect(() => {
+        pageChange(current)
+    }, [current])
 
     return (
         <>
@@ -186,7 +190,7 @@ export const ManagePageTable = () => {
             </ConfigProvider>
             <ListHeader />
             {datas.map(({ key, name, query, menu, date }) => <ListPage key={key} name={name} date={date} query={query} menu={menu} />)}
-            <Pagination onChange={page => pageChange(page)} defaultCurrent={1} total={pageData.length} />
+            <Pagination onChange={page => setCurrent(page)} defaultCurrent={1} total={pageData.length} />
         </>
     )
 }
