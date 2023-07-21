@@ -1,5 +1,5 @@
 import { ModalButton } from '../../atom/Modal/ModalButton';
-import { ModalWrapper } from '../../atom/Modal/ModalWrapper';
+import { ModalContainer } from '../../atom/Modal/ModalContainer';
 import { ModalDetailContent } from '../../molecule/Modal/ModalDetailContent';
 import { ModalBackDrop } from '../../atom/Modal/ModalBackDrop';
 import { createPortal } from 'react-dom';
@@ -7,10 +7,10 @@ import { usePreventMouseWheel } from '../../hooks/usePreventMouseWheel';
 
 const ModalDetailPortal = () => {
   return (
-    <ModalWrapper>
+    <ModalContainer>
       <ModalDetailContent />
       <ModalButton />
-    </ModalWrapper>
+    </ModalContainer>
   );
 };
 

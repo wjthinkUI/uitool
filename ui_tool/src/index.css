@@ -22,3 +22,18 @@
       sans-serif;
   }
 }
+
+@layer components {
+  .custom__scrollbar::-webkit-scrollbar {
+    @apply w-[6px] bg-grayscale-200;
+  }
+  .custom__scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-grayscale-800;
+  }
+  .custom__scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-grayscale-600;
+  }
+  .modal__center {
+    @apply z-50  fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
+  }
+}

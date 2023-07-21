@@ -1,0 +1,64 @@
+{
+  "MenuList": [
+    {
+      "id": 123,
+      "title": "웅진북클럽",
+      "path": "/wjbook",
+      "Children": [
+        {
+          "id": 11,
+          "title": "웅진북클럽 소개",
+          "path": "/wjbook/1"
+        },
+        {
+          "id": 22,
+          "title": "내게 맞는 북클럽 찾기",
+          "path": "/wjbook/2"
+        }
+      ]
+    }
+  ],
+  "PageList": [
+    {
+      "id": 11,
+      "title": "웅진북클럽 전집",
+      "path": "/wjbook",
+      "menu": "웅진북클럽",
+      "date": "2022-09-23"
+    }
+  ],
+  "Pages": [
+    {
+      "title": "웅진북클럽 전집",
+      "block": [
+        {
+          "id": 11,
+          "selected": "image",
+          "layout": "1X1",
+          "path": "/wjbook/1",
+          "imageUrl": "http://imageUrl.com"
+        },
+        {
+          "id": 12,
+          "selected": "table",
+          "layout": "2X2",
+          "content": [
+            ["제목", "설명"],
+            ["웅진", "사이트"]
+          ]
+        },
+        {
+          "id": 13,
+          "selected": "list",
+          "layout": "1X2",
+          "content": [
+            {
+              "type": "CardCircle",
+              "props": { "title": "테스트" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
