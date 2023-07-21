@@ -14,15 +14,19 @@ export interface ListProps {
 export const ListPage = ({name, date, query, menu}: ListProps) => {
     
     return (
-        <div className="w-[1150px] justify-between bg-grayscale-0 border-y border-grayscale-300 px-5 py-4 relative flex flex-row content-center">
+        <div className="w-[1150px] justify-between bg-grayscale-0 border-y border-grayscale-300 px-5 py-4 relative flex flex-row content-center items-center text-center">
+            <div className=" basis-1/12">
             <CheckBox />
-            <p>
+            </div>
+            <p className="basis-3/12">
                 {name}
             </p>
-            <p>{query}</p>
+            <p className="basis-3/12">{query}</p>
+            <div className="basis-1/12">
             <ChipGray text={menu} />
-            <p>{date}</p>
-            <div className="flex flex-row gap-2">
+            </div>
+            <p className="basis-3/12">{date}</p>
+            <div className="flex flex-row gap-2 basis-2/12">
                 <ChipWhite text="상세" />
                 <ChipWhite text="복제" />
                 <ChipOrange text="디자인" />
