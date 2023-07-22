@@ -1,4 +1,5 @@
-import { ButtonOutline } from '../../atom/Button/ButtonOutline';
+// import { ButtonOutline } from '../../atom/Button/ButtonOutline';
+import { ButtonOutline } from '@atom/Button/ButtonOutline';
 
 export const ListAddMenu = () => {
   return (

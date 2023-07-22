@@ -6,6 +6,17 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "types": ["vite-plugin-svgr/client"],
+    "baseUrl": "./src",
+    "paths": {
+      "@hooks/*": ["hooks/*"],
+      "@assets/*": ["assets/*"],
+      "@store/*": ["store/*"],
+      "@atom/*": ["atom/*"],
+      "@molecule/*": ["molecule/*"],
+      "@organism/*": ["organism/*"],
+      "@template/*": ["template/*"],
+      "@pages/*": ["pages/*"]
+    },
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

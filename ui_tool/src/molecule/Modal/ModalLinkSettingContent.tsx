@@ -1,4 +1,4 @@
-import { ModalTitle } from '../../atom/Modal/ModalTitle';
+import { ModalTitle } from '@atom/Modal/ModalTitle';
 
 export const ModalLinkSettingContent = () => {
   return (

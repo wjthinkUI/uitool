@@ -1,20 +1,19 @@
 import { useState } from 'react';
-import { ModalDuplication } from '../organism/Modal/ModalDuplication';
-import { ModalDetail } from '../organism/Modal/ModalDetail';
-import { ModalLinkSetting } from '../organism/Modal/ModalLinkSetting';
-import { ModalBlockDesign } from '../organism/Modal/ModalBlockDesign';
-import { ReactComponent as Hamburger } from '../assets/icon_NavHamburger.svg';
-import { ReactComponent as Search } from '../assets/icon_NavSearch.svg';
-import { Table } from '../atom/Modal/tempTable';
-import { InputLogin } from '../atom/Input/InputLogin';
+// import { ModalDuplication } from '@organism/Modal/ModalDuplication';
+// import { ModalDetail } from '@organism/Modal/ModalDetail';
+// import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
+// import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
+import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
+import { Table } from '@atom/Modal/tempTable';
+import { InputPageTitle } from '@atom/Input/InputPageTitle';
+import { NavBottom } from '@molecule/Nav/NavBottom';
+
 const TestPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <div className="flex flex-wrap">
-      <div>
-        <InputLogin type="Email" />
-        <InputLogin type="Password" />
-      </div>
+      <NavBottom />
+      <InputPageTitle />
       <button
         onClick={() => {
           setShowModal(true);
@@ -27,10 +26,8 @@ const TestPage = () => {
       {/* {showModal && <ModalDetail />} */}
       {showModal && <ModalLinkSetting />}
       {/* <ModalBlockDesign /> */}
-      <Hamburger />
-      <Search />
       <div className="container mx-auto">
-        <h1 className="mt-4 text-3xl font-semibold text-center">8x5 Table</h1>
+        <h1 className="mt-4 text-3xl text-center">8x5 Table</h1>
         <Table />
       </div>
     </div>

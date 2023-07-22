@@ -15,7 +15,7 @@ export const InputLogin = ({ type }: InputLoginProps) => {
       <input
         id="email"
         type={type}
-        className="w-[394px] h-[60px] rounded-[10px] bg-grayscale-50"
+        className="w-[394px] h-[60px] rounded-[10px] bg-grayscale-50 pl-3 pt-1"
       />
     </div>
   );
