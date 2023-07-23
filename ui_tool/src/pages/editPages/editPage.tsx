@@ -1,17 +1,20 @@
 import { AdabtiveTab } from "@molecule/AdabtiveTab/AdabtiveTab";
-import { useParams } from "react-router-dom"
+import { Outlet, useParams, useNavigate } from "react-router-dom"
+import { useEffect } from "react";
 
 export const EditPage = () => {
-    const {id, device} = useParams();
+
+    const navigate= useNavigate();
+    const {id} = useParams();
+
+    useEffect(() => {
+        navigate(`/edit/${id}/desktop`, {replace: true})
+    }, [navigate, id]);
+    
     return (
         <>
             <AdabtiveTab />
-            <h1>
-                id : {id}
-            </h1>
-            <h1>
-                device: {device}
-            </h1>
+            <Outlet />
         </>
     )
 }
