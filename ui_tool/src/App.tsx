@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
 import { AdminManageList } from './pages/adminManageList/adminList';
 import TestPage from './pages/testPage';
-import { TestYS } from '@pages/testPageYS';
+import { EditPage } from '@pages/editPages/editPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -14,8 +14,20 @@ const router = createBrowserRouter([
     element: <TestPage />,
   },
   {
-    path: '/testYS',
-    element: <TestYS />,
+    path: '/edit',
+    element: <EditPage />,
+    children: [
+      {
+        path: '/edit/:device',
+        element: <EditPage />,
+        children: [
+          {
+            path: '/edit/:device/:id',
+            element: <EditPage />,
+          }
+        ]
+      }
+    ]
   },
   {
     path: '/adminlist',

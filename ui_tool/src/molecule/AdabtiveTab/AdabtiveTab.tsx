@@ -14,15 +14,15 @@ export const AdabtiveTab = () => {
     return (
         <>
             <div className="flex flex-row justify-center bg-grayscale-600">
-                <NavLink to='#' className={({ isActive }) => isActive ? active : pending
+                <NavLink to='/edit/desktop' className={({ isActive }) => isActive ? active : pending
                 } >
                     <IconDesktop />
                 </NavLink>
-                <NavLink to='/' className={({ isActive }) => isActive ? active : pending
+                <NavLink to='/edit/tablet' className={({ isActive }) => isActive ? active : pending
                 } >
                     <IconTablet />
                 </NavLink>
-                <NavLink to='/' className={({ isActive }) => isActive ? active : pending
+                <NavLink to='/edit/mobile' className={({ isActive }) => isActive ? active : pending
                 } >
                     <IconMobile />
                 </NavLink>
