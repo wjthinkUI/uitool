@@ -1,7 +1,7 @@
 // import { ChipGray, ChipOrange, ChipWhite } from '../../atom/Chip';
 // import { CheckBox } from '../../atom/checkBox';
 import { ChipGray, ChipOrange, ChipWhite } from '@atom/Chip';
-import { CheckBox } from '@atom/checkBox';
+import { CheckBox } from '@atom/CheckBox';
 /**상세/복제/디자인 버튼 기능 미구현 */
 
 export interface ListProps {
