@@ -1,11 +1,43 @@
 import { useState } from 'react';
-import { ModalDuplication } from '../organism/Modal/ModalDuplication';
+// import { ModalDuplication } from '@organism/Modal/ModalDuplication';
+// import { ModalDetail } from '@organism/Modal/ModalDetail';
+// import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
+// import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
+import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
+import { Table } from '@atom/Modal/tempTable';
+import { InputPageTitle } from '@atom/Input/InputPageTitle';
+import { NavBottom } from '@molecule/Nav/NavBottom';
 
 const TestPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <div className="flex flex-wrap">
-      {/* <CardSquareNomal
+      <NavBottom />
+      <InputPageTitle />
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+        className="flex-shrink-0 h-20 bg-primary-500 w-30"
+      >
+        모달열기
+      </button>
+      {/* {showModal && <ModalDuplication />} */}
+      {/* {showModal && <ModalDetail />} */}
+      {showModal && <ModalLinkSetting />}
+      {/* <ModalBlockDesign /> */}
+      <div className="container mx-auto">
+        <h1 className="mt-4 text-3xl text-center">8x5 Table</h1>
+        <Table />
+      </div>
+    </div>
+  );
+};
+
+export default TestPage;
+
+{
+  /* <CardSquareNomal
         title="1:1방문"
         period="주 1회 / 과목당 10분"
         description="학습관리 및 상담"
@@ -23,18 +55,5 @@ const TestPage = () => {
 집중적으로 관리 받습니다.
 전문 선생님의 학습 관리로 자기주도 학습을 성장시
 킬 수 있습니다."
-      /> */}
-      <button
-        onClick={() => {
-          setShowModal(true);
-        }}
-        className="flex-shrink-0 h-20 bg-primary-500 w-30"
-      >
-        모달열기
-      </button>
-      {showModal && <ModalDuplication />}
-    </div>
-  );
-};
-
-export default TestPage;
+      /> */
+}

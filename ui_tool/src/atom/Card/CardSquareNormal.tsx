@@ -10,7 +10,7 @@ export const CardSquareNomal = ({
   description,
 }: SquareNoramlProps) => {
   return (
-    <div className="w-[192px] h-[302px] m-2 cursor-pointer  font-noto">
+    <div className="w-[192px] h-[302px] m-2 cursor-pointer font-noto">
       <div className="w-[192px] h-[182px] bg-grayscale-200 mb-5"></div>
       <p className="m-3 text-center text-[20px] font-light text-primary-700 leading-8">
         {title}

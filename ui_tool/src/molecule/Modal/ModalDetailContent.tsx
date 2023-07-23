@@ -1,8 +1,7 @@
 import { ModalTitle } from '@atom/Modal/ModalTitle';
 
-export const ModalDuplicationContent = () => {
+export const ModalDetailContent = () => {
   return (
-    // input, div 는 더미
     <>
       <ModalTitle />
       <input
