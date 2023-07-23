@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { setActiveTab } from '@pages/adminManageList/tabStateSlice';
-// import { AppDispatch, RootState } from '../store/store'
-// import { setActiveTab } from '../pages/adminManageList/tabStateSlice';
 interface TapProps {
   text: string;
 }
