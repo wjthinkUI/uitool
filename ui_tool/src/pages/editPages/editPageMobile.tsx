@@ -14,9 +14,13 @@ export const EditPageMobile = () => {
   }
   const { editPageData, setEditPageData } = editPageContext;
 
+  const newLayoutItem = {
+    id: "mobileAdd",
+    position: "mobile",
+  };
   const handleEdit = () => {
     // setEditPageData({...editPageData, editPageData['newKey'] = 'newValue' });
-    setEditPageData({...editPageData, mob: 'ile'})
+    setEditPageData((prevState) => ({...prevState, layout: [...prevState.layout, newLayoutItem]}))
   }
 
     return (

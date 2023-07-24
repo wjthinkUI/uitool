@@ -14,9 +14,13 @@ export const EditPageDesktop = () => {
   }
   const { editPageData, setEditPageData } = editPageContext;
 
+  const newLayoutItem = {
+    id: "desktopAdd",
+    position: "desktop",
+  };
   const handleEdit = () => {
     // setEditPageData({...editPageData, editPageData['newKey'] = 'newValue' });
-    setEditPageData({...editPageData, key: 'value'})
+    setEditPageData((prevState) => ({...prevState, layout: [...prevState.layout, newLayoutItem]}))
   }
     return (
         <div className="">

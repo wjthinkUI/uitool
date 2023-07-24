@@ -22,7 +22,7 @@ export const EditPageTablet = () => {
     // setEditPageData({...editPageData, editPageData['newKey'] = 'newValue' });
     setEditPageData((prevState) => ({...prevState, layout: [...prevState.layout, newLayoutItem]}))
   }
-
+    
     return (
         <div className="w-[1024px]">
             <h1>
