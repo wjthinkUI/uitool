@@ -31,6 +31,8 @@ export const EditPageDesktop = () => {
             <p> 데스크톱 페이지 </p>
             <EditAddSelectDesign onClick={handleEdit}/>
             <EditTestBlock />
+            <EditTestBlock />
+            <EditTestBlock />
         </div>
     )
 }
