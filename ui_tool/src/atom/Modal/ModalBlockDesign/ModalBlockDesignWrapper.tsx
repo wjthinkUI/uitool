@@ -8,7 +8,7 @@ export const ModalBlockDesignWrapper = ({
 }: PropsWithChildren<ModalBlockDesignWrapperProps>) => {
   return (
     <div
-      className={`flex justify-center w-[950px] h-[500px] flex-wrap overflow-y-auto custom__scrollbar ${
+      className={`flex w-[950px] h-fit items-center flex-wrap overflow-y-auto custom__scrollbar ${
         type === 'table' ? 'bg-grayscale-0 rounded-[10px]' : ''
       }`}
     >

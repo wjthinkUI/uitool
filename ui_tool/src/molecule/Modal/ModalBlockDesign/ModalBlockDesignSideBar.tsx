@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
 import { setDesign } from '@store/slice/SliceBlockDesignSideBar';
@@ -17,6 +17,10 @@ export const ModalBlockDesignSideBar = () => {
       dispatch(setDesign({ type: data.type }));
     }
   };
+
+  useEffect(() => {
+    handleSideBar(1);
+  }, []);
 
   return (
     <div className="w-[150px] shrink-0 h-fit">
