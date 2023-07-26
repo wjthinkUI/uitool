@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { EditAddSelectDesign } from "@molecule/Edit/EditAddSelectDesign";
 import { useContext, useState } from "react";
 import { EditPageContext } from "@pages/editPages/editPage";
+import { EditTestBlock } from "@organism/Edit/EditTestBlock";
 
 export const EditPageDesktop = () => {
   const { id } = useParams();
@@ -29,6 +30,9 @@ export const EditPageDesktop = () => {
             </h1>
             <p> 데스크톱 페이지 </p>
             <EditAddSelectDesign onClick={handleEdit}/>
+            <EditTestBlock />
+            <EditTestBlock />
+            <EditTestBlock />
         </div>
     )
 }
