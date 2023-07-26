@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface Cell {
   row: number;
   col: number;
 }
 
-export const Table: React.FC = () => {
+export const Table = () => {
   const [clickedCell, setClickedCell] = useState<Cell | null>(null);
 
   const handleCellClick = (row: number, col: number) => {

@@ -3,7 +3,7 @@ import { ModalDuplication } from '@organism/Modal/ModalDuplication';
 import { ModalDetail } from '@organism/Modal/ModalDetail';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
-import { Table } from '@atom/Modal/tempTable';
+import { Table } from '@atom/Modal/Table';
 import { InputPageInfo } from '@atom/Input/InputPageInfo';
 import { NavBottom } from '@molecule/Nav/NavBottom';
 import { InputPageSelect } from '@atom/Input/InputPageSelect';
@@ -29,8 +29,8 @@ const TestPage = () => {
       </button>
       {/* {showModal && <ModalDuplication />} */}
       {/* {showModal && <ModalDetail />} */}
-      {showModal && <ModalLinkSetting />}
-      {/* <ModalBlockDesign /> */}
+      {/* {showModal && <ModalLinkSetting />} */}
+      <ModalBlockDesign />
       <div className="container mx-auto">
         <h1 className="mt-4 text-3xl text-center">8x5 Table</h1>
         <Table />

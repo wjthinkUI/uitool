@@ -1,10 +1,10 @@
 import { createPortal } from 'react-dom';
-import { ModalButton } from '@atom/Modal/ModalButton';
-import { ModalContainer } from '@atom/Modal/ModalContainer';
+import { ModalButton } from '@atom/Modal/ModalCommon/ModalButton';
+import { ModalContainer } from '@atom/Modal/ModalCommon/ModalContainer';
 import { ModalDetailContent } from '@molecule/Modal/ModalDetailContent';
 import { ModalBackDrop } from '@atom/Modal/ModalBackDrop';
 import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
-import { ModalTitle } from '@atom/Modal/ModalTitle';
+import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
 const ModalDetailPortal = () => {
   return (
     <ModalContainer height="low">
