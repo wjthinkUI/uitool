@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import tabStateSlice from '../pages/adminManageList/tabStateSlice';
-import sliceBlockDesignSideBar from './slice/SliceBlockDesignSideBar';
+import tabStateSlice from '@pages/adminManageList/tabStateSlice';
+import sliceBlockDesignSideBar from '@store/slice/sliceBlockDesignSideBar';
 
 export const store = configureStore({
   reducer: {
