@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const tabStateSlice = createSlice({
-    name: 'tabState',
-    initialState: {
-        activeTab: 0,
+  name: 'tabState',
+  initialState: {
+    activeTab: 0,
+  },
+  reducers: {
+    setActiveTab: (state, action) => {
+      state.activeTab = action.payload;
     },
-    reducers: {
-        setActiveTab: (state, action) => {
-            state.activeTab = action.payload
-        }
-    }
-})
+  },
+});
 
-export const { setActiveTab } = tabStateSlice.actions
+export const { setActiveTab } = tabStateSlice.actions;
 export default tabStateSlice;

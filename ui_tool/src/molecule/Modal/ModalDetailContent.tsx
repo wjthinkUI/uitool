@@ -1,20 +1,13 @@
-import { ModalTitle } from '@atom/Modal/ModalTitle';
+import { InputPageInfo } from '@atom/Input/InputPageInfo';
 
 export const ModalDetailContent = () => {
   return (
     <>
-      <ModalTitle />
-      <input
-        type="text"
-        className="w-[200px] h-[50px] ml-5 border-solid border-4"
-        placeholder="DUMMY INPUT"
-      />
-      <input
-        type="text"
-        className="w-[200px] h-[50px] ml-5 border-solid border-4"
-        placeholder="DUMMY INPUT"
-      />
-      <div className="ml-5">https://www.wjthinkbig.com/page/DUMMY</div>
+      <div className="flex flex-col items-center">
+        <InputPageInfo type="short" placeholder="페이지명" />
+        <InputPageInfo type="short" placeholder="pageURL" />
+      </div>
+      <div className="m-3 mb-5 ml-5">http://www.wjthinkbig.com/page</div>
     </>
   );
 };

@@ -25,10 +25,10 @@
 
 @layer components {
   .custom__scrollbar::-webkit-scrollbar {
-    @apply w-[6px] bg-grayscale-200;
+    @apply w-[6px] bg-grayscale-200 rounded-3xl;
   }
   .custom__scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-grayscale-800;
+    @apply bg-grayscale-800 rounded-3xl;
   }
   .custom__scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-grayscale-600;

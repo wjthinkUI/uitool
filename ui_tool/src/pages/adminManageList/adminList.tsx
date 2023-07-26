@@ -1,10 +1,3 @@
-// import { ManageMenuListTree } from "../../organism/Management/ManagementMenuListTree"
-// import { ManagePageTable } from "../../organism/Management/ManagementPageTable"
-// import { TabLeft, TabRight } from "../../atom/Tab"
-// import { WjHeader } from "../../molecule/Header"
-// import { useSelector } from "react-redux"
-// import { RootState } from "../../store/store"
-
 import { ManageMenuListTree } from '@organism/Management/ManagementMenuListTree';
 import { ManagePageTable } from '@organism/Management/ManagementPageTable';
 import { TabLeft, TabRight } from '@atom/Tab';

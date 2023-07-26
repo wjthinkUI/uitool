@@ -1,19 +1,24 @@
-import { useState } from 'react';
-// import { ModalDuplication } from '@organism/Modal/ModalDuplication';
-// import { ModalDetail } from '@organism/Modal/ModalDetail';
-// import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
-// import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
+import React, { useState } from 'react';
+import { ModalDuplication } from '@organism/Modal/ModalDuplication';
+import { ModalDetail } from '@organism/Modal/ModalDetail';
+import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
-import { Table } from '@atom/Modal/tempTable';
-import { InputPageTitle } from '@atom/Input/InputPageTitle';
+import { Table } from '@atom/Modal/Table';
+import { InputPageInfo } from '@atom/Input/InputPageInfo';
 import { NavBottom } from '@molecule/Nav/NavBottom';
-
+import { InputPageSelect } from '@atom/Input/InputPageSelect';
 const TestPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const map = {
+    pagetitle: <InputPageInfo type="short" placeholder="페이지명" />,
+  };
+  const data = React.cloneElement(map['pagetitle']);
   return (
     <div className="flex flex-wrap">
       <NavBottom />
-      <InputPageTitle />
+      <InputPageSelect />
+      {data}
+      <InputPageInfo type="long" placeholder="페이지명" />
       <button
         onClick={() => {
           setShowModal(true);
@@ -24,8 +29,8 @@ const TestPage = () => {
       </button>
       {/* {showModal && <ModalDuplication />} */}
       {/* {showModal && <ModalDetail />} */}
-      {showModal && <ModalLinkSetting />}
-      {/* <ModalBlockDesign /> */}
+      {/* {showModal && <ModalLinkSetting />} */}
+      <ModalBlockDesign />
       <div className="container mx-auto">
         <h1 className="mt-4 text-3xl text-center">8x5 Table</h1>
         <Table />

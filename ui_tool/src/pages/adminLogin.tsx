@@ -1,5 +1,3 @@
-// import { InputLogin } from '../atom/Input/InputLogin';
-// import { ButtonLogin } from '../atom/Button/ButtonLogin';
 import { InputLogin } from '@atom/Input/InputLogin';
 import { ButtonLogin } from '@atom/Button/ButtonLogin';
 import { ReactComponent as Wjlogo } from '@assets/Wjlogo.svg';

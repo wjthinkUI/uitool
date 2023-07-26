@@ -5,9 +5,6 @@ import {
 } from '@molecule/List/ListMenuTwoTypes';
 import { ListAddMenu } from '@molecule/List/ListAddMenu';
 
-// import { ListAddMenu } from "../../molecule/List/ListAddMenu"
-// import { ListChildrenMenu, ListParentsMenu } from "../../molecule/List/ListMenuTwoTypes"
-
 interface treeDataProps {
   title: ReactNode;
   key: string;
