@@ -4,6 +4,7 @@ import { ModalBlockDesignSideBar } from '@molecule/Modal/ModalBlockDesign/ModalB
 import { ModalBlockDesignWrapper } from '@atom/Modal/ModalBlockDesign/ModalBlockDesignWrapper';
 import { useSelectBlockDesign } from '@hooks/useSelectBlockDesign';
 import React from 'react';
+
 export const ModalBlockDesign = () => {
   const { selectedDesign, selectedType } = useSelectBlockDesign();
   return (

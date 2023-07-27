@@ -7,6 +7,7 @@ import { ListContent } from '@molecule/Modal/ModalBlockDesign/ListContent';
 import { TextContent } from '@molecule/Modal/ModalBlockDesign/TextContent';
 import { TableContent } from '@molecule/Modal/ModalBlockDesign/TableContent';
 import { LayoutContent } from '@molecule/Modal/ModalBlockDesign/LayoutContent';
+
 interface BlockDesignMap {
   id: number;
   type: string;
