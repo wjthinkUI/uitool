@@ -1,7 +1,13 @@
-import { Table } from '@atom/Modal/Table';
 import { useState, ReactNode, useEffect } from 'react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { RootState } from '@store/store';
+import { ImageContent } from '@molecule/Modal/ModalBlockDesign/ImageContent';
+import { LineContent } from '@molecule/Modal/ModalBlockDesign/LineContent';
+import { ListContent } from '@molecule/Modal/ModalBlockDesign/ListContent';
+import { TextContent } from '@molecule/Modal/ModalBlockDesign/TextContent';
+import { TableContent } from '@molecule/Modal/ModalBlockDesign/TableContent';
+import { LayoutContent } from '@molecule/Modal/ModalBlockDesign/LayoutContent';
+
 interface BlockDesignMap {
   id: number;
   type: string;
@@ -29,7 +35,7 @@ const blockDesignData: BlockDesignMap[] = [
     type: 'image',
     name: '이미지',
     element() {
-      return <div>이미지</div>;
+      return <ImageContent />;
     },
   },
   {
@@ -37,7 +43,7 @@ const blockDesignData: BlockDesignMap[] = [
     type: 'line',
     name: '구분선',
     element() {
-      return <div>구분선</div>;
+      return <LineContent />;
     },
   },
   {
@@ -45,7 +51,7 @@ const blockDesignData: BlockDesignMap[] = [
     type: 'list',
     name: '목록',
     element() {
-      return <div>리스트</div>;
+      return <ListContent />;
     },
   },
   {
@@ -53,7 +59,7 @@ const blockDesignData: BlockDesignMap[] = [
     type: 'text',
     name: '텍스트',
     element() {
-      return <div>텍스트</div>;
+      return <TextContent />;
     },
   },
   {
@@ -61,7 +67,7 @@ const blockDesignData: BlockDesignMap[] = [
     type: 'table',
     name: '표',
     element() {
-      return <Table />;
+      return <TableContent />;
     },
   },
   {
@@ -69,7 +75,7 @@ const blockDesignData: BlockDesignMap[] = [
     type: 'layout',
     name: '레이아웃',
     element() {
-      return <div>레이아웃</div>;
+      return <LayoutContent />;
     },
   },
 ];

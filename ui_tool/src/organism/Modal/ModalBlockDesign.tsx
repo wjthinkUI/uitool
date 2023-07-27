@@ -3,6 +3,7 @@ import { ModalBlockDesignContainer } from '@atom/Modal/ModalBlockDesign/ModalBlo
 import { ModalBlockDesignSideBar } from '@molecule/Modal/ModalBlockDesign/ModalBlockDesignSideBar';
 import { ModalBlockDesignWrapper } from '@atom/Modal/ModalBlockDesign/ModalBlockDesignWrapper';
 import { useSelectBlockDesign } from '@hooks/useSelectBlockDesign';
+import React from 'react';
 
 export const ModalBlockDesign = () => {
   const { selectedDesign, selectedType } = useSelectBlockDesign();
@@ -20,3 +21,8 @@ export const ModalBlockDesign = () => {
     </ModalBlockDesignContainer>
   );
 };
+
+export interface BlockDesignContent {
+  id: number;
+  svgFile: React.ReactNode;
+}
