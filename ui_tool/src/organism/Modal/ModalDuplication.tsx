@@ -10,7 +10,7 @@ const ModalDuplicationPortal = () => {
     <ModalContainer height="low">
       <ModalTitle title="페이지 복제" />
       <ModalDuplicationContent />
-      <ModalButton />
+      <ModalButton onCancel={() => {}} />
     </ModalContainer>
   );
 };

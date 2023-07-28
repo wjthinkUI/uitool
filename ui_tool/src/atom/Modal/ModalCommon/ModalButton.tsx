@@ -1,13 +1,13 @@
-// interface ModalButtonProps {
-//   onCancel: () => void;
-// }
-// { onCancel }: ModalButtonProps
-export const ModalButton = () => {
+interface ModalButtonProps {
+  onCancel: () => void;
+}
+
+export const ModalButton = ({ onCancel }: ModalButtonProps) => {
   return (
     <div className="w-[614px] h-[53px] flex">
       <button
         className="text-grayscale-0 bg-grayscale-800 grow text-body1B rounded-bl-[10px] hover:bg-grayscale-700"
-        // onClick={onCancel}
+        onClick={onCancel}
       >
         닫기
       </button>
