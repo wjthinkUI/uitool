@@ -1,5 +1,5 @@
-import { ChipGray, ChipOrange, ChipWhite } from '@atom/Chip';
-import { CheckBox } from '@atom/CheckBox';
+import { ChipGray, ChipOrange, ChipWhite } from '@atom/public/Chip';
+import { CheckBox } from '@atom/public/CheckBox';
 import type { ListProps } from 'types';
 /**상세/복제/디자인 버튼 기능 미구현 */
 

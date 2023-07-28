@@ -1,4 +1,4 @@
-import type { BlockDesignContent } from '@organism/Modal/ModalBlockDesign';
+import type { BlockDesignContent } from 'types';
 import { ModalBlockDesignMediumBox } from '@atom/Modal/ModalBlockDesign/ModalBlockDesignMediumBox';
 import { useState, useEffect } from 'react';
 const modules = import.meta.glob(

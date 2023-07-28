@@ -32,8 +32,8 @@ const router = createBrowserRouter([
       {
         path: 'mobile',
         element: <EditPageMobile />,
-      }
-    ]
+      },
+    ],
   },
   {
     path: '/adminlist',

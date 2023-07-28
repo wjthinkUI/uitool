@@ -1,5 +1,5 @@
-import { InputPageTitleProps } from "types";
-
+import type { InputPageTitleProps } from 'types';
+//퍼센트로 바꾸기
 export const InputPageInfo = ({ type, placeholder }: InputPageTitleProps) => {
   return (
     <input
