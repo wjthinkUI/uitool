@@ -1,4 +1,4 @@
-import { ReactComponent as CloseIcon } from '@assets/icon_close_white.svg';
+import { ReactComponent as CloseIcon } from '@assets/icon/icon_close_white.svg';
 interface ModalBlockDesignHeaderProps {
   onCancel: () => void;
 }
