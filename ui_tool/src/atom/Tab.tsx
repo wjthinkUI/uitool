@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { setActiveTab } from '@pages/adminManageList/tabStateSlice';
-interface TapProps {
-  text: string;
-}
+import type { TapProps } from 'types';
 
 export const TabLeft = ({ text }: TapProps) => {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,6 +1,4 @@
-interface GroupProps {
-    children: React.ReactNode
-}
+import { GroupProps } from "types"
 
 export const EditGroupContainer:React.FC<GroupProps> = ({children}) => {
 

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { SearchProps } from 'antd/es/input';
+
 export const NavButtonSearch = () => {
   const [color, setColor] = useState('#808080');
 
@@ -14,10 +16,6 @@ export const NavButtonSearch = () => {
     </button>
   );
 };
-
-interface SearchProps {
-  color: string;
-}
 
 const Search = ({ color }: SearchProps) => {
   return (

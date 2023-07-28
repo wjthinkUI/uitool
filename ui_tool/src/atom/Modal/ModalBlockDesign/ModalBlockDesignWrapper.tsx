@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react';
-interface ModalBlockDesignWrapperProps {
-  type: string;
-}
+import type { ModalBlockDesignWrapperProps } from 'types';
+
 export const ModalBlockDesignWrapper = ({
   children,
   type,

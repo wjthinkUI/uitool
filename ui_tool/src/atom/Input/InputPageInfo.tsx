@@ -1,7 +1,4 @@
-interface InputPageTitleProps {
-  type: 'short' | 'long';
-  placeholder: string;
-}
+import { InputPageTitleProps } from "types";
 
 export const InputPageInfo = ({ type, placeholder }: InputPageTitleProps) => {
   return (

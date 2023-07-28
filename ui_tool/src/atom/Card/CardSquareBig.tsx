@@ -1,7 +1,4 @@
-interface SquareBigProps {
-  title: string;
-  description: string;
-}
+import { SquareBigProps } from "types";
 
 export const CardSquareBig = ({ title, description }: SquareBigProps) => {
   return (

@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { ModalBlockDesignLargeBox } from '@atom/Modal/ModalBlockDesign/ModalBlockDesignLargeBox';
-interface Cell {
-  row: number;
-  col: number;
-}
+import type { Cell } from 'types';
 
 export const TableContent = () => {
   const [clickedCell, setClickedCell] = useState<Cell | null>(null);

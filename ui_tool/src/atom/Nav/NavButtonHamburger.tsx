@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import type { HamburgerProps } from 'types';
+
 export const NavButtonHamburger = () => {
   const [color, setColor] = useState('#B3B3B3');
 
@@ -14,10 +16,6 @@ export const NavButtonHamburger = () => {
     </button>
   );
 };
-
-interface HamburgerProps {
-  color: string;
-}
 
 const Hamburger = ({ color }: HamburgerProps) => {
   return (

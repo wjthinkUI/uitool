@@ -1,10 +1,7 @@
 import { ReactComponent as ArrowIcon } from '@assets/icon_arrow.svg';
 import { ReactComponent as SettingIcon } from '@assets/icon_setting.svg';
 import { ReactComponent as CloseIcon } from '@assets/icon_close.svg';
-
-export interface ListInnerData {
-  name: string;
-}
+import type { ListInnerData } from 'types';
 
 export const ListParentsMenu = ({ name }: ListInnerData) => {
   return (

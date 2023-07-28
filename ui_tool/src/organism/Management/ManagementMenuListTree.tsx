@@ -4,11 +4,7 @@ import {
   ListParentsMenu,
 } from '@molecule/List/ListMenuTwoTypes';
 import { ListAddMenu } from '@molecule/List/ListAddMenu';
-
-interface treeDataProps {
-  title: ReactNode;
-  key: string;
-}
+import type { treeDataProps } from 'types';
 
 const treeData: treeDataProps[] = [
   {

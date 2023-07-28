@@ -1,6 +1,4 @@
-interface CircleProps {
-  description: string;
-}
+import type { CircleProps } from "types";
 
 export const CardCircle = ({ description }: CircleProps) => {
   return (

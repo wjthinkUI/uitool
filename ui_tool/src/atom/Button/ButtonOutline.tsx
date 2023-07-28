@@ -1,9 +1,6 @@
 import { MouseEventHandler } from "react";
+import { btnType } from "types";
 
-interface btnType {
-    text: string;
-    onClick: MouseEventHandler<HTMLButtonElement> | undefined;
-}
 export const ButtonOutline = ({text, onClick}:btnType) => {
 
     return (
