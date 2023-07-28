@@ -10,7 +10,7 @@ const ModalLinkSettingPortal = () => {
     <ModalContainer height="high">
       <ModalTitle title="링크 설정" />
       <ModalLinkSettingContent />
-      <ModalButton />
+      <ModalButton onCancel={() => {}} />
     </ModalContainer>
   );
 };

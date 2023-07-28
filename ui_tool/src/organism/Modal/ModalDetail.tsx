@@ -10,7 +10,7 @@ const ModalDetailPortal = () => {
     <ModalContainer height="low">
       <ModalTitle title="페이지 상세" />
       <ModalDetailContent />
-      <ModalButton />
+      <ModalButton onCancel={() => {}} />
     </ModalContainer>
   );
 };
