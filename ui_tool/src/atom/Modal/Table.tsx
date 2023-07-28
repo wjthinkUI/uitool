@@ -1,9 +1,5 @@
 import { useState } from 'react';
-
-interface Cell {
-  row: number;
-  col: number;
-}
+import type { Cell } from 'types';
 
 export const Table = () => {
   const [clickedCell, setClickedCell] = useState<Cell | null>(null);

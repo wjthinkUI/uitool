@@ -1,6 +1,4 @@
-export interface AddBlock {
-    onClick: (event: React.MouseEvent<HTMLElement>) => void
-}
+import { AddBlock } from "types"
 
 export const EditAddBlockHereTop = ({ onClick }: AddBlock) => {
 

@@ -1,11 +1,8 @@
 import { useState, SetStateAction, useEffect } from 'react';
 import { Input, ConfigProvider, Pagination } from 'antd';
-import { ListPage, ListProps } from '@molecule/List/ListPages';
+import { ListPage } from '@molecule/List/ListPages';
 import { ListHeader } from '@molecule/List/ListHeader';
-
-interface DataType extends ListProps {
-  key: React.Key;
-}
+import type { DataType } from 'types';
 
 /** fetching data로 대체할 것 */
 const pageData: DataType[] = [

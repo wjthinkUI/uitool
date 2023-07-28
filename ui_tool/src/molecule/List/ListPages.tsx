@@ -1,13 +1,7 @@
 import { ChipGray, ChipOrange, ChipWhite } from '@atom/Chip';
 import { CheckBox } from '@atom/CheckBox';
+import type { ListProps } from 'types';
 /**상세/복제/디자인 버튼 기능 미구현 */
-
-export interface ListProps {
-  name: string;
-  date: string;
-  query: string;
-  menu: string;
-}
 
 /**list atom : 최상위 div w-1220px 수정해야 할 듯 */
 export const ListPage = ({ name, date, query, menu }: ListProps) => {
