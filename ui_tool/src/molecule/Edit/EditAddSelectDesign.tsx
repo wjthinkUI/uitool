@@ -1,8 +1,5 @@
 import { ReactComponent as IconMaginStick } from '@assets/icon_magicStick.svg'
-
-interface AddBlock {
-    onClick: (event: React.MouseEvent<HTMLElement>) => void
-}
+import type { AddBlock } from 'types'
 
 export const EditAddSelectDesign = ({onClick}: AddBlock) => {
 

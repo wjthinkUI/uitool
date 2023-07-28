@@ -1,6 +1,4 @@
-interface ModalTitleProps {
-  title: string;
-}
+import type { ModalTitleProps } from "types";
 
 export const ModalTitle = ({ title }: ModalTitleProps) => {
   return (

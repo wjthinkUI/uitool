@@ -1,6 +1,4 @@
-interface InputLoginProps {
-  type: 'Email' | 'Password';
-}
+import type { InputLoginProps } from "types";
 
 export const InputLogin = ({ type }: InputLoginProps) => {
   return (

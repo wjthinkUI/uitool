@@ -3,10 +3,7 @@ import { ReactComponent as IconReset } from '@assets/icon_EditReset.svg'
 import { ReactComponent as IconUp } from '@assets/icon_EditUp.svg'
 import { ReactComponent as IconDown } from '@assets/icon_EditDown.svg'
 import { ReactComponent as IconTrashCan } from '@assets/icon_EditTrashCan.svg'
-
-interface ToolsPropsType {
-    block_id: number
-}
+import { ToolsPropsType } from 'types'
 
 /** onClick 설정 필요 */
 export const EditToolsBox = ({block_id}:ToolsPropsType) => {

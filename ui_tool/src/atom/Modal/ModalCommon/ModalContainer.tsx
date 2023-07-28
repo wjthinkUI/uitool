@@ -1,8 +1,5 @@
 import { PropsWithChildren } from 'react';
-
-interface ModalContainerProps {
-  height: 'high' | 'low';
-}
+import type { ModalContainerProps } from 'types';
 
 export const ModalContainer = ({
   children,

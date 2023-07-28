@@ -1,19 +1,7 @@
 import { AdabtiveTab } from "@molecule/AdabtiveTab/AdabtiveTab";
 import { Outlet, useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState, createContext } from "react";
-
-interface EditPageContextType {
-    editPageData: Object;
-    setEditPageData: React.Dispatch<React.SetStateAction<EditPageDataType>>;
-}
-
-interface EditPageDataType {
-    key: string | undefined;
-    title: string;
-    page: string;
-    date: string;
-    layout: Array<{ id: string; position: string }>;
-}
+import { EditPageDataType, EditPageContextType } from "types";
 
 export const EditPageContext = createContext<EditPageContextType|null>(null);
 export const EditPage = () => {

@@ -1,7 +1,4 @@
-interface CircleProps {
-  description?: string;
-}
-import { TESTeditor } from '@pages/TESTeditor';
+import type { CircleProps } from 'types';
 import { useState } from 'react';
 export const CardCircle = ({ description }: CircleProps) => {
   const [desc, setDesc] = useState(description);
@@ -13,7 +10,7 @@ export const CardCircle = ({ description }: CircleProps) => {
 
   return (
     <>
-      {editMode && <TESTeditor desc={description} callback={handleDesc} />}
+      {/* {editMode && <TESTeditor desc={description} callback={handleDesc} />} */}
       <div className="w-[144px] h-[174px] m-2  font-noto">
         <div className="mb-3 rounded-full w-[144px] h-[144px] bg-grayscale-200 cursor-pointer"></div>
         <p

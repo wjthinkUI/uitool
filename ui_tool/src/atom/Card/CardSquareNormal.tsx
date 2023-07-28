@@ -1,8 +1,4 @@
-interface SquareNoramlProps {
-  title: string;
-  period: string;
-  description: string;
-}
+import type { SquareNoramlProps } from "types";
 
 export const CardSquareNomal = ({
   title,

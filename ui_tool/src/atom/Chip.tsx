@@ -1,7 +1,4 @@
-interface Chip{
-    text: string
-}
-
+import { Chip } from "types"
 
 export const ChipGray = ({text}:Chip) => {
 

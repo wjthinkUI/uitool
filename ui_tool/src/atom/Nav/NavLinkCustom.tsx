@@ -1,9 +1,5 @@
 import { NavLink } from 'react-router-dom';
-interface NavLinkProps {
-  title: string;
-  to: string;
-  end?: boolean | undefined;
-}
+import type { NavLinkProps } from 'types';
 
 export const NavLinkCustom = ({ title, to, end }: NavLinkProps) => {
   const defaultClasses =
