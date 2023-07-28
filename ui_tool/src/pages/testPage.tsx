@@ -6,7 +6,6 @@ import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
 import { InputPageInfo } from '@atom/Input/InputPageInfo';
 import { NavBottom } from '@molecule/Nav/NavBottom';
 import { InputPageSelect } from '@atom/Input/InputPageSelect';
-import EditorJS from '@editorjs/editorjs';
 import { useComponentMap } from '@hooks/useComponentMap';
 import { TESTeditor } from './TESTeditor';
 const TestPage = () => {
@@ -20,7 +19,7 @@ const TestPage = () => {
   // const editor = TESTeditor();
   return (
     <div className="flex flex-wrap">
-      {/* <NavBottom />
+      <NavBottom />
       <InputPageSelect />
       {data}
       <InputPageInfo type="long" placeholder="페이지명" />
@@ -31,11 +30,11 @@ const TestPage = () => {
         className="flex-shrink-0 h-20 bg-primary-500 w-30"
       >
         모달열기
-      </button> */}
-      {/* {showModal && <ModalDuplication />} */}
+      </button>
+      {showModal && <ModalDuplication />}
       {/* {showModal && <ModalDetail />} */}
       {/* {showModal && <ModalLinkSetting />} */}
-      {/* <ModalBlockDesign /> */}
+      <ModalBlockDesign />
       {el}
       {/* {editor} */}
     </div>

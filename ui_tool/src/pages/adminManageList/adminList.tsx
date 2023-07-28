@@ -1,7 +1,7 @@
 import { ManageMenuListTree } from '@organism/Management/ManagementMenuListTree';
 import { ManagePageTable } from '@organism/Management/ManagementPageTable';
-import { TabLeft, TabRight } from '@atom/Tab';
-import { WjHeader } from '@molecule/Header';
+import { TabLeft, TabRight } from '@atom/public/Tab';
+import { WjHeader } from '@molecule/public/Header';
 import { useSelector } from 'react-redux';
 import { RootState } from '@store/store';
 export const AdminManageList = () => {

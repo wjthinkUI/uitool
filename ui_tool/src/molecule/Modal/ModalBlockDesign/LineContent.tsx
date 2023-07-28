@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ModalBlockDesignSmallBox } from '@atom/Modal/ModalBlockDesign/ModalBlockDesignSmallBox';
-import type { BlockDesignContent } from '@organism/Modal/ModalBlockDesign';
+import type { BlockDesignContent } from 'types';
 const modules = import.meta.glob(
   '../../../assets/line/*.svg',
   { eager: true } // 모듈을 직접가저오는 옵션
