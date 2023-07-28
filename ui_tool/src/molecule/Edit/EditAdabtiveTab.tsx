@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
-import { ReactComponent as IconDesktop } from '@assets/icon_desktop.svg';
-import { ReactComponent as IconTablet } from '@assets/icon_tablet.svg';
-import { ReactComponent as IconMobile } from '@assets/icon_mobile.svg';
+import { ReactComponent as IconDesktop } from '@assets/icon/icon_desktop.svg';
+import { ReactComponent as IconTablet } from '@assets/icon/icon_tablet.svg';
+import { ReactComponent as IconMobile } from '@assets/icon/icon_mobile.svg';
 import { useParams } from "react-router-dom";
 
 export const AdabtiveTab = () => {

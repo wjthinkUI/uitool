@@ -1,4 +1,4 @@
-import { ReactComponent as IconMaginStick } from '@assets/icon_magicStick.svg'
+import { ReactComponent as IconMaginStick } from '@assets/icon/icon_magicStick.svg'
 import type { AddBlock } from 'types'
 
 export const EditAddSelectDesign = ({onClick}: AddBlock) => {

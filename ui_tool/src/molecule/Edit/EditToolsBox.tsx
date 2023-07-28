@@ -1,8 +1,8 @@
-import { ReactComponent as IconPencil } from '@assets/icon_EditPencil.svg'
-import { ReactComponent as IconReset } from '@assets/icon_EditReset.svg'
-import { ReactComponent as IconUp } from '@assets/icon_EditUp.svg'
-import { ReactComponent as IconDown } from '@assets/icon_EditDown.svg'
-import { ReactComponent as IconTrashCan } from '@assets/icon_EditTrashCan.svg'
+import { ReactComponent as IconPencil } from '@assets/icon/icon_EditPencil.svg'
+import { ReactComponent as IconReset } from '@assets/icon/icon_EditReset.svg'
+import { ReactComponent as IconUp } from '@assets/icon/icon_EditUp.svg'
+import { ReactComponent as IconDown } from '@assets/icon/icon_EditDown.svg'
+import { ReactComponent as IconTrashCan } from '@assets/icon/icon_EditTrashCan.svg'
 import { ToolsPropsType } from 'types'
 
 /** onClick 설정 필요 */

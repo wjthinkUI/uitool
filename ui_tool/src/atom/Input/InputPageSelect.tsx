@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ReactComponent as ArrowIcon } from '@assets/icon_arrow.svg';
+import { ReactComponent as ArrowIcon } from '@assets/icon/icon_arrow.svg';
 
 export const InputPageSelect = () => {
   const [dropdown, setDropDown] = useState(false);
