@@ -1,9 +1,13 @@
-import { SquareBigProps } from "types";
+import { useImageAndLinkSetting } from '@hooks/useImageAndLinkSetting';
+import { SquareBigProps } from 'types';
 
 export const CardSquareBig = ({ title, description }: SquareBigProps) => {
+  const { ImageAndLinkSelector } = useImageAndLinkSetting(false);
   return (
-    <div className="cursor-pointer w-[360px] h-[433px] flex flex-col items-center m-5 font-noto">
-      <div className="w-[360px] h-[270px] bg-grayscale-200 mb-5"></div>
+    <div className="w-[360px] h-[433px] flex flex-col items-center m-5 font-noto">
+      <div className="w-[360px] h-[270px] bg-grayscale-200 mb-5">
+        {ImageAndLinkSelector}
+      </div>
       <p className="m-3 text-center font-bold text-[22px] leading-[25px]">
         {title}
       </p>
