@@ -38,7 +38,7 @@ export const Image1 = () => {
                     <IconLink />
                 </span>
             </div>
-            <div className="hover:brightness-50">
+            <div className="group-hover:brightness-50">
                 <img className="object-cover" src={selectedImage?.toString()} alt="placeholder" />
             </div>
         </div>
