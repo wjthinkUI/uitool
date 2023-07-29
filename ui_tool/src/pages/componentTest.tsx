@@ -4,7 +4,7 @@ export const CompoTest = () => {
 
     return (
         <>
-            <Image1 />
+            
         </>
     )
 }

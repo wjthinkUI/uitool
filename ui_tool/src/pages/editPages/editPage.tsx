@@ -5,6 +5,9 @@ import { EditPageDataType } from 'types';
 import { GridContainer } from '@atom/public/GridContainer';
 import { Image1 } from '@atom/Edit/Image1';
 import { Image2 } from '@atom/Edit/Image2';
+import { Image3 } from '@atom/Edit/Image3';
+import { Image4 } from '@atom/Edit/Image4';
+import { ImageCustom } from '@atom/Edit/ImageCustom';
 
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
@@ -37,8 +40,11 @@ export const EditPage = () => {
         {layout.map((v: any, i: any) => (
           <p key={i}>{v.id}</p>
         ))}
+        <ImageCustom />
         <Image2 />
-        <Image1 />
+        <Image1 height='auto'/>
+        <Image3 />
+        <Image4 />
         </GridContainer>
     </div>
   );

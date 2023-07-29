@@ -2,25 +2,19 @@ import { useEffect, useState } from "react";
 import { ReactComponent as IconPhoto } from '@assets/icon/icon_photo.svg';
 import { ReactComponent as IconLink } from '@assets/icon/icon_link.svg';
 
-export const Image1 = () => {
-    const [selectedImage, setSelectedImage] = useState<string | ArrayBuffer | null>('https://via.placeholder.com/500');
+interface Image1Props {
+    height: string;
+}
+
+export const Image1 = ({height}:Image1Props) => {
+    const [selectedImage, setSelectedImage] = useState<string | ArrayBuffer | null>('https://via.placeholder.com/400');
     const [inputId, setInputId] = useState<string>('file-input');
 
     useEffect(() => {
-        // Generate a random number as an unique id
         const uniqueId = "file-input-" + Math.random().toString(36).substr(2, 9);
         setInputId(uniqueId);
     }, []);
     
-    const imgaeStyle = {
-        contain: 'object-contain',
-        cover: 'object-cover',
-        fill: 'object-fill',
-        none: 'object-none',
-        scaleDown: 'object-scale-down',
-    }
-    // const { contain, cover, fill, none, scaleDown } = imgaeStyle;
-
     const addImage = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files?.[0];
         if (file) {
@@ -32,7 +26,7 @@ export const Image1 = () => {
         }
     }
     return (
-        <div className="w-[100%] group mx-auto flex justify-center items-center">
+        <div className={`w-[100%] h-[${height}] group mx-auto flex justify-center items-center`}>
             <input id={inputId} className="hidden" type="file" accept="image/*" onChange={addImage} />
             <div className="z-10 hidden space-x-2 group-hover:flex group-hover:absolute">
                 <label
@@ -46,7 +40,7 @@ export const Image1 = () => {
                 </span>
             </div>
             <div className="group-hover:brightness-50">
-                <img className="object-cover" src={selectedImage?.toString()} alt="placeholder" />
+                <img className="object-contain" src={selectedImage?.toString()} alt="placeholder" />
             </div>
         </div>
     )
