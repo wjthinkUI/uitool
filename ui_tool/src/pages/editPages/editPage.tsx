@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { EditPageDataType } from 'types';
 import { GridContainer } from '@atom/public/GridContainer';
+import { Image1 } from '@atom/Edit/Image1';
 
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
@@ -35,6 +36,7 @@ export const EditPage = () => {
         {layout.map((v: any, i: any) => (
           <p key={i}>{v.id}</p>
         ))}
+        <Image1 />
         </GridContainer>
     </div>
   );
