@@ -1,11 +1,11 @@
 import { AdabtiveTab } from '@molecule/Edit/EditAdabtiveTab';
-import { Outlet, useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState, createContext } from 'react';
-import { EditPageDataType, EditPageContextType } from 'types';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { EditPageDataType } from 'types';
+import { GridContainer } from '@atom/public/GridContainer';
 
-export const EditPageContext = createContext<EditPageContextType | null>(null);
 export const EditPage = () => {
-  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState<string>('desktop');
   const { id } = useParams();
   const initialState: EditPageDataType = {
     key: id,
@@ -19,28 +19,23 @@ export const EditPage = () => {
     useState<EditPageDataType>(initialState);
 
   useEffect(() => {
-    navigate(`/edit/${id}/desktop`, { replace: true });
-  }, [navigate, id]);
-
-  useEffect(() => {
     editPageData;
     console.log('updated!', editPageData);
   }, [editPageData]);
 
+  const handleTabChange = (tabName: string) => {
+    setActiveTab(tabName);
+  };
   const { layout } = editPageData;
   return (
-    <>
-      <EditPageContext.Provider
-        key={id}
-        value={{ editPageData, setEditPageData }}
-      >
-        <AdabtiveTab />
+    <div className='w-[100vw] h-auto'>
+        <AdabtiveTab onTabChange={handleTabChange}/>
+        <GridContainer deviceWidth={activeTab === 'desktop' ? 1220 : activeTab === 'tablet' ? 785 : activeTab === 'mobile' ? 375 : 0}>
         <p>{JSON.stringify(editPageData, null, 2)}</p>
-        <Outlet />
         {layout.map((v: any, i: any) => (
           <p key={i}>{v.id}</p>
         ))}
-      </EditPageContext.Provider>
-    </>
+        </GridContainer>
+    </div>
   );
 };
