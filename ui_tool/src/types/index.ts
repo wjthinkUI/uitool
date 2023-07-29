@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactNode } from "react";
 
-export type {Chip, TapProps, SearchProps, CircleProps, InputLoginProps, SquareNoramlProps,treeDataProps,ToolsPropsType, BlockDesignContent, ModalBlockDesignWrapperProps, BlockDesignMap, ModalTitleProps, EditPageContextType, EditPageDataType, btnType, SquareBigProps, SquareWideProps, InputPageTitleProps, Cell, ModalContainerProps, HamburgerProps, NavLinkProps, AddBlock, GroupProps, ListInnerData, DataType, ListProps}
+export type {AdabtiveTabProps, GridContainerProps,Chip, TapProps, SearchProps, CircleProps, InputLoginProps, SquareNoramlProps,treeDataProps,ToolsPropsType, BlockDesignContent, ModalBlockDesignWrapperProps, BlockDesignMap, ModalTitleProps, EditPageContextType, EditPageDataType, btnType, SquareBigProps, SquareWideProps, InputPageTitleProps, Cell, ModalContainerProps, HamburgerProps, NavLinkProps, AddBlock, GroupProps, ListInnerData, DataType, ListProps}
 
 interface Chip{
     text: string
@@ -121,4 +121,12 @@ interface ListProps {
     date: string;
     query: string;
     menu: string;
+}
+
+interface GridContainerProps {
+    children: ReactNode,    
+    deviceWidth: number,
+}
+interface AdabtiveTabProps {
+    onTabChange: (tabName:string) => void;
 }
