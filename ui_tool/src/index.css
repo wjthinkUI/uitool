@@ -36,4 +36,7 @@
   .modal__center {
     @apply z-50  fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
   }
+  .set__center {
+    @apply top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
+  }
 }

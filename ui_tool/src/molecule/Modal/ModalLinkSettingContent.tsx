@@ -42,9 +42,7 @@ export const ModalLinkSettingContent = () => {
             내부 페이지 링크
           </label>
         </div>
-        <div className={selectedOption === 'internalLink' ? 'block' : 'hidden'}>
-          <InputPageSelect />
-        </div>
+        <InputPageSelect />
       </div>
       <div className="h-[90px]">
         <div>
@@ -61,12 +59,10 @@ export const ModalLinkSettingContent = () => {
             URL 입력
           </label>
         </div>
-        <div className={selectedOption === 'setUrl' ? 'block' : 'hidden'}>
-          <InputPageInfo
-            type="short"
-            placeholder="http://로 시작되는 링크 주소 입력"
-          />
-        </div>
+        <InputPageInfo
+          type="short"
+          placeholder="http://로 시작되는 링크 주소 입력"
+        />
       </div>
     </div>
   );

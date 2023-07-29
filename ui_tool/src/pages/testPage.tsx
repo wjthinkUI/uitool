@@ -8,7 +8,12 @@ import { NavBottom } from '@molecule/Nav/NavBottom';
 import { InputPageSelect } from '@atom/Input/InputPageSelect';
 import { useComponentMap } from '@hooks/useComponentMap';
 import { TESTeditor } from './TESTeditor';
+import { useImageAndLinkSetting } from '@hooks/useImageAndLinkSetting';
+import { ReactComponent as ImagePicker } from '@assets/icon/icon_imagePicker.svg';
+import { ReactComponent as LinkSetter } from '@assets/icon/icon_LinkSetter.svg';
+import { CardSquareBig } from '@atom/Card/CardSquareBig';
 const TestPage = () => {
+  // const { ImageAndLinkWrapper } = useImageAndLinkSetting();
   const [showModal, setShowModal] = useState<boolean>(false);
   const map = {
     pagetitle: <InputPageInfo type="short" placeholder="페이지명" />,
@@ -19,24 +24,27 @@ const TestPage = () => {
   // const editor = TESTeditor();
   return (
     <div className="flex flex-wrap">
-      <NavBottom />
-      <InputPageSelect />
-      {data}
-      <InputPageInfo type="long" placeholder="페이지명" />
-      <button
+      {/* <NavBottom />
+       <InputPageSelect />
+       {data}
+       <InputPageInfo type="long" placeholder="페이지명" /> */}
+      {/* <button
         onClick={() => {
           setShowModal(true);
         }}
         className="flex-shrink-0 h-20 bg-primary-500 w-30"
       >
         모달열기
-      </button>
-      {showModal && <ModalDuplication />}
+      </button> */}
+      {/* {showModal && <ModalDuplication />} */}
       {/* {showModal && <ModalDetail />} */}
       {/* {showModal && <ModalLinkSetting />} */}
-      <ModalBlockDesign />
-      {el}
-      {/* {editor} */}
+      {/* <ModalBlockDesign /> */}
+      <div className="m-10">{el}</div>
+      <div className="m-10">
+        <CardSquareBig title="테스트" description="테스트중입니다" />
+      </div>
+      {/* {ImageAndLinkWrapper} */}
     </div>
   );
 };
