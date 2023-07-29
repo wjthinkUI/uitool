@@ -5,23 +5,29 @@ import { ModalLinkSettingContent } from '@molecule/Modal/ModalLinkSettingContent
 import { ModalBackDrop } from '@atom/Modal/ModalBackDrop';
 import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
-const ModalLinkSettingPortal = () => {
-  return (
-    <ModalContainer height="high">
-      <ModalTitle title="링크 설정" />
-      <ModalLinkSettingContent />
-      <ModalButton onCancel={() => {}} />
-    </ModalContainer>
-  );
-};
+interface props {
+  onCancel: () => void;
+}
+// const ModalLinkSettingPortal = ({ onCancel }: props) => {
+//   return (
 
-export const ModalLinkSetting = () => {
+//   );
+// };
+
+export const ModalLinkSetting = ({ onCancel }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   usePreventMouseWheel();
   return (
     <>
-      {createPortal(<ModalBackDrop />, modalElement)}
-      {createPortal(<ModalLinkSettingPortal />, modalElement)}
+      {createPortal(<ModalBackDrop onCancel={onCancel} />, modalElement)}
+      {createPortal(
+        <ModalContainer height="high">
+          <ModalTitle title="링크 설정" />
+          <ModalLinkSettingContent />
+          <ModalButton onCancel={onCancel} />
+        </ModalContainer>,
+        modalElement
+      )}
     </>
   );
 };
