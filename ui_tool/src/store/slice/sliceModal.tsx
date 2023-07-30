@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface State {}
+interface State { }
 const initialState = {
   id: 123456,
   title: 'testTile',
   url: 'testUrl',
+  blankOption: false,
 };
 const sliceModal = createSlice({
   name: 'modal',
@@ -24,9 +25,15 @@ const sliceModal = createSlice({
       state.title = '';
       state.url = '';
     },
+    setBlankOption: (state) => {
+      state.blankOption = !state.blankOption;
+    },
+    deletePageData: (state) => {
+      state = initialState;
+    }
   },
 });
 
-export const { initalize, setTitle, setUrl, clearModalState } =
+export const { initalize, setTitle, setUrl, clearModalState, setBlankOption, deletePageData } =
   sliceModal.actions;
 export default sliceModal;
