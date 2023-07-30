@@ -1,12 +1,16 @@
 import { AdminManageTab } from '@molecule/List/AdminManageTab';
 import { WjHeader } from '@molecule/public/Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+
 export const AdminManage = () => {
   const navigate = useNavigate();
+  const currentPath = useLocation();
   useEffect(() => {
-    navigate('/adminList/menu');
+    currentPath.pathname === '/adminlist/page'
+      ? navigate('/adminlist/page')
+      : navigate('/adminlist/menu');
   }, []);
 
   return (

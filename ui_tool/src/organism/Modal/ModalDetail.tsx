@@ -23,7 +23,7 @@ export const ModalDetail = ({ onCancel, id }: props) => {
   useEffect(() => {
     //id값을 통해 pages store에서 제목과 경로값 조회 ->
     //modal store 상태값 설정
-    dispatch(initalize({}));
+    // dispatch(initalize({}));
   }, []);
   usePreventMouseWheel();
   return (
