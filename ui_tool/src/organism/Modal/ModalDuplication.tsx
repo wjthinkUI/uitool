@@ -5,23 +5,24 @@ import { ModalDuplicationContent } from '@molecule/Modal/ModalDuplicationContent
 import { ModalBackDrop } from '@atom/Modal/ModalBackDrop';
 import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
-const ModalDuplicationPortal = () => {
-  return (
-    <ModalContainer height="low">
-      <ModalTitle title="페이지 복제" />
-      <ModalDuplicationContent />
-      <ModalButton onCancel={() => {}} />
-    </ModalContainer>
-  );
-};
+interface props {
+  onCancel: () => void;
+}
 
-export const ModalDuplication = () => {
+export const ModalDuplication = ({ onCancel }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   usePreventMouseWheel();
   return (
     <>
-      {createPortal(<ModalBackDrop />, modalElement)}
-      {createPortal(<ModalDuplicationPortal />, modalElement)}
+      {createPortal(<ModalBackDrop onCancel={onCancel} />, modalElement)}
+      {createPortal(
+        <ModalContainer height="low">
+          <ModalTitle title="페이지 복제" />
+          <ModalDuplicationContent />
+          <ModalButton onCancel={onCancel} />
+        </ModalContainer>,
+        modalElement
+      )}
     </>
   );
 };

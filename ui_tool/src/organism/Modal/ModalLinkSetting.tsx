@@ -8,11 +8,6 @@ import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
 interface props {
   onCancel: () => void;
 }
-// const ModalLinkSettingPortal = ({ onCancel }: props) => {
-//   return (
-
-//   );
-// };
 
 export const ModalLinkSetting = ({ onCancel }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;

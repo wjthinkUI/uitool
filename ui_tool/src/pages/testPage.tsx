@@ -3,9 +3,9 @@ import { ModalDuplication } from '@organism/Modal/ModalDuplication';
 import { ModalDetail } from '@organism/Modal/ModalDetail';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
-import { InputPageInfo } from '@atom/Input/InputPageInfo';
+import { InputPageTitle } from '@atom/Input/InputPageInfo';
 import { NavBottom } from '@molecule/Nav/NavBottom';
-import { InputPageSelect } from '@atom/Input/InputPageSelect';
+// import { InputPageSelect } from '@atom/Input/InputPageSelector';
 import { useComponentMap } from '@hooks/useComponentMap';
 import { TESTeditor } from './TESTeditor';
 import { useImageAndLinkSetting } from '@hooks/useImageAndLinkSetting';
@@ -16,9 +16,12 @@ const TestPage = () => {
   // const { ImageAndLinkWrapper } = useImageAndLinkSetting();
   const [showModal, setShowModal] = useState<boolean>(false);
   const map = {
-    pagetitle: <InputPageInfo type="short" placeholder="페이지명" />,
+    pagetitle: <InputPageTitle type="short" placeholder="페이지명" />,
   };
   const data = React.cloneElement(map['pagetitle']);
+  const closeModal = () => {
+    setShowModal((prev) => !prev);
+  };
 
   const { el } = useComponentMap('CardCircle');
   // const editor = TESTeditor();
@@ -28,16 +31,16 @@ const TestPage = () => {
        <InputPageSelect />
        {data}
        <InputPageInfo type="long" placeholder="페이지명" /> */}
-      {/* <button
+      <button
         onClick={() => {
           setShowModal(true);
         }}
         className="flex-shrink-0 h-20 bg-primary-500 w-30"
       >
         모달열기
-      </button> */}
+      </button>
       {/* {showModal && <ModalDuplication />} */}
-      {/* {showModal && <ModalDetail />} */}
+      {showModal && <ModalDetail onCancel={closeModal} id={123} />}
       {/* {showModal && <ModalLinkSetting />} */}
       {/* <ModalBlockDesign /> */}
       <div className="m-10">{el}</div>

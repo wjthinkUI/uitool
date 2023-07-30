@@ -1,69 +1,99 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from 'react';
 
-export type {AdabtiveTabProps, GridContainerProps,Chip, TapProps, SearchProps, CircleProps, InputLoginProps, SquareNoramlProps,treeDataProps,ToolsPropsType, BlockDesignContent, ModalBlockDesignWrapperProps, BlockDesignMap, ModalTitleProps, EditPageContextType, EditPageDataType, btnType, SquareBigProps, SquareWideProps, InputPageTitleProps, Cell, ModalContainerProps, HamburgerProps, NavLinkProps, AddBlock, GroupProps, ListInnerData, DataType, ListProps}
+export type {
+  AdabtiveTabProps,
+  GridContainerProps,
+  Chip,
+  TapProps,
+  SearchProps,
+  CircleProps,
+  InputLoginProps,
+  SquareNoramlProps,
+  treeDataProps,
+  ToolsPropsType,
+  BlockDesignContent,
+  ModalBlockDesignWrapperProps,
+  BlockDesignMap,
+  ModalTitleProps,
+  EditPageContextType,
+  EditPageDataType,
+  btnType,
+  SquareBigProps,
+  SquareWideProps,
+  InputPageProps,
+  Cell,
+  ModalContainerProps,
+  HamburgerProps,
+  NavLinkProps,
+  AddBlock,
+  GroupProps,
+  ListInnerData,
+  DataType,
+  ListProps,
+};
 
-interface Chip{
-    text: string
+interface Chip {
+  text: string;
 }
 interface TapProps {
-    text: string;
+  text: string;
 }
 interface SquareNoramlProps {
-    title: string;
-    period: string;
-    description: string;
+  title: string;
+  period: string;
+  description: string;
 }
 interface SearchProps {
-    color: string;
+  color: string;
 }
 interface InputLoginProps {
-    type: 'Email' | 'Password';
-  }
+  type: 'Email' | 'Password';
+}
 interface CircleProps {
-    description: string;
-  }
+  description: string;
+}
 interface BlockDesignContent {
-    id: number;
-    svgFile: React.ReactNode;
+  id: number;
+  svgFile: React.ReactNode;
 }
 interface treeDataProps {
-    title: ReactNode;
-    key: string;
+  title: ReactNode;
+  key: string;
 }
-  
+
 interface BlockDesignMap {
-    id: number;
-    type: string;
-    name: string;
-    element: () => JSX.Element;
+  id: number;
+  type: string;
+  name: string;
+  element: () => JSX.Element;
 }
 interface ToolsPropsType {
-    block_id: number
+  block_id: number;
 }
 
 interface ModalTitleProps {
-    title: string;
+  title: string;
 }
 interface ModalBlockDesignWrapperProps {
-    type: string;
+  type: string;
 }
 
 interface EditPageContextType {
-    editPageData: Object;
-    setEditPageData: React.Dispatch<React.SetStateAction<EditPageDataType>>;
+  editPageData: Object;
+  setEditPageData: React.Dispatch<React.SetStateAction<EditPageDataType>>;
 }
 
 interface EditPageDataType {
-    key: string | undefined;
-    title: string;
-    page: string;
-    date: string;
-    layout: Array<{ id: string; position: string }>;
+  key: string | undefined;
+  title: string;
+  page: string;
+  date: string;
+  layout: Array<{ id: string; position: string }>;
 }
 
 interface btnType {
-    text: string;
-    onClick: MouseEventHandler<HTMLButtonElement> | undefined;
+  text: string;
+  onClick: MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
 interface SquareBigProps {
@@ -76,18 +106,19 @@ interface SquareWideProps {
   description: string;
 }
 
-interface InputPageTitleProps {
-  type: 'short' | 'long';
+interface InputPageProps {
+  type: 'title' | 'url';
+  inputWidth: 'short' | 'long';
   placeholder: string;
 }
 
 interface Cell {
-    row: number;
-    col: number;
+  row: number;
+  col: number;
 }
 
 interface ModalContainerProps {
-    height: 'high' | 'low';
+  height: 'high' | 'low';
 }
 
 interface HamburgerProps {
@@ -95,38 +126,38 @@ interface HamburgerProps {
 }
 
 interface NavLinkProps {
-    title: string;
-    to: string;
-    end?: boolean | undefined;
+  title: string;
+  to: string;
+  end?: boolean | undefined;
 }
 
 interface AddBlock {
-    onClick: (event: React.MouseEvent<HTMLElement>) => void
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface GroupProps {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
 interface ListInnerData {
-    name: string;
+  name: string;
 }
 
 interface DataType extends ListProps {
-    key: React.Key;
+  key: React.Key;
 }
 
 interface ListProps {
-    name: string;
-    date: string;
-    query: string;
-    menu: string;
+  name: string;
+  date: string;
+  query: string;
+  menu: string;
 }
 
 interface GridContainerProps {
-    children: ReactNode,    
-    deviceWidth: number,
+  children: ReactNode;
+  deviceWidth: number;
 }
 interface AdabtiveTabProps {
-    onTabChange: (tabName:string) => void;
+  onTabChange: (tabName: string) => void;
 }

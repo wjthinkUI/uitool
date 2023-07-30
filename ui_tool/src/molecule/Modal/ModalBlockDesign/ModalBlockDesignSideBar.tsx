@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
-import { setDesign } from '@store/slice/SliceBlockDesignSideBar';
+import { setDesign } from '@store/slice/sliceBlockDesignSideBar';
 import { useSelectBlockDesign } from '@hooks/useSelectBlockDesign';
 
 export const ModalBlockDesignSideBar = () => {
