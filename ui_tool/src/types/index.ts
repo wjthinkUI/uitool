@@ -6,7 +6,10 @@ interface Chip{
     text: string
 }
 interface TapProps {
-    text: string;
+    LeftText: string;
+    RightText: string;
+    RightTo: string;
+    LeftTo: string;
 }
 interface SquareNoramlProps {
     title: string;
