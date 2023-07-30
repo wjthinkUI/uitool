@@ -8,7 +8,7 @@ import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
 import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
-import {} from '@store/slice/sliceModal';
+import { initalize } from '@store/slice/sliceModal';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { RootState } from '@store/store';
 interface props {
@@ -18,13 +18,12 @@ interface props {
 
 export const ModalDetail = ({ onCancel, id }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
-  // const  data = useSelector(
-  //   (state: RootState) => state.pages
-  // );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    // dispatch();
+    //id값을 통해 pages store에서 제목과 경로값 조회 ->
+    //modal store 상태값 설정
+    dispatch(initalize({}));
   }, []);
   usePreventMouseWheel();
   return (
@@ -34,7 +33,7 @@ export const ModalDetail = ({ onCancel, id }: props) => {
         <ModalContainer height="low">
           <ModalTitle title="페이지 상세" />
           <ModalDetailContent />
-          <ModalButton onCancel={onCancel} />
+          <ModalButton onCancel={onCancel} method="PUT" />
         </ModalContainer>,
         modalElement
       )}

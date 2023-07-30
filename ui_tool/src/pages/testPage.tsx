@@ -3,7 +3,7 @@ import { ModalDuplication } from '@organism/Modal/ModalDuplication';
 import { ModalDetail } from '@organism/Modal/ModalDetail';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
-import { InputPageTitle } from '@atom/Input/InputPageInfo';
+import { InputPageInfo } from '@atom/Input/InputPageInfo';
 import { NavBottom } from '@molecule/Nav/NavBottom';
 // import { InputPageSelect } from '@atom/Input/InputPageSelector';
 import { useComponentMap } from '@hooks/useComponentMap';
@@ -15,10 +15,10 @@ import { CardSquareBig } from '@atom/Card/CardSquareBig';
 const TestPage = () => {
   // const { ImageAndLinkWrapper } = useImageAndLinkSetting();
   const [showModal, setShowModal] = useState<boolean>(false);
-  const map = {
-    pagetitle: <InputPageTitle type="short" placeholder="페이지명" />,
-  };
-  const data = React.cloneElement(map['pagetitle']);
+  // const map = {
+  //   pagetitle: <InputPageInfo type="short" placeholder="페이지명" />,
+  // };
+  // const data = React.cloneElement(map['pagetitle']);
   const closeModal = () => {
     setShowModal((prev) => !prev);
   };

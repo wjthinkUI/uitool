@@ -1,29 +1,31 @@
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@store/store';
+import { ChangeEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@store/store';
 import { setTitle } from '@store/slice/sliceModal';
 import { setUrl } from '@store/slice/sliceModal';
 import type { InputPageProps } from 'types';
-import { ChangeEvent } from 'react';
 //퍼센트로 바꾸기
 export const InputPageInfo = ({
   type,
   inputWidth,
   placeholder,
 }: InputPageProps) => {
+  const data = useSelector((state: RootState) => state.modal);
   const dispatch = useDispatch<AppDispatch>();
 
-  const inputMap = {
-    title: setTitle,
-    url: setUrl,
-  };
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const inputMap = {
+      title: setTitle,
+      url: setUrl,
+    };
     const dispathFn = inputMap[type];
     dispatch(dispathFn(e.target.value));
   };
+
   return (
     <input
       type="text"
+      value={data[type]}
       onChange={handleInputChange}
       placeholder={placeholder}
       className={`${

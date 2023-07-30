@@ -25,6 +25,17 @@ const router = createBrowserRouter([
   {
     path: '/adminlist',
     element: <AdminManageList />,
+    // children: [
+    //   {
+    //     index: true,
+    //     path: '/adminList/menu',
+    //     element: <AdminManageList />,
+    //   },
+    //   {
+    //     path: '/adminList/page',
+    //     element: <AdminManageList />,
+    //   },
+    // ],
   },
   {
     path: 'compotest',

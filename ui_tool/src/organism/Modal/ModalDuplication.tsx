@@ -7,9 +7,10 @@ import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
 interface props {
   onCancel: () => void;
+  id: number;
 }
 
-export const ModalDuplication = ({ onCancel }: props) => {
+export const ModalDuplication = ({ onCancel, id }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   usePreventMouseWheel();
   return (
@@ -19,7 +20,7 @@ export const ModalDuplication = ({ onCancel }: props) => {
         <ModalContainer height="low">
           <ModalTitle title="페이지 복제" />
           <ModalDuplicationContent />
-          <ModalButton onCancel={onCancel} />
+          <ModalButton onCancel={onCancel} method="POST" />
         </ModalContainer>,
         modalElement
       )}
