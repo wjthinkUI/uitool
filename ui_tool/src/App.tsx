@@ -1,7 +1,6 @@
 import './App.css';
 import {
   createBrowserRouter,
-  useNavigate,
   RouterProvider,
 } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';

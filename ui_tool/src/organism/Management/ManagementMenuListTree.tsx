@@ -5,7 +5,6 @@ import {
 } from '@molecule/List/ListMenuTwoTypes';
 import { ListAddMenu } from '@molecule/List/ListAddMenu';
 import type { treeDataProps } from 'types';
-import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
 
 const treeData: treeDataProps[] = [
   {

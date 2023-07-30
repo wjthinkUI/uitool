@@ -30,6 +30,7 @@ export type {
   ListInnerData,
   DataType,
   ListProps,
+  CheckBoxProps,
 };
 
 interface Chip {
@@ -164,4 +165,8 @@ interface GridContainerProps {
 }
 interface AdabtiveTabProps {
   onTabChange: (tabName: string) => void;
+}
+interface CheckBoxProps {
+    checked: boolean;
+    onChange: (checked: boolean) => void;
 }

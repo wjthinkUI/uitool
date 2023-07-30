@@ -36,7 +36,6 @@ export const ListMenuSettingBlock = (id: any) => {
     };
 
 
-
     return (
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
             <label className="text-body2m text-grayscale-600">제목</label>

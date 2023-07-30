@@ -1,9 +1,4 @@
-import { useState } from "react";
-
-interface CheckBoxProps {
-    checked: boolean;
-    onChange: (checked: boolean) => void;
-}
+import { CheckBoxProps } from "types";
 
 export const CheckBox = ({checked, onChange}:CheckBoxProps) => {
     const handleCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
