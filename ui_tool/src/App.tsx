@@ -1,13 +1,12 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
-import { AdminManageList } from './pages/adminManageList/adminList';
+import { AdminManageList } from './pages/adminManageList/adminManageList';
+import { AdminManagePage } from '@pages/adminManageList/adminManagePage';
+import { AdminManage } from '@pages/adminManageList/adminManage';
 import TestPage from './pages/testPage';
 import { EditPage } from '@pages/editPages/editPage';
 import { CompoTest } from '@pages/componentTest';
-// import { EditPageTablet } from '@pages/editPages/editPageTablet';
-// import { EditPageMobile } from '@pages/editPages/editPageMobile';
-// import { EditPageDesktop } from '@pages/editPages/editPageDesktop';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +23,18 @@ const router = createBrowserRouter([
   },
   {
     path: '/adminlist',
-    element: <AdminManageList />,
+    element: <AdminManage />,
+    children: [
+      {
+        index: true,
+        path: '/adminlist/menu',
+        element: <AdminManageList />,
+      },
+      {
+        path: '/adminlist/page',
+        element: <AdminManagePage />,
+      },
+    ],
   },
   {
     path: 'compotest',
