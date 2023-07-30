@@ -12,6 +12,12 @@ interface props {
 export const ModalAddMenu = ({ onCancel }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   usePreventMouseWheel();
+
+  const formData = {
+    menuName: '',
+    menuUrl: '',
+  };
+
   return (
     <>
       {createPortal(<ModalBackDrop onCancel={onCancel} />, modalElement)}

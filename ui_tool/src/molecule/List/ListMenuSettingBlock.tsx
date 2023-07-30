@@ -35,6 +35,11 @@ export const ListMenuSettingBlock = (id: any) => {
         dispatch(setBlankOption());
     };
 
+    const formData = {
+        title: pageData.title,
+        url: pageData.url,
+        blankOption: pageData.blankOption,
+    }
 
     return (
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
