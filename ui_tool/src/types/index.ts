@@ -144,6 +144,7 @@ interface GroupProps {
 
 interface ListInnerData {
     name: string;
+    key: string;
 }
 
 interface DataType extends ListProps {
