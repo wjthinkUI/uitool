@@ -1,9 +1,5 @@
 import './App.css';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
 import { AdminManageList } from './pages/adminManageList/adminManageList';
 import { AdminManagePage } from '@pages/adminManageList/adminManagePage';
