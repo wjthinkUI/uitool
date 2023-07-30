@@ -31,6 +31,6 @@ app.put('/adminlist/page', async (req, res, next) => {
 app.post('/adminlist/page', async (req, res, next) => {
   const { id, title, url } = req.body;
 });
-app.listen(8080, () => {
+app.listen(5174, () => {
   console.log('연결 완료');
 });

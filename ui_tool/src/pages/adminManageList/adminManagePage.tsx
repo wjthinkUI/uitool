@@ -13,7 +13,7 @@ export const AdminManagePage = () => {
 
 export const AdminManageLoader = async () => {
   //db의 pageinfo 모두 가져오기
-  const res = await fetch('http://localhost:8080/adminlist/page');
+  const res = await fetch('http://localhost:5174/adminlist/page');
   if (!res.ok) {
     throw Error('fetching error, try again...');
   }
@@ -31,7 +31,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
   // console.log(data);
   if (request.method === 'PUT') {
     //db에 데이터 변경 요청
-    const res = await fetch('http://localhost:8080/adminlist/page', {
+    const res = await fetch('http://localhost:5174/adminlist/page', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
     // dispatch
   } else if (request.method === 'POST') {
     //db에 데이터 복제 요청
-    const res = await fetch('http://localhost:8080/adminlist/page', {
+    const res = await fetch('http://localhost:5174/adminlist/page', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
