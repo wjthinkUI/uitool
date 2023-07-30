@@ -1,5 +1,9 @@
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  useNavigate,
+  RouterProvider,
+} from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
 import { AdminManageList } from './pages/adminManageList/adminManageList';
 import { AdminManagePage } from '@pages/adminManageList/adminManagePage';
@@ -26,7 +30,6 @@ const router = createBrowserRouter([
     element: <AdminManage />,
     children: [
       {
-        index: true,
         path: '/adminlist/menu',
         element: <AdminManageList />,
       },

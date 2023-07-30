@@ -1,8 +1,13 @@
 import { AdminManageTab } from '@molecule/List/AdminManageTab';
 import { WjHeader } from '@molecule/public/Header';
 import { Outlet } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 export const AdminManage = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate('/adminList/menu');
+  }, []);
 
   return (
     <div className="w-[1220px] h-auto">
