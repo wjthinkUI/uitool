@@ -143,7 +143,7 @@ interface GroupProps {
 }
 
 interface ListInnerData {
-  name: string;
+    name: string;
 }
 
 interface DataType extends ListProps {

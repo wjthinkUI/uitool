@@ -5,54 +5,55 @@ import {
 } from '@molecule/List/ListMenuTwoTypes';
 import { ListAddMenu } from '@molecule/List/ListAddMenu';
 import type { treeDataProps } from 'types';
+import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
 
 const treeData: treeDataProps[] = [
   {
-    title: <ListParentsMenu name={'웅진부끄러'} />,
+    title: <ListParentsMenu name={'웅진부끄러'} key={'123'} />,
     key: '0-0',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 아기'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 아기'} key={'123'} />,
     key: '0-0-0',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 도비'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 도비'} key={'123'} />,
     key: '0-0-1',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 바비'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 바비'} key={'123'} />,
     key: '0-0-2',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 켄'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 켄'} key={'123'} />,
     key: '0-0-3',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 저기'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 저기'} key={'0-0-4'}/>,
     key: '0-0-4',
   },
   {
-    title: <ListParentsMenu name={'웅진부끄러'} />,
+    title: <ListParentsMenu name={'웅진부끄러'} key={'123'} />,
     key: '0-1',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 아기'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 아기'} key={'123'} />,
     key: '0-1-0',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 도비'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 도비'} key={'123'} />,
     key: '0-1-1',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 바비'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 바비'} key={'123'} />,
     key: '0-1-2',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 켄'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 켄'} key={'123'} />,
     key: '0-1-3',
   },
   {
-    title: <ListChildrenMenu name={'웅진부끄러 저기'} />,
+    title: <ListChildrenMenu name={'웅진부끄러 저기'} key={'123'} />,
     key: '0-1-4',
   },
 ];
@@ -67,7 +68,10 @@ export const ManageMenuListTree = () => {
             <div key={key}>{title}</div>
           ))}
         </div>
+        
       </div>
     </>
   );
 };
+
+//ModalLinkSettingContent
