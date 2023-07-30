@@ -8,7 +8,9 @@ export const AdminManage = () => {
   const navigate = useNavigate();
   const currentPath = useLocation();
   useEffect(() => {
-    (currentPath.pathname === '/adminlist/page') ? navigate('/adminlist/page') : navigate('/adminlist/menu')
+    currentPath.pathname === '/adminlist/page'
+      ? navigate('/adminlist/page')
+      : navigate('/adminlist/menu');
   }, []);
 
   return (
