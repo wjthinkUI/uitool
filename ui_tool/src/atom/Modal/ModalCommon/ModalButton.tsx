@@ -8,10 +8,15 @@ interface ModalButtonProps {
 
 export const ModalButton = ({ onCancel, method }: ModalButtonProps) => {
   const submit = useSubmit();
+  const data = useSelector((state: RootState) => state.modal);
+  // console.log(data);
   const submitHandler = () => {
     // '/adminList/page' 페이지 action 함수로 전달 -> db저장 -> 리덕스 스토어 업데이트
-    const data = useSelector((state: RootState) => state.modal);
-    submit(data, { method: method, action: '/adminList/page' });
+    submit(data, {
+      method: method,
+      action: '/adminlist/page',
+      encType: 'application/json',
+    });
     onCancel();
   };
   return (

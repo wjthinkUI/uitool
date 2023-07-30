@@ -1,8 +1,8 @@
 import './App.css';
 import {
   createBrowserRouter,
-  useNavigate,
   RouterProvider,
+  Navigate,
 } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
 import { AdminManageList } from './pages/adminManageList/adminManageList';
@@ -11,6 +11,8 @@ import { AdminManage } from '@pages/adminManageList/adminManage';
 import TestPage from './pages/testPage';
 import { EditPage } from '@pages/editPages/editPage';
 import { CompoTest } from '@pages/componentTest';
+import { AdminMangePageAction } from '@pages/adminManageList/adminManagePage';
+import { AdminManageLoader } from '@pages/adminManageList/adminManagePage';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,8 @@ const router = createBrowserRouter([
       {
         path: '/adminlist/page',
         element: <AdminManagePage />,
+        loader: AdminManageLoader,
+        action: AdminMangePageAction,
       },
     ],
   },
@@ -44,7 +48,6 @@ const router = createBrowserRouter([
     element: <CompoTest />,
   },
 ]);
-
 function App() {
   return (
     <>
