@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import sliceModal from "@store/slice/sliceModal";
 import { setTitle, setUrl, setBlankOption } from "@store/slice/sliceModal";
 import { useState } from "react";
+import { ButtonOutline } from "@atom/Button/ButtonOutline";
 
 
 // const initialState: PageDataState = {
@@ -19,7 +20,7 @@ import { useState } from "react";
 // setBlankOption
 // deletePageData
 
-export const ListMenuSettingBlock = (id: any) => {
+export const ListMenuSettingBlock = (id, title, path) => {
     const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
     const pageData = useSelector((state: any) => state.modal);
@@ -41,6 +42,13 @@ export const ListMenuSettingBlock = (id: any) => {
         blankOption: pageData.blankOption,
     }
 
+    //id 받아야함.
+    const handleTitleChange = () => {
+        // dispatch(setTitle());
+        // dispatch(setUrl());
+        dispatch(setBlankOption());
+    };
+    
     return (
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
             <label className="text-body2m text-grayscale-600">제목</label>
@@ -49,7 +57,8 @@ export const ListMenuSettingBlock = (id: any) => {
                 <label className="text-body2m text-grayscale-600">링크</label>
                 <InputPageSelector />
                 <CheckBox checked={checked} onChange={handleBlankOptionChange}/>
-                <label className="ml-3 text-body2m text-grayscale-600">새창 열기</label>
+                <label className="ml-3 grow text-body2m text-grayscale-600">새창 열기</label>
+                <ButtonOutline text={"저장하기"} onClick={handleTitleChange} />
             </div>
         </div>
     )

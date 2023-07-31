@@ -62,6 +62,7 @@ interface BlockDesignContent {
 }
 interface treeDataProps {
   title: ReactNode;
+  isParent: boolean;
   key: string;
 }
 
@@ -144,8 +145,12 @@ interface GroupProps {
 }
 
 interface ListInnerData {
-    name: string;
     key: string;
+    title: string;
+    path: string;
+    isParent: boolean;
+    category: string;
+    date: string;
 }
 
 interface DataType extends ListProps {

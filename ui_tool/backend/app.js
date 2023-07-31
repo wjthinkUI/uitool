@@ -13,9 +13,15 @@ app.use((req, res, next) => {
 
 app.get('/adminlist/page', async (req, res, next) => {
   const data = await getAllPagesInfo();
-  console.log(data);
+  // console.log(data);
   res.json({ data: data });
 });
+app.get('/adminlist/menu', async (req, res, next) => {
+  const data = await getAllPagesInfo();
+  console.log('호출 확인');
+  res.json({ data: data });
+});
+
 
 app.put('/adminlist/page', async (req, res, next) => {
   const { title, url, id } = req.body;

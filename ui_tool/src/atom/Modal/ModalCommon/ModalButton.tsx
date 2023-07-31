@@ -17,6 +17,7 @@ export const ModalButton = ({ onCancel, method }: ModalButtonProps) => {
       action: '/adminlist/page',
       encType: 'application/json',
     });
+    console.log(data);
     onCancel();
   };
   return (
