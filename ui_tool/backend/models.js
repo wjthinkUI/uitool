@@ -60,15 +60,37 @@ async function duplicatePage(id, title, url) {
     ...selectedData,
     pageInfo: {
       ...selectedData.pageInfo,
+      id: uuidv4(),
       title: title,
       path: url,
-      key: uuidv4(),
+      date: getCurrentDate(),
     },
   };
   data.pages.push(selectedData);
   await writeData(data);
   return getAllPagesInfo();
 }
+
+async function createPage(title, url, isParent, category) {
+  //아이디와 같은 페이지를 title과 url만 변경해서 복제
+  const data = await readData();
+  const newPage = {
+    pageInfo: {
+      id: uuidv4(),
+      title: title,
+      path: url,
+      isParent: isParent,
+      category: category,
+      date: getCurrentDate(),
+    },
+    page: [{}],
+  };
+  data.pages.push(newPage);
+  await writeData(data);
+  return true;
+}
 exports.readData = readData;
 exports.getAllPagesInfo = getAllPagesInfo;
 exports.updatePageInfo = updatePageInfo;
+exports.duplicatePage = duplicatePage;
+exports.createPage = createPage;

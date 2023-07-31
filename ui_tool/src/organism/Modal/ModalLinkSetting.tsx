@@ -4,16 +4,11 @@ import { ModalButton } from '@atom/Modal/ModalCommon/ModalButton';
 import { ModalContainer } from '@atom/Modal/ModalCommon/ModalContainer';
 import { ModalLinkSettingContent } from '@molecule/Modal/ModalLinkSettingContent';
 import { ModalBackDrop } from '@atom/Modal/ModalBackDrop';
-import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
-import {
-  setTitle,
-  setUrl,
-  setId,
-  clearModalState,
-} from '@store/slice/sliceModal';
+import { clearModalState } from '@store/slice/sliceModal';
 import { AppDispatch } from '@store/store';
 import { useDispatch } from 'react-redux';
+import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 interface props {
   onCancel: () => void;
 }
@@ -25,9 +20,6 @@ export const ModalLinkSetting = ({ onCancel }: props) => {
     //링크셋팅 렌더링 시에는 modal store 빈상태가 되어야함
     const clearState = async () => {
       dispath(clearModalState());
-      // dispath(setTitle(''));
-      // dispath(setUrl(''));
-      // dispath(setId(0));
     };
     clearState();
   }, []);
