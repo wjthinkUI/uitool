@@ -11,13 +11,16 @@ const sliceModal = createSlice({
   initialState,
   reducers: {
     initalize: (state, action) => {
-      state = action.payload;
+      return action.payload;
     },
     setTitle: (state, action) => {
       state.title = action.payload;
     },
     setUrl: (state, action) => {
       state.url = action.payload;
+    },
+    setId: (state, action) => {
+      state.id = action.payload;
     },
     clearModalState: (state) => {
       state.id = 0;
@@ -27,6 +30,6 @@ const sliceModal = createSlice({
   },
 });
 
-export const { initalize, setTitle, setUrl, clearModalState } =
+export const { initalize, setTitle, setUrl, setId, clearModalState } =
   sliceModal.actions;
 export default sliceModal;

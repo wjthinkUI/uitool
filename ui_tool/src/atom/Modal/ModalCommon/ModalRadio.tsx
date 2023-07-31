@@ -3,7 +3,7 @@ interface ModalRadioProps {
   value: string;
   name: string;
   label: string;
-  onChange: (event: any) => void;
+  onClick: (event: any) => void;
 }
 
 export const ModalRadio = ({
@@ -11,7 +11,7 @@ export const ModalRadio = ({
   value,
   name,
   label,
-  onChange,
+  onClick,
 }: ModalRadioProps) => {
   return (
     <div className="flex m-2">
@@ -20,7 +20,7 @@ export const ModalRadio = ({
         name={name}
         value={value}
         id={id}
-        onChange={onChange}
+        onClick={onClick}
         className="m-0 w-[16px] h-[16px] rounded-full appearance-none checked:bg-primary-950 ring-1 ring-primary-950 checked:border-grayscale-0 checked:border-[3px] peer/noLink"
       />
       <label htmlFor={id} className="pl-3 text-body4m">

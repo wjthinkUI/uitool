@@ -4,18 +4,21 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
-
+import { AppDispatch } from '@store/store';
+import { useDispatch } from 'react-redux';
+import { initalizePagesInfo } from '@store/slice/slicePagesInfo';
 export const AdminManage = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const currentPath = useLocation();
   const pagesInfo = useLoaderData(); //loader 가 리턴한값 가져오기
   console.log('PAGESINFO=', pagesInfo);
+  dispatch(initalizePagesInfo(pagesInfo));
   useEffect(() => {
     currentPath.pathname === '/adminlist/page'
       ? navigate('/adminlist/page')
       : navigate('/adminlist/menu');
   }, []);
-
   return (
     <div className="w-[1220px] h-auto">
       <WjHeader />
@@ -40,5 +43,6 @@ export const AdminManageLoader = async () => {
 
   const resData = await res.json();
   console.log(resData);
+
   return resData;
 };

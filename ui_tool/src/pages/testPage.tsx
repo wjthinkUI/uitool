@@ -40,8 +40,8 @@ const TestPage = () => {
         모달열기
       </button>
       {/* {showModal && <ModalDuplication />} */}
-      {showModal && <ModalDetail onCancel={closeModal} id={123} />}
-      {/* {showModal && <ModalLinkSetting />} */}
+      {/* {showModal && <ModalDetail onCancel={closeModal} id={123} />} */}
+      {showModal && <ModalLinkSetting onCancel={closeModal} />}
       {/* <ModalBlockDesign /> */}
       <div className="m-10">{el}</div>
       <div className="m-10">

@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface State {
-  initialState: [];
+  id: number;
+  title: string;
+  path: string;
+  isParent: boolean;
+  category: string;
+  date: string;
 }
 const initialState: State[] = [];
 const slicePagesInfo = createSlice({
@@ -9,7 +14,7 @@ const slicePagesInfo = createSlice({
   initialState,
   reducers: {
     initalizePagesInfo: (state, action) => {
-      state = action.payload;
+      return action.payload;
     },
   },
 });

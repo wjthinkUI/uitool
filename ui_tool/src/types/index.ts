@@ -113,6 +113,7 @@ interface InputPageProps {
   type: 'title' | 'url';
   inputWidth: 'short' | 'long';
   placeholder: string;
+  isLoadValue: boolean;
 }
 
 interface Cell {
