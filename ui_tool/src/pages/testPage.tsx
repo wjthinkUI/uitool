@@ -12,6 +12,8 @@ import { useImageAndLinkSetting } from '@hooks/useImageAndLinkSetting';
 import { ReactComponent as ImagePicker } from '@assets/icon/icon_imagePicker.svg';
 import { ReactComponent as LinkSetter } from '@assets/icon/icon_LinkSetter.svg';
 import { CardSquareBig } from '@atom/Card/CardSquareBig';
+import { PageNavigation } from '@organism/Nav/Navigation';
+import { Footer } from '@organism/Nav/Footer';
 const TestPage = () => {
   // const { ImageAndLinkWrapper } = useImageAndLinkSetting();
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -27,7 +29,8 @@ const TestPage = () => {
   // const editor = TESTeditor();
   return (
     <div className="flex flex-wrap">
-      {/* <NavBottom />
+      <PageNavigation />
+      {/* 
        <InputPageSelect />
        {data}
        <InputPageInfo type="long" placeholder="페이지명" /> */}
@@ -48,6 +51,7 @@ const TestPage = () => {
         <CardSquareBig title="테스트" description="테스트중입니다" />
       </div>
       {/* {ImageAndLinkWrapper} */}
+      <Footer />
     </div>
   );
 };
