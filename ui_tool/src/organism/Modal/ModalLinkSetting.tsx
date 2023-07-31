@@ -19,7 +19,7 @@ export const ModalLinkSetting = ({ onCancel }: props) => {
         <ModalContainer height="high">
           <ModalTitle title="링크 설정" />
           <ModalLinkSettingContent />
-          <ModalButton onCancel={onCancel} />
+          <ModalButton onCancel={onCancel} method="PUT" />
         </ModalContainer>,
         modalElement
       )}
