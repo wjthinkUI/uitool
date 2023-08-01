@@ -6,8 +6,18 @@ export const ModalDetailContent = () => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <InputPageInfo type="title" inputWidth="short" placeholder="페이지명" />
-        <InputPageInfo type="url" inputWidth="short" placeholder="pageURL" />
+        <InputPageInfo
+          type="title"
+          inputWidth="short"
+          placeholder="페이지명"
+          isLoadValue={true}
+        />
+        <InputPageInfo
+          type="url"
+          inputWidth="short"
+          placeholder="pageURL"
+          isLoadValue={true}
+        />
       </div>
       <div className="m-3 ml-7">http://{url}</div>
     </>

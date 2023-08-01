@@ -3,11 +3,13 @@ import logger from 'redux-logger';
 import tabStateSlice from '../pages/adminManageList/tabStateSlice';
 import sliceBlockDesignSideBar from '@store/slice/sliceBlockDesignSideBar';
 import sliceModal from './slice/sliceModal';
+import slicePagesInfo from './slice/slicePagesInfo';
 export const store = configureStore({
   reducer: {
     tab: tabStateSlice.reducer,
     sidebar: sliceBlockDesignSideBar.reducer,
     modal: sliceModal.reducer,
+    pagesinfo: slicePagesInfo.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

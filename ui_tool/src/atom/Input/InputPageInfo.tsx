@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { setTitle } from '@store/slice/sliceModal';
@@ -9,9 +9,10 @@ export const InputPageInfo = ({
   type,
   inputWidth,
   placeholder,
+  isLoadValue,
 }: InputPageProps) => {
-  const data = useSelector((state: RootState) => state.modal);
   const dispatch = useDispatch<AppDispatch>();
+  const data = useSelector((state: RootState) => state.modal);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputMap = {
@@ -24,8 +25,8 @@ export const InputPageInfo = ({
 
   return (
     <input
-      type="text"
-      value={data[type]}
+      type={type}
+      defaultValue={isLoadValue ? data[type] : ''}
       onChange={handleInputChange}
       placeholder={placeholder}
       className={`${

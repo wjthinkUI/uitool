@@ -2,6 +2,7 @@ import { InputLogin } from '@atom/Input/InputLogin';
 import { ButtonLogin } from '@atom/Button/ButtonLogin';
 import { ReactComponent as Wjlogo } from '@assets/Wjlogo.svg';
 import { NavLinkCustom } from '@atom/Nav/NavLinkCustom';
+import { Footer } from '@organism/Nav/Footer';
 export const AdminLogin = () => {
   return (
     <div className="w-[394px] m-auto mt-20">
@@ -23,6 +24,7 @@ export const AdminLogin = () => {
         </a>
       </div>
       <ButtonLogin />
+      <Footer />
     </div>
   );
 };

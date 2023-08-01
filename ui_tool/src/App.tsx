@@ -8,7 +8,7 @@ import TestPage from './pages/testPage';
 import { EditPage } from '@pages/editPages/editPage';
 import { CompoTest } from '@pages/componentTest';
 import { AdminMangePageAction } from '@pages/adminManageList/adminManagePage';
-import { AdminManageLoader } from '@pages/adminManageList/adminManagePage';
+import { AdminManageLoader } from '@pages/adminManageList/adminManage';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
   {
     path: '/adminlist',
     element: <AdminManage />,
+    loader: AdminManageLoader,
     children: [
       {
         path: '/adminlist/menu',
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: '/adminlist/page',
         element: <AdminManagePage />,
-        loader: AdminManageLoader,
+        // loader: AdminManageLoader,
         action: AdminMangePageAction,
       },
     ],
