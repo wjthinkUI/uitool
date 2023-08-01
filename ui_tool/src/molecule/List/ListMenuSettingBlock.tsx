@@ -20,7 +20,7 @@ import { ButtonOutline } from "@atom/Button/ButtonOutline";
 // setBlankOption
 // deletePageData
 
-export const ListMenuSettingBlock = (id, title, path) => {
+export const ListMenuSettingBlock = ({ id, title, path }) => {
     const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
     const pageData = useSelector((state: any) => state.modal);
@@ -51,8 +51,9 @@ export const ListMenuSettingBlock = (id, title, path) => {
     
     return (
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
+            <p>{id},{title},{path}</p>
             <label className="text-body2m text-grayscale-600">제목</label>
-            <InputPageInfo type={"title"} inputWidth={"long"} placeholder={""} />
+            <InputPageInfo type={"title"} inputWidth={"long"} placeholder={""} isLoadValue={false} />
             <div className="flex items-center">
                 <label className="text-body2m text-grayscale-600">링크</label>
                 <InputPageSelector />
