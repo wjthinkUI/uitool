@@ -7,20 +7,13 @@ import { setTitle, setUrl, setBlankOption } from "@store/slice/sliceModal";
 import { useState } from "react";
 import { ButtonOutline } from "@atom/Button/ButtonOutline";
 
+interface ListMenuSettingBlockProps {
+    id: number;
+    name: string;
+    path: string;
+}
 
-// const initialState: PageDataState = {
-//     title: '',
-//     url: '',
-//     blankOption: false,
-//   };
-
-// reducer slice
-// setTitle
-// setUrl
-// setBlankOption
-// deletePageData
-
-export const ListMenuSettingBlock = ({ id, title, path }) => {
+export const ListMenuSettingBlock = ({ id, name, path }:ListMenuSettingBlockProps) => {
     const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
     const pageData = useSelector((state: any) => state.modal);
@@ -51,9 +44,9 @@ export const ListMenuSettingBlock = ({ id, title, path }) => {
     
     return (
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
-            <p>{id},{title},{path}</p>
+            <p>{id},{name},{path}</p>
             <label className="text-body2m text-grayscale-600">제목</label>
-            <InputPageInfo type={"title"} inputWidth={"long"} placeholder={""} isLoadValue={false} />
+            <InputPageInfo type={"title"} inputWidth={"long"} placeholder={""} isLoadValue={true} />
             <div className="flex items-center">
                 <label className="text-body2m text-grayscale-600">링크</label>
                 <InputPageSelector />

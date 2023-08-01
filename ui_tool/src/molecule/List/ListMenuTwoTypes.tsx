@@ -32,7 +32,7 @@ export const ListParentsMenu = ({ key, title, path, isParent, category, date }: 
         <CloseIcon />
       </div>
     </div>
-      {isToggle && <ListMenuSettingBlock id={key} title={title} path={path}/>}
+      {isToggle && <ListMenuSettingBlock id={key} name={title} path={path}/>}
       </>
   );
 };
@@ -58,7 +58,7 @@ export const ListChildrenMenu = ({ key, title, path, isParent, category, date }:
         <CloseIcon />
       </div>
     </div>
-      {isToggle && <ListMenuSettingBlock id={key} title={title} path={path}/>}
+      {isToggle && <ListMenuSettingBlock id={key} name={title} path={path}/>}
     </>
   );
 };
