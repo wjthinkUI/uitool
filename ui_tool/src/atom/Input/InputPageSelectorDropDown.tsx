@@ -1,29 +1,14 @@
-import { setTitle, setId } from '@store/slice/sliceModal';
+import {
+  setTitle,
+  setId,
+  setUrl,
+  initalize,
+  clearModalState,
+} from '@store/slice/sliceModal';
 import { AppDispatch, RootState } from '@store/store';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { useEffect } from 'react';
-const DUMMY_DROP_USER = [
-  {
-    id: 1,
-    title: '내게 맞는 북클럽 찾기',
-    path: '/1',
-  },
-  {
-    id: 2,
-    title: '웅진북클럽 전집',
-    path: '/2',
-  },
-  {
-    id: 3,
-    title: '웅진북클럽 전집',
-    path: '/2',
-  },
-  {
-    id: 4,
-    title: '웅진북클럽 전집',
-    path: '/2',
-  },
-];
 
 const DUMMY_DROP_PUBLIC = [
   {
@@ -52,10 +37,12 @@ export const DropDownMenuList = ({ onCancel }: any) => {
 
   const pagesinfo = useSelector((state: RootState) => state.pagesinfo);
   console.log(pagesinfo);
-  const handleDropDownList = (el: any) => {
-    dispatch(setTitle(el.title));
-    dispatch(setId(el.id));
-
+  const handleDropDownList = async (el: any) => {
+    // dispatch(setId(el.id));
+    // dispatch(setTitle(el.title));
+    // dispatch(setUrl(el.url));
+    // dispatch(clearModalState());
+    dispatch(initalize({ id: el.id, title: el.title, url: el.path }));
     onCancel();
   };
   return (

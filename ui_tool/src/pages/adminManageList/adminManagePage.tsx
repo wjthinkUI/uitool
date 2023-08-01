@@ -50,5 +50,5 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
     console.log(updatedData.data);
     // dispatch
   }
-  return redirect('/test');
+  return redirect('/adminlist/page');
 };

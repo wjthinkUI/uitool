@@ -10,17 +10,17 @@ import { initalizePagesInfo } from '@store/slice/slicePagesInfo';
 export const AdminManage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const currentPath = useLocation();
   const pagesInfo = useLoaderData(); //loader 가 리턴한값 가져오기
+  const currentPath = useLocation();
   console.log('PAGESINFO=', pagesInfo);
-  dispatch(initalizePagesInfo(pagesInfo));
   useEffect(() => {
+    dispatch(initalizePagesInfo(pagesInfo));
     currentPath.pathname === '/adminlist/page'
       ? navigate('/adminlist/page')
       : navigate('/adminlist/menu');
   }, []);
   return (
-    <div className="w-[1220px] h-auto">
+    <div className="w-[1220px] h-auto m-auto">
       <WjHeader />
       {/* Tab state로 하위 organ 컴포넌트 전환 */}
       <AdminManageTab
@@ -45,5 +45,5 @@ export const AdminManageLoader = async () => {
   const resData = await res.json();
   console.log(resData);
 
-  return resData;
+  return resData['data'];
 };

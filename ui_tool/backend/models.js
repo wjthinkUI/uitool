@@ -36,8 +36,9 @@ async function getAllPagesInfo() {
 
 async function updatePageInfo(id, title, url) {
   const data = await readData();
-  const index = data.pages.findIndex((page) => page.pageInfo.key === id);
+  const index = data.pages.findIndex((page) => page.pageInfo.id === id);
   const selectedData = data.pages[index];
+  console.log('update = ', index, id, title, url);
   data.pages[index] = {
     ...selectedData,
     pageInfo: {
