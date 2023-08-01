@@ -7,7 +7,7 @@ import { ListMenuSettingBlock } from './ListMenuSettingBlock';
 import { useSelector, useDispatch } from 'react-redux';
 import { deletePageData } from '@store/slice/sliceModal';
 
-export const ListParentsMenu = ({ key, title, path, isParent, category, date }: ListInnerData) => {
+export const ListParentsMenu = ({ id, title, path, isParent, category, date }: ListInnerData) => {
   const dispatch = useDispatch();
   const pageDataId = useSelector((state:any) => state.modal.id);
   const [isToggle, setIsToggle] = useState(false);
@@ -20,7 +20,7 @@ export const ListParentsMenu = ({ key, title, path, isParent, category, date }: 
 };
   return (
     <>
-    <div key={key} className="group w-[1150px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
+    <div key={id} className="group w-[1150px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
       <div className=" group-hover:rotate-90 w-[70px] h-[70px] items-center justify-center flex border-grayscale-300 border-r">
         <ArrowIcon />
       </div>
@@ -32,12 +32,12 @@ export const ListParentsMenu = ({ key, title, path, isParent, category, date }: 
         <CloseIcon />
       </div>
     </div>
-      {isToggle && <ListMenuSettingBlock id={key} name={title} path={path}/>}
+      {isToggle && <ListMenuSettingBlock id={id} name={title} path={path}/>}
       </>
   );
 };
 
-export const ListChildrenMenu = ({ key, title, path, isParent, category, date }: ListInnerData) => {
+export const ListChildrenMenu = ({ id, title, path, isParent, category, date }: ListInnerData) => {
   const [isToggle, setIsToggle] = useState(false);
   const toggle = () => setIsToggle(!isToggle);
   const handleDelete = () => {
@@ -49,7 +49,7 @@ export const ListChildrenMenu = ({ key, title, path, isParent, category, date }:
 
   return (
     <>
-    <div key={key} className="w-[1080px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
+    <div key={id} className="w-[1080px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
       <p className="ml-[20px] grow text-grayscale-600 text-body2m">{title}</p>
       <div onClick={toggle} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
         <SettingIcon />
@@ -58,7 +58,7 @@ export const ListChildrenMenu = ({ key, title, path, isParent, category, date }:
         <CloseIcon />
       </div>
     </div>
-      {isToggle && <ListMenuSettingBlock id={key} name={title} path={path}/>}
+      {isToggle && <ListMenuSettingBlock id={id} name={title} path={path}/>}
     </>
   );
 };

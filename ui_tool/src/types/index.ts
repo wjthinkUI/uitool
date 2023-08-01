@@ -155,7 +155,7 @@ interface GroupProps {
 }
 
 interface ListInnerData {
-    key: number;
+    id: number;
     title: string;
     path: string;
     isParent: boolean;
