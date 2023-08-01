@@ -2,9 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface State { }
 const initialState = {
-  id: 123456,
-  title: 'testTile',
-  url: 'testUrl',
+  id: 0,
+  title: '',
+  url: '',
+  duplTitle: '',
+  duplUrl: '',
   blankOption: false,
 };
 const sliceModal = createSlice({
@@ -23,10 +25,14 @@ const sliceModal = createSlice({
     setId: (state, action) => {
       state.id = action.payload;
     },
-    clearModalState: (state) => {
-      state.id = 0;
-      state.title = '';
-      state.url = '';
+    clearModalState: () => {
+      return initialState;
+    },
+    setDuplTitle: (state, action) => {
+      state.duplTitle = action.payload;
+    },
+    setDuplUrl: (state, action) => {
+      state.duplUrl = action.payload;
     },
     setBlankOption: (state) => {
       state.blankOption = !state.blankOption;
@@ -37,6 +43,13 @@ const sliceModal = createSlice({
   },
 });
 
-export const { initalize, setTitle, setUrl, setId, clearModalState, setBlankOption, deletePageData } =
-  sliceModal.actions;
+export const {
+  initalize,
+  setTitle,
+  setUrl,
+  setId,
+  clearModalState, setBlankOption, deletePageData,
+  setDuplTitle,
+  setDuplUrl,
+} = sliceModal.actions;
 export default sliceModal;

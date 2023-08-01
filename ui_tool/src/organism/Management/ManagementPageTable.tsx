@@ -3,178 +3,35 @@ import { Input, ConfigProvider, Pagination } from 'antd';
 import { ListPage } from '@molecule/List/ListPages';
 import { ListHeader } from '@molecule/List/ListHeader';
 import type { DataType } from 'types';
-
-/** fetching data로 대체할 것 */
-const pageData: DataType[] = [
-  {
-    key: 0,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/1',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 1,
-    name: '내게',
-    query: '/page/2',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 2,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/3',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 3,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/4',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 4,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/5',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 5,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/6',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 6,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/7',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 7,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/1',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 8,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/2',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 9,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/3',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 10,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/4',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 11,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/5',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 12,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/6',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 13,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/7',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 14,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/1',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 15,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/2',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 16,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/3',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 17,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/4',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 18,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/5',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 19,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/6',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-  {
-    key: 20,
-    name: '내게 맞는 북클럽 찾기',
-    query: '/page/7',
-    menu: '웅진북클럽',
-    date: '2022-09-23 16.35.09',
-  },
-];
+import { RootState } from '@store/store';
+import { useSelector } from 'react-redux';
+import { Space, Spin } from 'antd';
 
 export const ManagePageTable = () => {
-  const [datas, setDatas] = useState(pageData.slice(0, 10));
+  const pageData = useSelector((state: RootState) => state.pagesinfo);
+  const [data, setData] = useState(pageData);
   const [current, setCurrent] = useState(1);
-
   const { Search } = Input;
+
+  useEffect(() => {
+    setData(pageData);
+  }, [pageData]);
+
   const onSearch = (value: string) => {
     const searchDatas: SetStateAction<DataType[]> = [];
     if (value.length > 1) {
-      pageData.map((v) => {
-        if (v.name.split(value).length > 1) {
+      data.map((v: any) => {
+        if (v.title.split(value).length > 1) {
           searchDatas.push(v);
         }
       });
-      setDatas(searchDatas);
+      setData(searchDatas);
     } else {
-      setDatas(pageData);
+      setData(pageData);
     }
   };
   const pageChange = (current: number) => {
-    setDatas(pageData.slice((current - 1) * 10, current * 10));
+    setData(pageData.slice((current - 1) * 10, current * 10));
   };
   useEffect(() => {
     pageChange(current);
@@ -182,31 +39,49 @@ export const ManagePageTable = () => {
 
   return (
     <>
-      <ConfigProvider
-        theme={{
-          token: {
-            borderRadius: 10,
-            colorFillAlter: '#fff',
-          },
-        }}
-      >
-        <Search
-          placeholder="페이지명"
-          allowClear
-          style={{ width: 200 }}
-          size="large"
-          onSearch={onSearch}
-        />
-      </ConfigProvider>
-      <ListHeader />
-      {datas.map(({ key, name, query, menu, date }) => (
-        <ListPage key={key} name={name} date={date} query={query} menu={menu} />
-      ))}
-      <Pagination
-        onChange={(page) => setCurrent(page)}
-        defaultCurrent={1}
-        total={pageData.length}
-      />
+      {!pageData && (
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      )}
+      {pageData && (
+        <>
+          <ConfigProvider
+            theme={{
+              token: {
+                borderRadius: 10,
+                colorFillAlter: '#fff',
+              },
+            }}
+          >
+            <div className="flex justify-end m-3">
+              <Search
+                placeholder="페이지명"
+                allowClear
+                style={{ width: 245 }}
+                size="large"
+                onSearch={onSearch}
+              />
+            </div>
+          </ConfigProvider>
+          <ListHeader />
+          {data.map(({ id, title, path, category, date }) => (
+            <ListPage
+              key={id}
+              id={id}
+              title={title}
+              date={date}
+              path={path}
+              category={category}
+            />
+          ))}
+          <Pagination
+            onChange={(page) => setCurrent(page)}
+            defaultCurrent={1}
+            total={pageData.length}
+          />
+        </>
+      )}
     </>
   );
 };

@@ -4,7 +4,6 @@ interface State {
   id: number;
   title: string;
   path: string;
-  isParent: boolean;
   category: string;
   date: string;
 }

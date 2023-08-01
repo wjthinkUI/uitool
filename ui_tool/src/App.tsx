@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     loader: AdminManageLoader,
     children: [
       {
-        path: '/adminlist/menu',
+        path: '/adminlist/menu', //nav loader, action
         element: <AdminManageList />,
       },
       {

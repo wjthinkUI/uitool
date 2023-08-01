@@ -35,6 +35,7 @@ export type {
 
 interface Chip {
   text: string;
+  onClick?: () => void;
 }
 interface TapProps {
   LeftText: string;
@@ -56,14 +57,20 @@ interface InputLoginProps {
 interface CircleProps {
   description: string;
 }
-interface BlockDesignContent {
-  id: number;
-  svgFile: React.ReactNode;
-}
+// interface BlockDesignContent {
+//   id: number;
+//   svgFile: React.ReactNode;
+// }
 interface treeDataProps {
   title: ReactNode;
   isParent: boolean;
   key: string;
+}
+
+interface BlockDesignContent {
+  id: number;
+  contentLayout: number;
+  svgEl: React.ReactNode;
 }
 
 interface BlockDesignMap {
@@ -71,7 +78,9 @@ interface BlockDesignMap {
   type: string;
   name: string;
   element: () => JSX.Element;
+  contentList: BlockDesignContent[];
 }
+
 interface ToolsPropsType {
   block_id: number;
 }
@@ -112,10 +121,10 @@ interface SquareWideProps {
 }
 
 interface InputPageProps {
-  type: 'title' | 'url';
+  type: 'title' | 'url' | 'duplTitle' | 'duplUrl';
   inputWidth: 'short' | 'long';
   placeholder: string;
-  isLoadValue: boolean;
+  defaultValue?: string;
 }
 
 interface Cell {
@@ -159,10 +168,11 @@ interface DataType extends ListProps {
 }
 
 interface ListProps {
-  name: string;
+  id: number;
+  title: string;
   date: string;
-  query: string;
-  menu: string;
+  path: string;
+  category: string;
 }
 
 interface GridContainerProps {

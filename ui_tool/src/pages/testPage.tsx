@@ -43,9 +43,9 @@ const TestPage = () => {
         모달열기
       </button>
       {/* {showModal && <ModalDuplication />} */}
-      {showModal && <ModalDetail onCancel={closeModal} id={123} />}
+      {/* {showModal && <ModalDetail onCancel={closeModal} id={123} />} */}
       {/* {showModal && <ModalLinkSetting onCancel={closeModal} />} */}
-      {/* <ModalBlockDesign /> */}
+      <ModalBlockDesign />
       <div className="m-10">{el}</div>
       <div className="m-10">
         <CardSquareBig title="테스트" description="테스트중입니다" />
