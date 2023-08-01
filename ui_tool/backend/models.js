@@ -31,7 +31,8 @@ async function writeData(data) {
 async function getAllPagesInfo() {
   const data = await readData();
   const pagesInfo = data.pages.map((page) => page.pageInfo);
-  return pagesInfo;
+  const navigations = data.navigations.map((navigation) => navigation);
+  return {pagesInfo, navigations};
 }
 
 async function updatePageInfo(id, title, url) {

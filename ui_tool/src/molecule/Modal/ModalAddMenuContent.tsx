@@ -5,7 +5,7 @@ export const ModalAddMenuContent = () => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <InputPageInfo type="title" inputWidth="short" placeholder="페이지명" />
+        <InputPageInfo type="title" inputWidth="short" placeholder="페이지명" isLoadValue={false} />
         <InputPageSelector />
       </div>
     </>

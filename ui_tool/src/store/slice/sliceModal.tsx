@@ -37,6 +37,6 @@ const sliceModal = createSlice({
   },
 });
 
-export const { initalize, setTitle, setUrl, setId, clearModalState } =
+export const { initalize, setTitle, setUrl, setId, clearModalState, setBlankOption, deletePageData } =
   sliceModal.actions;
 export default sliceModal;
