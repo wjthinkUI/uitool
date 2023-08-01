@@ -11,7 +11,7 @@ export const AdminLogin = () => {
         <NavLinkCustom title="웅진씽크빅" to="/test" key="1244" end />
       </div>
       <div className="flex justify-center">
-        <Wjlogo className="w-[163px] h-[88px]" />
+        <Wjlogo />
       </div>
       <InputLogin type="Email" />
       <InputLogin type="Password" />

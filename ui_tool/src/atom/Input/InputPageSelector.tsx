@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ReactComponent as ArrowIcon } from '@assets/icon/icon_arrow.svg';
 import { DropDownMenuList } from './InputPageSelectorDropDown';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { RootState } from '@store/store';
+import { AppDispatch, RootState } from '@store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearModalState } from '@store/slice/sliceModal';
 export const InputPageSelector = () => {
   const [dropdown, setDropDown] = useState(false);
   const title = useSelector((state: RootState) => state.modal.title);
+  const dispatch = useDispatch<AppDispatch>();
+  // useEffect(() => {
+  //   dispatch(clearModalState());
+  // }, []);
   const dropDownToggle = () => {
     setDropDown((prev) => !prev);
   };

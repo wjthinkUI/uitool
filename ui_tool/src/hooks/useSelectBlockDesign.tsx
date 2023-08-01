@@ -8,7 +8,6 @@ import { TextContent } from '@molecule/Modal/ModalBlockDesign/TextContent';
 import { TableContent } from '@molecule/Modal/ModalBlockDesign/TableContent';
 import { LayoutContent } from '@molecule/Modal/ModalBlockDesign/LayoutContent';
 import type { BlockDesignMap } from 'types';
-
 export const useSelectBlockDesign = () => {
   const selectedType = useSelector(
     (state: RootState) => state.sidebar.selectItem
@@ -17,61 +16,146 @@ export const useSelectBlockDesign = () => {
 
   useEffect(() => {
     const data = blockDesignData.find((el) => el.type === selectedType);
+    // console.log(data[0].contentList[0].svgEl);
     setSelectedDesign(data?.element());
   }, [selectedType]);
 
   return { selectedDesign, selectedType, sidebarInfo };
 };
 
-const blockDesignData: BlockDesignMap[] = [
+const blockDesignData: any[] = [
   {
     id: 1,
     type: 'image',
     name: '이미지',
     element() {
-      return <ImageContent />;
+      return <ImageContent list={this.contentList} />;
     },
+    contentList: [
+      {
+        id: 1,
+        contentLayout: 1,
+        svgEl: await import('@assets/emptyImage/1-emptyImage-1.svg'),
+      },
+      {
+        id: 2,
+        contentLayout: 2,
+        svgEl: await import('@assets/emptyImage/2-emptyImage-2.svg'),
+      },
+      {
+        id: 3,
+        contentLayout: 3,
+        svgEl: await import('@assets/emptyImage/3-emptyImage-3.svg'),
+      },
+      {
+        id: 4,
+        contentLayout: 4,
+        svgEl: await import('@assets/emptyImage/4-emptyImage-4.svg'),
+      },
+      {
+        id: 5,
+        contentLayout: 5,
+        svgEl: await import('@assets/emptyImage/5-emptyImage-4.svg'),
+      },
+      {
+        id: 6,
+        contentLayout: 6,
+        svgEl: await import('@assets/emptyImage/6-emptyImage-5.svg'),
+      },
+    ],
   },
   {
     id: 2,
     type: 'line',
     name: '구분선',
     element() {
-      return <LineContent />;
+      return <LineContent list={this.contentList} />;
     },
+    contentList: [
+      {
+        id: 1,
+        contentLayout: 1,
+        svgEl: await import('@assets/line/line-1.svg'),
+      },
+      {
+        id: 2,
+        contentLayout: 2,
+        svgEl: await import('@assets/line/line-2.svg'),
+      },
+      {
+        id: 3,
+        contentLayout: 3,
+        svgEl: await import('@assets/line/line-3.svg'),
+      },
+      {
+        id: 4,
+        contentLayout: 4,
+        svgEl: await import('@assets/line/line-4.svg'),
+      },
+      {
+        id: 5,
+        contentLayout: 5,
+        svgEl: await import('@assets/line/line-5.svg'),
+      },
+      {
+        id: 6,
+        contentLayout: 6,
+        svgEl: await import('@assets/line/line-6.svg'),
+      },
+      {
+        id: 7,
+        contentLayout: 7,
+        svgEl: await import('@assets/line/line-7.svg'),
+      },
+      {
+        id: 8,
+        contentLayout: 8,
+        svgEl: await import('@assets/line/line-8.svg'),
+      },
+      {
+        id: 9,
+        contentLayout: 9,
+        svgEl: await import('@assets/line/line-9.svg'),
+      },
+      {
+        id: 10,
+        contentLayout: 10,
+        svgEl: await import('@assets/line/line-10.svg'),
+      },
+    ],
   },
-  {
-    id: 3,
-    type: 'list',
-    name: '목록',
-    element() {
-      return <ListContent />;
-    },
-  },
-  {
-    id: 4,
-    type: 'text',
-    name: '텍스트',
-    element() {
-      return <TextContent />;
-    },
-  },
-  {
-    id: 5,
-    type: 'table',
-    name: '표',
-    element() {
-      return <TableContent />;
-    },
-  },
-  {
-    id: 6,
-    type: 'layout',
-    name: '레이아웃',
-    element() {
-      return <LayoutContent />;
-    },
-  },
+  // {
+  //   id: 3,
+  //   type: 'list',
+  //   name: '목록',
+  //   element() {
+  //     return <ListContent />;
+  //   },
+  // },
+  // {
+  //   id: 4,
+  //   type: 'text',
+  //   name: '텍스트',
+  //   element() {
+  //     return <TextContent />;
+  //   },
+  // },
+  // {
+  //   id: 5,
+  //   type: 'table',
+  //   name: '표',
+  //   element() {
+  //     return <TableContent />;
+  //   },
+  // },
+  // {
+  //   id: 6,
+  //   type: 'layout',
+  //   name: '레이아웃',
+  //   element() {
+  //     return <LayoutContent />;
+  //   },
+  // },
 ];
 
 const sidebarInfo = blockDesignData.map((el) => ({

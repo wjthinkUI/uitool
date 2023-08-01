@@ -1,4 +1,4 @@
-import type { InputLoginProps } from "types";
+import type { InputLoginProps } from 'types';
 
 export const InputLogin = ({ type }: InputLoginProps) => {
   return (
@@ -11,7 +11,6 @@ export const InputLogin = ({ type }: InputLoginProps) => {
         <span className="text-meaning"> *</span>
       </label>
       <input
-        id="email"
         type={type}
         className="w-[394px] h-[60px] rounded-[10px] bg-grayscale-50 pl-3 pt-1"
       />
