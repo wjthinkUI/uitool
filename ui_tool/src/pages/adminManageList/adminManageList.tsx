@@ -19,3 +19,5 @@ export const AdminManageList = () => {
     </div>
   );
 };
+
+export const AdminManageListLoader = () => {};

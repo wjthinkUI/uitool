@@ -1,38 +1,35 @@
 {
-    "pages": [
+  "pages": [
+    {
+      "pageInfo": {
+        "id": 0,
+        "title": "웅진 씽크빅 소개",
+        "path": "/TEST",
+        "isParent": true,
+        "category": "웅진 씽크빅",
+        "date": "2023-01-01"
+      },
+      "page": [
         {
-            "pageInfo": {
-                "key": 0,
-                "title": "웅진 씽크빅 소개",
-                "path": "/TEST",
-                "isParent": true,
-                "category": "웅진 씽크빅",
-                "date": "2023-01-01"
-            },
-            "page": [
-                {
-                    "block": {
-                        "index": 0,
-                        "type": "text",
-                        "layoutTable": [
-                            0,
-                            0
-                        ],
-                        "layout": 1
-                    }
-                }
-            ]
-        },
-        {
-            "pageInfo": {
-                "key": 1,
-                "title": "testTile",
-                "path": "testUrl",
-                "isParent": true,
-                "category": "웅진 씽크빅",
-                "date": "2023-02-01"
-            },
-            "page": {}
+          "block": {
+            "index": 0,
+            "type": "text",
+            "layoutTable": [0, 0],
+            "layout": 1
+          }
         }
-    ]
+      ]
+    },
+    {
+      "pageInfo": {
+        "id": 1,
+        "title": "내게 맞는 북클럽 찾기",
+        "path": "",
+        "isParent": true,
+        "category": "웅진 씽크빅",
+        "date": "2023-07-31 21:26:27"
+      },
+      "page": {}
+    }
+  ]
 }

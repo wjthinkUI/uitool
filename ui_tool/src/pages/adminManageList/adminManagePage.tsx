@@ -25,7 +25,7 @@ export const AdminManageLoader = async () => {
 
 export const AdminMangePageAction = async ({ request, params }: any) => {
   //추후 커스텀훅으로 대체 예정
-  const dispatch = useDispatch<AppDispatch>();
+  // const dispatch = useDispatch<AppDispatch>();
   //모달에서 확인 버튼 클릭시 데이터 넘어옴
   const data = await request.json();
   // console.log(data);
