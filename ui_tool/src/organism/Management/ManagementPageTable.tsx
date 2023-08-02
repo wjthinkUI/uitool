@@ -14,7 +14,9 @@ export const ManagePageTable = () => {
   const { Search } = Input;
 
   useEffect(() => {
-    setData(pageData);
+    console.log(pageData);
+    setData(() => pageData);
+    console.log(data);
   }, [pageData]);
 
   const onSearch = (value: string) => {
@@ -39,12 +41,12 @@ export const ManagePageTable = () => {
 
   return (
     <>
-      {!pageData && (
+      {!data && (
         <Space size="middle">
           <Spin size="large" />
         </Space>
       )}
-      {pageData && (
+      {data && (
         <>
           <ConfigProvider
             theme={{

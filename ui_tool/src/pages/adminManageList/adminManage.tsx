@@ -12,9 +12,14 @@ export const AdminManage = () => {
   const navigate = useNavigate();
   const pagesInfo = useLoaderData(); //loader 가 리턴한값 가져오기
   const currentPath = useLocation();
-  console.log('PAGESINFO=', pagesInfo);
+  // console.log('PAGESINFO=', pagesInfo);
   useEffect(() => {
-    dispatch(initalizePagesInfo(pagesInfo));
+    if (pagesInfo) {
+      dispatch(initalizePagesInfo(pagesInfo));
+    }
+  }, []);
+
+  useEffect(() => {
     currentPath.pathname === '/adminlist/page'
       ? navigate('/adminlist/page')
       : navigate('/adminlist/menu');
@@ -43,7 +48,6 @@ export const AdminManageLoader = async () => {
   }
 
   const resData = await res.json();
-  console.log(resData);
 
   return resData['data'];
 };
