@@ -1,14 +1,14 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AdminLogin } from './pages/adminLogin';
-import { AdminManageList } from './pages/adminManageList/adminManageList';
+import { AdminManageList } from './pages/adminManageList/adminManageMenu';
 import { AdminManagePage } from '@pages/adminManageList/adminManagePage';
 import { AdminManage } from '@pages/adminManageList/adminManage';
 import TestPage from './pages/testPage';
 import { EditPage } from '@pages/editPages/editPage';
 import { CompoTest } from '@pages/componentTest';
 import { AdminMangePageAction } from '@pages/adminManageList/adminManagePage';
-import { AdminManageLoader } from '@pages/adminManageList/adminManage';
+import { AdminManageLoader } from '@pages/adminManageList/adminManage';;
 
 const router = createBrowserRouter([
   {

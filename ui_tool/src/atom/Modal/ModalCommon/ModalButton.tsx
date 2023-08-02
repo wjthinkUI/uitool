@@ -20,6 +20,7 @@ export const ModalButton = ({ onCancel, method }: ModalButtonProps) => {
       action: '/adminlist/page', // link setting 에서도 사용해야하기 때문에 추후 url 변수로 변경해야함
       encType: 'application/json',
     });
+    console.log(data);
     onCancel();
   };
   return (

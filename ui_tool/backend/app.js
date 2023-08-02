@@ -16,6 +16,12 @@ app.get('/adminlist/page', async (req, res, next) => {
   console.log(data);
   res.json({ data: data });
 });
+app.get('/adminlist/menu', async (req, res, next) => {
+  const data = await getAllPagesInfo();
+  console.log('호출 확인');
+  res.json({ data: data });
+});
+
 
 app.put('/adminlist/page', async (req, res, next) => {
   const { title, url, id } = req.body;
@@ -31,6 +37,6 @@ app.put('/adminlist/page', async (req, res, next) => {
 app.post('/adminlist/page', async (req, res, next) => {
   const { id, title, url } = req.body;
 });
-app.listen(8080, () => {
+app.listen(5174, () => {
   console.log('연결 완료');
 });

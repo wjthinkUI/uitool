@@ -1,73 +1,47 @@
-import { ReactNode } from 'react';
 import {
   ListChildrenMenu,
   ListParentsMenu,
 } from '@molecule/List/ListMenuTwoTypes';
 import { ListAddMenu } from '@molecule/List/ListAddMenu';
-import type { treeDataProps } from 'types';
-
-const treeData: treeDataProps[] = [
-  {
-    title: <ListParentsMenu name={'웅진부끄러'} />,
-    key: '0-0',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 아기'} />,
-    key: '0-0-0',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 도비'} />,
-    key: '0-0-1',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 바비'} />,
-    key: '0-0-2',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 켄'} />,
-    key: '0-0-3',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 저기'} />,
-    key: '0-0-4',
-  },
-  {
-    title: <ListParentsMenu name={'웅진부끄러'} />,
-    key: '0-1',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 아기'} />,
-    key: '0-1-0',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 도비'} />,
-    key: '0-1-1',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 바비'} />,
-    key: '0-1-2',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 켄'} />,
-    key: '0-1-3',
-  },
-  {
-    title: <ListChildrenMenu name={'웅진부끄러 저기'} />,
-    key: '0-1-4',
-  },
-];
+import type { ListInnerData, treeDataProps } from 'types';
+import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
+import { RootState } from '@store/store';
 
 export const ManageMenuListTree = () => {
+  const storeData = useSelector((state: any) => state.pagesinfo);
+
+  const dataMappingFlat = (storeData: any) => {    
+    const result: any[] = [];
+    storeData?.forEach((data: any) => {
+      if (data.category.isParent) {
+        result.push(data.category);
+      }
+      if (data.category.children.length > 0) {
+        data.category.children.forEach((child: any) => {
+          result.push(child);
+        });
+      }
+    });
+    return result
+  }
+  const mappingData = useMemo(() => dataMappingFlat(storeData?.navigations), [storeData]);
+  console.log(mappingData);
+  
+  
   return (
     <>
       <ListAddMenu />
       <div className="w-[1220px] h-auto p-8 rounded-[26px] bg-grayscale-50 border border-grayscale-200 border-dashed">
         <div className="flex flex-col items-end gap-2">
-          {treeData.map(({ key, title }) => (
-            <div key={key}>{title}</div>
-          ))}
+          {mappingData.map((value, index) => (
+            (value.isParent) ? (<ListParentsMenu key={index} id={value.id} title={value.name} path={value.children[0].path} category={value.name} date={value.date} isParent={value.isParent} />) : (<ListChildrenMenu key={index} id={value.idx} title={value.name} path={value.path} category={value.name} date={value.date} isParent={value.isParent} />))
+          )}
         </div>
       </div>
     </>
   );
 };
+
+//ListInnerData 타입 지정 다시하기 0801
+//(<ListChildrenMenu key={key} title={title} path={path} category={category} date={date} isParent={isParent}
