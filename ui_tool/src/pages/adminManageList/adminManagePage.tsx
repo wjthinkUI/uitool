@@ -1,17 +1,19 @@
 import { ManagePageTable } from '@organism/Management/ManagementPageTable';
-import { redirect, json } from 'react-router-dom';
+import { redirect, json, defer } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
 import { useActionData } from 'react-router-dom';
 import { useEffect } from 'react';
 import { initalizePagesInfo } from '@store/slice/slicePagesInfo';
+import { Space, Spin } from 'antd';
 export const AdminManagePage = () => {
   const data = useActionData();
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(initalizePagesInfo(data));
-  }, [data]);
+  }, [data, dispatch, initalizePagesInfo]);
+
   return (
     <div className="w-[1220px] h-auto">
       <ManagePageTable />
@@ -27,7 +29,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
   // console.log(data);
   if (request.method === 'PUT') {
     //db에 데이터 변경 요청
-    const res = await fetch('http://localhost:8080/adminlist/page', {
+    const res = await fetch('http://localhost:5174/adminlist/page', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +45,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
     // dispatch
   } else if (request.method === 'POST') {
     //db에 데이터 복제 요청
-    const res = await fetch('http://localhost:8080/adminlist/page', {
+    const res = await fetch('http://localhost:5174/adminlist/page', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,5 +61,5 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
     return updatedData.data;
     // dispatch
   }
-  return redirect('/adminlist/page');
+  // return redirect('/adminlist/page');
 };

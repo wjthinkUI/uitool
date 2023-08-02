@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface State {}
+interface State { }
 const initialState = {
   id: 0,
   title: '',
   url: '',
   duplTitle: '',
   duplUrl: '',
+  blankOption: false,
 };
 const sliceModal = createSlice({
   name: 'modal',
@@ -33,6 +34,12 @@ const sliceModal = createSlice({
     setDuplUrl: (state, action) => {
       state.duplUrl = action.payload;
     },
+    setBlankOption: (state) => {
+      state.blankOption = !state.blankOption;
+    },
+    deletePageData: (state) => {
+      state = initialState;
+    }
   },
 });
 
@@ -41,7 +48,7 @@ export const {
   setTitle,
   setUrl,
   setId,
-  clearModalState,
+  clearModalState, setBlankOption, deletePageData,
   setDuplTitle,
   setDuplUrl,
 } = sliceModal.actions;

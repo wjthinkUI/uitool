@@ -30,6 +30,7 @@ export type {
   ListInnerData,
   DataType,
   ListProps,
+  CheckBoxProps,
 };
 
 interface Chip {
@@ -62,6 +63,7 @@ interface CircleProps {
 // }
 interface treeDataProps {
   title: ReactNode;
+  isParent: boolean;
   key: string;
 }
 
@@ -153,7 +155,12 @@ interface GroupProps {
 }
 
 interface ListInnerData {
-  name: string;
+    id: number;
+    title: string;
+    path: string;
+    isParent: boolean;
+    category: string;
+    date: string;
 }
 
 interface DataType extends ListProps {
@@ -174,4 +181,8 @@ interface GridContainerProps {
 }
 interface AdabtiveTabProps {
   onTabChange: (tabName: string) => void;
+}
+interface CheckBoxProps {
+    checked: boolean;
+    onChange: (checked: boolean) => void;
 }

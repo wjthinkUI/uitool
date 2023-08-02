@@ -15,11 +15,16 @@ export const ModalButton = ({ onCancel, method }: ModalButtonProps) => {
     const url = location.pathname;
     console.log(url);
     // '/adminList/page' 페이지 action 함수로 전달 -> db저장 -> 리덕스 스토어 업데이트
+
+    const submitData = {
+      id: data.id,
+    };
     submit(data, {
       method: method,
       action: '/adminlist/page', // link setting 에서도 사용해야하기 때문에 추후 url 변수로 변경해야함
       encType: 'application/json',
     });
+    console.log(data);
     onCancel();
   };
   return (
