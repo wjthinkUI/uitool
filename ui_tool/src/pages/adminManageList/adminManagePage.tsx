@@ -34,7 +34,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...data }),
+      body: JSON.stringify(data),
     });
     if (!res.ok) {
       throw Error('fetching error, try again...');
@@ -50,7 +50,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...data }), //찾는 데이터 아이디로 추후 교체
+      body: JSON.stringify(data), //찾는 데이터 아이디로 추후 교체
     });
     if (!res.ok) {
       throw Error('fetching error, try again...');

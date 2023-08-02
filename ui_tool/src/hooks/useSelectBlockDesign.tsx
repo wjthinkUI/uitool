@@ -124,14 +124,37 @@ const blockDesignData: any[] = [
       },
     ],
   },
-  // {
-  //   id: 3,
-  //   type: 'list',
-  //   name: '목록',
-  //   element() {
-  //     return <ListContent />;
-  //   },
-  // },
+  {
+    id: 3,
+    type: 'list',
+    name: '목록',
+    element() {
+      return <ListContent list={this.contentList} />;
+    },
+    contentList: [
+      {
+        id: 1,
+        contentLayout: 1,
+        svgEl: await import('@assets/list/list-1-circle.svg'),
+      },
+      {
+        id: 2,
+        contentLayout: 2,
+        svgEl: await import('@assets/list/list-2-square.svg'),
+      },
+      {
+        id: 3,
+        contentLayout: 3,
+        svgEl: await import('@assets/list/list-3-square.svg'),
+      },
+      ,
+      {
+        id: 4,
+        contentLayout: 4,
+        svgEl: await import('@assets/list/list-4-square.svg'),
+      },
+    ],
+  },
   // {
   //   id: 4,
   //   type: 'text',
