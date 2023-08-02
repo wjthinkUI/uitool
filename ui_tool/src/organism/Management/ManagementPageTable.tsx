@@ -18,9 +18,9 @@ export const ManagePageTable = () => {
   const [data, setData] = useState<State[]>(pageData);
   const [current, setCurrent] = useState(1);
   const { Search } = Input;
-
   useEffect(() => {
     setData(() => pageData);
+    console.log(data, '낯짝을 보자');
   }, [pageData, setData]);
 
   const onSearch = (value: string) => {
@@ -42,7 +42,6 @@ export const ManagePageTable = () => {
   useEffect(() => {
     pageChange(current);
   }, [current]);
-
   return (
     <>
       {!data && (
