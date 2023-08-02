@@ -1,31 +1,17 @@
 import { ChangeEvent } from 'react';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@store/store';
-import {
-  setTitle,
-  setUrl,
-  setDuplTitle,
-  setDuplUrl,
-} from '@store/slice/sliceModal';
+
 import type { InputPageProps } from 'types';
 //퍼센트로 바꾸기
-export const InputPageInfo = ({
+export const InputFormPublic = ({
   type,
   inputWidth,
   placeholder,
   defaultValue,
-}: InputPageProps) => {
-  const dispatch = useDispatch<AppDispatch>();
-
+  onChangeValue,
+}: InputPageProps & {onChangeValue: (value: string) => void}) => {
+  
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputMap = {
-      title: setTitle,
-      url: setUrl,
-      duplTitle: setDuplTitle,
-      duplUrl: setDuplUrl,
-    };
-    const dispathFn = inputMap[type];
-    dispatch(dispathFn(e.target.value));
+    if(onChangeValue) {onChangeValue(e.target.value)};
   };
 
   return (

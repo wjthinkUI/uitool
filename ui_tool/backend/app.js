@@ -17,7 +17,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-
 app.get('/adminlist', async (req, res, next) => {
   const pagesInfoData = await getAllPagesInfo();
   const navData = await getAllNavInfo();
