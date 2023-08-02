@@ -40,9 +40,11 @@ export const ListParentsMenu = ({ id, title, path, isParent, category, date }: L
 export const ListChildrenMenu = ({ id, title, path, isParent, category, date }: ListInnerData) => {
   const [isToggle, setIsToggle] = useState(false);
   const toggle = () => setIsToggle(!isToggle);
+
   const handleDelete = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
       console.log('삭제');
+      // 서버에 삭제 요청
     }
   };
   

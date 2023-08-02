@@ -32,7 +32,12 @@ const DUMMY_DROP_PUBLIC = [
     path: '/4',
   },
 ];
-export const DropDownMenuList = ({ onCancel }: any) => {
+
+interface DropDownMenuListProps {
+  onCancel: () => void;
+  onSelect: (id: number, title: string, url: string) => void;
+}
+export const DropDownMenuList = ({ onCancel, onSelect }: DropDownMenuListProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const pagesinfo = useSelector((state: RootState) => state.pagesinfo);
@@ -43,6 +48,9 @@ export const DropDownMenuList = ({ onCancel }: any) => {
     // dispatch(setUrl(el.url));
     // dispatch(clearModalState());
     dispatch(initalize({ id: el.id, title: el.title, url: el.path }));
+    if (onSelect) {
+      onSelect(el.id, el.title, el.path);
+    }
     onCancel();
   };
   return (
@@ -69,7 +77,7 @@ export const DropDownMenuList = ({ onCancel }: any) => {
         사용자 추가 페이지
       </div>
       <ul>
-        {pagesinfo.map((el) => (
+        {/* {pagesinfo.map((el) => (
           <li
             key={el.id}
             className="m-2 ml-6 cursor-pointer text-body4m hover:text-primary-950"
@@ -77,8 +85,10 @@ export const DropDownMenuList = ({ onCancel }: any) => {
           >
             {el.title}
           </li>
-        ))}
+        ))} */}
       </ul>
     </div>
   );
 };
+
+//backend DB 수정되면 사용자 추가 페이지 살리기 

@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
 import {
@@ -14,18 +14,27 @@ export const InputPageInfo = ({
   inputWidth,
   placeholder,
   defaultValue,
-}: InputPageProps) => {
+  onChangeValue,
+}: InputPageProps & {onChangeValue: (value: string) => void}) => {
   const dispatch = useDispatch<AppDispatch>();
+  const [value, setValue] = useState(defaultValue || '');
 
+  //>>>이전 코드
+  // const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   const inputMap = {
+  //     title: setTitle,
+  //     url: setUrl,
+  //     duplTitle: setDuplTitle,
+  //     duplUrl: setDuplUrl,
+  //   };
+  //   const dispathFn = inputMap[type];
+  //   dispatch(dispathFn(e.target.value));
+  // };
+
+  //>>>이후 코드
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputMap = {
-      title: setTitle,
-      url: setUrl,
-      duplTitle: setDuplTitle,
-      duplUrl: setDuplUrl,
-    };
-    const dispathFn = inputMap[type];
-    dispatch(dispathFn(e.target.value));
+    setValue(e.target.value);
+    if(onChangeValue) {onChangeValue(e.target.value)};
   };
 
   return (

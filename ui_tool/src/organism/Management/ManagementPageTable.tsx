@@ -6,45 +6,49 @@ import type { DataType } from 'types';
 import { RootState } from '@store/store';
 import { useSelector } from 'react-redux';
 import { Space, Spin } from 'antd';
-
+interface State {
+  id: number;
+  title: string;
+  path: string;
+  category: string;
+  date: string;
+}
 export const ManagePageTable = () => {
   const pageData = useSelector((state: RootState) => state.pagesinfo);
-  const [data, setData] = useState(pageData);
+  const [data, setData] = useState<State[]>(pageData);
   const [current, setCurrent] = useState(1);
   const { Search } = Input;
-
   useEffect(() => {
-    setData(pageData);
-  }, [pageData]);
-
+    setData(() => pageData);
+    console.log(pageData, 'data')
+  }, [pageData, setData]);
   const onSearch = (value: string) => {
-    const searchDatas: SetStateAction<DataType[]> = [];
+    const searchData: SetStateAction<DataType[]> = [];
     if (value.length > 1) {
-      data.map((v: any) => {
+      pageData.map((v: any) => {
         if (v.title.split(value).length > 1) {
-          searchDatas.push(v);
+          searchData.push(v);
         }
       });
-      setData(searchDatas);
+      setData(searchData);
     } else {
       setData(pageData);
     }
   };
   const pageChange = (current: number) => {
-    setData(pageData.slice((current - 1) * 10, current * 10));
+    setData(() => data.slice((current - 1) * 10, current * 10));
   };
   useEffect(() => {
     pageChange(current);
   }, [current]);
-
   return (
     <>
-      {!pageData && (
+      {!data && (
         <Space size="middle">
           <Spin size="large" />
         </Space>
       )}
-      {pageData && (
+      {data && Array.isArray(data) && (
         <>
           <ConfigProvider
             theme={{
