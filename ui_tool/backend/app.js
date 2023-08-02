@@ -6,7 +6,10 @@ const {
   getAllPagesInfo,
   updatePageInfo,
   getAllNavInfo,
+  deleteNavigations,
+  updateNavigation,
 } = require('./models');
+
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,6 +22,7 @@ app.get('/adminlist', async (req, res, next) => {
   const navData = await getAllNavInfo();
   res.json({ ...pagesInfoData, ...navData });
 });
+
 // app.get('/adminlist/page', async (req, res, next) => {
 //   const data = await getAllPagesInfo();
 //   console.log(data);
@@ -29,8 +33,22 @@ app.get('/adminlist', async (req, res, next) => {
 //   console.log('호출 확인');
 //   res.json({ data: data });
 // });
+
+//메뉴수정
+app.put('/adminlist/menu', async (req, res, next) => {
+  const { id, title, url, idx } = req.body;
+  try {
+    const editedData = await updateNavigation(id, title, url, idx);
+    res.status(200).json({ message: 'update success', data: editedData });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//메뉴삭제
 app.delete('/adminlist/menu', async (req, res, next) => {
   const { id, idx } = req.body;
+  console.log(id, idx);
   try {
     const filteredData = await deleteNavigations(id, idx);
     res.status(200).json({ message: 'delete success', data: filteredData });
@@ -38,6 +56,8 @@ app.delete('/adminlist/menu', async (req, res, next) => {
     console.log(err);
   }
 });
+
+//페이지 수정
 app.put('/adminlist/page', async (req, res, next) => {
   const { title, url, id } = req.body;
   console.log(title, url, id);
@@ -48,6 +68,8 @@ app.put('/adminlist/page', async (req, res, next) => {
     console.log(err);
   }
 });
+
+//페이지 복제
 app.post('/adminlist/page', async (req, res, next) => {
   const { id, duplTitle, duplUrl } = req.body;
   console.log('duplication = ', id, duplTitle, duplUrl);

@@ -10,7 +10,7 @@ interface State {
 const initialState: State[] = [];
 const slicePagesInfo = createSlice({
   name: 'pagesinfo',
-  initialState,
+  initialState: initialState,
   reducers: {
     initalizePagesInfo: (state, action) => {
       return action.payload;

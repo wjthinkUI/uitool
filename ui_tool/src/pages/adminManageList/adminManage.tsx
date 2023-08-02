@@ -13,6 +13,7 @@ export const AdminManage = () => {
   const navigate = useNavigate();
   const data = useLoaderData(); //loader 가 리턴한값 가져오기
   const currentPath = useLocation();
+  
   useEffect(() => {
     if (data) {
       dispatch(initalizePagesInfo(data.pagesInfo));
@@ -48,6 +49,5 @@ export const AdminManageLoader = async () => {
     throw Error('fetching error, try again...');
   }
   const resData = await res.json();
-  console.log('LOADE DATA', resData);
   return resData;
 };

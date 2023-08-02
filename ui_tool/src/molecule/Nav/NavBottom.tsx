@@ -17,7 +17,7 @@ const DUMMY_NAV = [
   },
   {
     title: '웅진스마트올',
-    path: '/4',
+    path: '/test3',
   },
   {
     title: '출판/e러닝',

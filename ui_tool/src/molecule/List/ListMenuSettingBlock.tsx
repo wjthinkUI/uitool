@@ -1,5 +1,5 @@
-import { InputPageSelector } from "@atom/Input/InputPageSelector";
-import { InputPageInfo } from "@atom/Input/InputPageInfo";
+import { InputPageSelector } from "@atom/Input/InputPageSelectorPublic";
+import { InputFormPublic } from "@atom/Input/InputFormPublic";
 import { CheckBox } from "@atom/public/CheckBox";
 import { useDispatch, useSelector } from "react-redux";
 import sliceModal from "@store/slice/sliceModal";
@@ -48,7 +48,7 @@ export const ListMenuSettingBlock = ({ id, name, path }:ListMenuSettingBlockProp
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
             <p>{changeTitle},{changeUrl},{String(checked)}</p>
             <label className="text-body2m text-grayscale-600">제목</label>
-            <InputPageInfo type={"title"} inputWidth={"long"} placeholder={""} defaultValue={name} onChangeValue={setChangeTitle}/>
+            <InputFormPublic type={"title"} inputWidth={"long"} placeholder={""} defaultValue={name} onChangeValue={setChangeTitle}/>
             <div className="flex items-center">
                 <label className="text-body2m text-grayscale-600">링크</label>
                 <InputPageSelector defaultValue={path} onChangeUrl={setChangeUrl}/>
