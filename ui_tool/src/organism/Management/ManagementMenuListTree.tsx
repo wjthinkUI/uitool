@@ -3,11 +3,10 @@ import {
   ListParentsMenu,
 } from '@molecule/List/ListMenuTwoTypes';
 import { ListAddMenu } from '@molecule/List/ListAddMenu';
-import type { ListInnerData, treeDataProps } from 'types';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
-import { RootState } from '@store/store';
 
+//타입 any 많음 -> 수정 필요
 export const ManageMenuListTree = () => {
   const storeData = useSelector((state: any) => state.pagesinfo);
 
@@ -25,9 +24,7 @@ export const ManageMenuListTree = () => {
     });
     return result
   }
-  const mappingData = useMemo(() => dataMappingFlat(storeData?.navigations), [storeData]);
-  console.log(mappingData);
-  
+  const mappingData = useMemo(() => dataMappingFlat(storeData?.navigations), [storeData]);  
   
   return (
     <>

@@ -46,7 +46,7 @@ export const ListMenuSettingBlock = ({ id, name, path }:ListMenuSettingBlockProp
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
             <p>{id},{name},{path}</p>
             <label className="text-body2m text-grayscale-600">제목</label>
-            <InputPageInfo type={"title"} inputWidth={"long"} placeholder={""} />
+            <InputPageInfo type={"title"} inputWidth={"long"} placeholder={""} defaultValue={name}/>
             <div className="flex items-center">
                 <label className="text-body2m text-grayscale-600">링크</label>
                 <InputPageSelector />

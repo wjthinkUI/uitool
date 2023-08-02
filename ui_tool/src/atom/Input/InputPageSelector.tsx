@@ -8,9 +8,9 @@ export const InputPageSelector = () => {
   const [dropdown, setDropDown] = useState(false);
   const title = useSelector((state: RootState) => state.modal.title);
   const dispatch = useDispatch<AppDispatch>();
-  // useEffect(() => {
-  //   dispatch(clearModalState());
-  // }, []);
+  useEffect(() => {
+    dispatch(clearModalState());
+  }, []);
   const dropDownToggle = () => {
     setDropDown((prev) => !prev);
   };
