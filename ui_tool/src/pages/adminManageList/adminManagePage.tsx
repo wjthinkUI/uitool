@@ -1,26 +1,24 @@
 import { ManagePageTable } from '@organism/Management/ManagementPageTable';
-import { redirect, json } from 'react-router-dom';
+import { redirect, json, defer } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
-
+import { useActionData } from 'react-router-dom';
+import { useEffect } from 'react';
+import { initalizePagesInfo } from '@store/slice/slicePagesInfo';
+import { Space, Spin } from 'antd';
 export const AdminManagePage = () => {
+  const data = useActionData();
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(initalizePagesInfo(data));
+  }, [data, dispatch, initalizePagesInfo]);
+
   return (
     <div className="w-[1220px] h-auto">
       <ManagePageTable />
     </div>
   );
-};
-
-export const AdminManageLoader = async () => {
-  //db의 pageinfo 모두 가져오기
-  const res = await fetch('http://localhost:5174/adminlist/page');
-  if (!res.ok) {
-    throw Error('fetching error, try again...');
-  }
-
-  const resData = await res.json();
-  console.log(resData);
-  return null;
 };
 
 export const AdminMangePageAction = async ({ request, params }: any) => {
@@ -36,14 +34,14 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...data, id: 1 }),
+      body: JSON.stringify({ ...data }),
     });
     if (!res.ok) {
       throw Error('fetching error, try again...');
     }
     //변경된 값 가져와서 다시 디스패치
     const updatedData = await res.json();
-    console.log(updatedData.data);
+    return updatedData.data;
     // dispatch
   } else if (request.method === 'POST') {
     //db에 데이터 복제 요청
@@ -52,7 +50,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...data, id: 1 }), //찾는 데이터 아이디로 추후 교체
+      body: JSON.stringify({ ...data }), //찾는 데이터 아이디로 추후 교체
     });
     if (!res.ok) {
       throw Error('fetching error, try again...');
@@ -60,7 +58,8 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
     //변경된 값 가져와서 다시 디스패치
     const updatedData = await res.json();
     console.log(updatedData.data);
+    return updatedData.data;
     // dispatch
   }
-  return redirect('/adminlist/page');
+  // return redirect('/adminlist/page');
 };

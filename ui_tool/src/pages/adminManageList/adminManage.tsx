@@ -10,11 +10,18 @@ import { initalizePagesInfo } from '@store/slice/slicePagesInfo';
 export const AdminManage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const pagesInfo = useLoaderData(); //loader 가 리턴한값 가져오기
+  const data = useLoaderData(); //loader 가 리턴한값 가져오기
   const currentPath = useLocation();
-  console.log('PAGESINFO=', pagesInfo);
+
   useEffect(() => {
-    dispatch(initalizePagesInfo(pagesInfo));
+    if (data) {
+      dispatch(initalizePagesInfo(data.pagesInfo));
+      console.log('pagesInfo = ', data.pagesInfo);
+      console.log('navigation = ', data.navigations);
+    }
+  }, [data]);
+
+  useEffect(() => {
     currentPath.pathname === '/adminlist/page'
       ? navigate('/adminlist/page')
       : navigate('/adminlist/menu');
@@ -37,13 +44,12 @@ export const AdminManage = () => {
 export const AdminManageLoader = async () => {
   //추후 app.tsx 파일로 옮겨야함
   //db의 pageinfo 모두 가져오기
-  const res = await fetch('http://localhost:5174/adminlist/page');
+  const res = await fetch('http://localhost:5174/adminlist');
   if (!res.ok) {
     throw Error('fetching error, try again...');
   }
 
   const resData = await res.json();
-  console.log(resData);
-
-  return resData['data'];
+  console.log('LOADE DATA', resData);
+  return resData;
 };

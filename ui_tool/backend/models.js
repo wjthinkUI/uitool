@@ -31,8 +31,14 @@ async function writeData(data) {
 async function getAllPagesInfo() {
   const data = await readData();
   const pagesInfo = data.pages.map((page) => page.pageInfo);
+  // const navigations = data.navigations.map((navigation) => navigation);
+  return { pagesInfo };
+}
+
+async function getAllNavInfo() {
+  const data = await readData();
   const navigations = data.navigations.map((navigation) => navigation);
-  return {pagesInfo, navigations};
+  return { navigations };
 }
 
 async function updatePageInfo(id, title, url) {
@@ -56,8 +62,8 @@ async function updatePageInfo(id, title, url) {
 async function duplicatePage(id, title, url) {
   //아이디와 같은 페이지를 title과 url만 변경해서 복제
   const data = await readData();
-  const index = data.pages.findIndex((page) => page.pageInfo.key === id);
-  const selectedData = data.pages[index];
+  const index = data.pages.findIndex((page) => page.pageInfo.id === id);
+  let selectedData = data.pages[index];
   selectedData = {
     ...selectedData,
     pageInfo: {
@@ -73,15 +79,14 @@ async function duplicatePage(id, title, url) {
   return getAllPagesInfo();
 }
 
-async function createPage(title, url, isParent, category) {
-  //아이디와 같은 페이지를 title과 url만 변경해서 복제
+async function createPage(title, url, category) {
+  //수정중
   const data = await readData();
   const newPage = {
     pageInfo: {
       id: uuidv4(),
       title: title,
       path: url,
-      isParent: isParent,
       category: category,
       date: getCurrentDate(),
     },
@@ -91,8 +96,58 @@ async function createPage(title, url, isParent, category) {
   await writeData(data);
   return true;
 }
+
+async function deleteNavigations(id, idx = undefined) {
+  const data = await readData();
+  console.log('idx ===', idx);
+  if (idx === undefined) {
+    const filteredData = data.navigations.filter((el) => el.category.id !== id);
+    data.navigations = [...filteredData];
+    await writeData(data);
+  } else {
+    const index = data.navigations.findIndex((el) => el.category.id === id);
+    let selectedData = data.navigations[index];
+    const filterdChildrenData = selectedData.category.children.filter(
+      (el, index) => index !== idx
+    );
+    data.navigations[index].category.children = [...filterdChildrenData];
+    await writeData(data);
+  }
+
+  return getAllNavInfo();
+}
+
+async function updateNavigation(id, title, url, idx = undefined) {
+  const data = await readData();
+  console.log('id title url', id, title, url);
+  console.log(data);
+  const index = data.navigations.findIndex((el) => el.category.id === id);
+  if (idx === undefined) {
+    data.navigations[index].category = {
+      ...data.navigations[index].category,
+      name: title,
+      path: url,
+    };
+    await writeData(data);
+  } else {
+    const childrenIndex = data.navigations[index].category.children.findIndex(
+      (el, index) => index === idx
+    );
+    data.navigations[index].category.children[childrenIndex] = {
+      ...data.navigations[index].category.children[childrenIndex],
+      name: title,
+      path: url,
+    };
+    await writeData(data);
+  }
+
+  return getAllNavInfo();
+}
 exports.readData = readData;
 exports.getAllPagesInfo = getAllPagesInfo;
+exports.getAllNavInfo = getAllNavInfo;
 exports.updatePageInfo = updatePageInfo;
 exports.duplicatePage = duplicatePage;
-exports.createPage = createPage;
+exports.deleteNavigations = deleteNavigations;
+exports.updateNavigation = updateNavigation;
+// exports.createPage = createPage;

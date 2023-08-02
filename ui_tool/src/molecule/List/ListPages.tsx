@@ -17,7 +17,7 @@ export const ListPage = ({ id, title, date, path, category }: ListProps) => {
   return (
     <div className="w-[1220px] justify-between bg-grayscale-0 border-y border-grayscale-300 px-5 py-4 relative flex flex-row content-center items-center text-center">
       <div className=" basis-1/12">
-        <CheckBox />
+        <CheckBox checked={false} onChange={() => {}} />
       </div>
       <p className="basis-3/12">{title}</p>
       <p className="basis-3/12">{path}</p>
