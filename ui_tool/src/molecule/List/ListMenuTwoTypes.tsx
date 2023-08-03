@@ -12,35 +12,35 @@ export const ListParentsMenu = ({ id, title, path, isParent, category, date }: L
   const submit = useSubmit();
   const [isToggle, setIsToggle] = useState(false);
   const toggle = () => setIsToggle(!isToggle);
-  
+
   const handleDelete = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
-        submit({id}, {
-          method: 'DELETE',
-          action: '/adminlist/menu',
-          encType: 'application/json',
-        });
-  
+      submit({ id }, {
+        method: 'DELETE',
+        action: '/adminlist/menu',
+        encType: 'application/json',
+      });
+
     }
-};
-  
+  };
+
 
   return (
     <>
-    <div key={id} className="group w-[1150px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
-      <div className=" group-hover:rotate-90 w-[70px] h-[70px] items-center justify-center flex border-grayscale-300 border-r">
-        <ArrowIcon />
+      <div key={id} className="group w-[1150px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
+        <div className=" group-hover:rotate-90 w-[70px] h-[70px] items-center justify-center flex border-grayscale-300 border-r">
+          <ArrowIcon />
+        </div>
+        <p className="ml-[20px] grow text-grayscale-600 text-body2m">{title}</p>
+        <div onClick={toggle} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
+          <SettingIcon />
+        </div>
+        <div onClick={handleDelete} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
+          <CloseIcon />
+        </div>
       </div>
-      <p className="ml-[20px] grow text-grayscale-600 text-body2m">{title}</p>
-      <div onClick={toggle} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
-        <SettingIcon />
-      </div>
-      <div onClick={handleDelete} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
-        <CloseIcon />
-      </div>
-    </div>
-      {isToggle && <ListMenuSettingBlock id={id} name={title} path={path} isParent={isParent} category={category} date={date}/>}
-      </>
+      {isToggle && <ListMenuSettingBlock id={id} name={title} path={path} isParent={isParent} category={category} date={date} />}
+    </>
   );
 };
 
@@ -52,7 +52,7 @@ export const ListChildrenMenu = ({ id, idx, title, path, isParent, category, dat
   const handleDelete = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
       console.log('삭제');
-      submit({id, idx}, {
+      submit({ id, idx }, {
         method: 'DELETE',
         action: '/adminlist/menu',
         encType: 'application/json',
@@ -61,20 +61,20 @@ export const ListChildrenMenu = ({ id, idx, title, path, isParent, category, dat
       // 서버에 삭제 요청
     }
   };
-  
+
 
   return (
     <>
-    <div key={id} className="w-[1080px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
-      <p className="ml-[20px] grow text-grayscale-600 text-body2m">{title}</p>
-      <div onClick={toggle} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
-        <SettingIcon />
+      <div key={id} className="w-[1080px] h-[70px] pb-0 flex flex-row content-center justify-between items-center bg-grayscale-0 border border-grayscale-300 rounded hover:bg-grayscale-50">
+        <p className="ml-[20px] grow text-grayscale-600 text-body2m">{title}</p>
+        <div onClick={toggle} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
+          <SettingIcon />
+        </div>
+        <div onClick={handleDelete} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
+          <CloseIcon />
+        </div>
       </div>
-      <div onClick={handleDelete} className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300">
-        <CloseIcon />
-      </div>
-    </div>
-      {isToggle && <ListMenuSettingBlock id={id} idx={idx} name={title} path={path} isParent={isParent} category={category} date={date}/>}
+      {isToggle && <ListMenuSettingBlock id={id} idx={idx} name={title} path={path} isParent={isParent} category={category} date={date} />}
     </>
   );
 };

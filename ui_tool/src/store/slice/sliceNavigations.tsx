@@ -1,18 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface State {
-  id: number;
-  name: string;
-  path: string;
-  isParent: boolean;
-  children: {
+  category: {
     id: number;
-    idx: number;
     name: string;
     path: string;
     isParent: boolean;
-  }[];
-  date: string;
+    date: string;
+    children: {
+      id: number;
+      idx: number;
+      name: string;
+      path: string;
+      isParent: boolean;
+    }[];
+  };
 }
 const initialState: State[] = [];
 const sliceNavigations = createSlice({
@@ -51,7 +53,7 @@ const sliceNavigations = createSlice({
       //checkbox true or false -> true => _blank & false => _self
       console.log(state, 'state')
 
-      
+
     }
   },
 });
