@@ -1,4 +1,9 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import {
+  FunctionComponent,
+  MouseEventHandler,
+  ReactNode,
+  SVGProps,
+} from 'react';
 
 export type {
   AdabtiveTabProps,
@@ -70,7 +75,7 @@ interface treeDataProps {
 interface BlockDesignContent {
   id: number;
   contentLayout: number;
-  svgEl: React.ReactNode;
+  svgEl: typeof import('*.svg');
 }
 
 interface BlockDesignMap {
@@ -78,7 +83,7 @@ interface BlockDesignMap {
   type: string;
   name: string;
   element: () => JSX.Element;
-  contentList: BlockDesignContent[];
+  contentList?: BlockDesignContent[];
 }
 
 interface ToolsPropsType {
@@ -155,12 +160,12 @@ interface GroupProps {
 }
 
 interface ListInnerData {
-    id: number;
-    title: string;
-    path: string;
-    isParent: boolean;
-    category: string;
-    date: string;
+  id: number;
+  title: string;
+  path: string;
+  isParent: boolean;
+  category: string;
+  date: string;
 }
 
 interface DataType extends ListProps {
@@ -183,6 +188,6 @@ interface AdabtiveTabProps {
   onTabChange: (tabName: string) => void;
 }
 interface CheckBoxProps {
-    checked: boolean;
-    onChange: (checked: boolean) => void;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
 }

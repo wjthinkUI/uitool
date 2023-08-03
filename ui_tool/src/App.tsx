@@ -8,7 +8,8 @@ import TestPage from './pages/testPage';
 import { EditPage } from '@pages/editPages/editPage';
 import { CompoTest } from '@pages/componentTest';
 import { AdminMangePageAction } from '@pages/adminManageList/adminManagePage';
-import { AdminManageLoader } from '@pages/adminManageList/adminManage';;
+import { AdminManageLoader } from '@pages/adminManageList/adminManage';
+import { useState, useEffect } from 'react';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
     element: <CompoTest />,
   },
 ]);
+
 function App() {
   return (
     <>
@@ -54,3 +56,40 @@ function App() {
 }
 
 export default App;
+
+// [
+//   {
+//   path: '/',
+//   element: <AdminLogin />,
+// },
+// {
+//   path: '/test',
+//   element: <TestPage />,
+// },
+// {
+//   path: '/edit/:id',
+//   element: <EditPage />,
+// },
+// {
+//   path: '/adminlist',
+//   element: <AdminManage />,
+//   loader: AdminManageLoader,
+//   children: [
+//     {
+//       path: '/adminlist/menu', //nav loader, action
+//       element: <AdminManageList />,
+//     },
+//     {
+//       path: '/adminlist/page',
+//       element: <AdminManagePage />,
+//       // loader: AdminManageLoader,
+//       action: AdminMangePageAction,
+//     },
+//   ],
+// },
+// {
+//   path: 'compotest',
+//   element: <CompoTest />,
+// },
+// { path: '/testroute', element: <div>this is test page</div> },
+// ]
