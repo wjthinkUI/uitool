@@ -156,7 +156,7 @@ interface GroupProps {
 
 interface ListInnerData {
     id: number;
-    idx?: number;
+    idx?: number | undefined;
     title: string;
     path: string;
     isParent: boolean;
