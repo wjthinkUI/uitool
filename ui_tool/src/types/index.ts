@@ -1,9 +1,4 @@
-import {
-  FunctionComponent,
-  MouseEventHandler,
-  ReactNode,
-  SVGProps,
-} from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 export type {
   AdabtiveTabProps,
