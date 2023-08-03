@@ -41,6 +41,7 @@ export const ListMenuSettingBlock = ({ id, idx, name, path, isParent, category, 
 
     //id 받아야함.
     const handleTitleChange = () => {
+        if (window.confirm('확인을 누르면 입력하신 내용으로 수정됩니다.')) {
         const submitData = {
             id: id,
             idx: idx || 0,
@@ -55,6 +56,7 @@ export const ListMenuSettingBlock = ({ id, idx, name, path, isParent, category, 
             action: '/adminlist/menu', 
             encType: 'application/json',
         });
+    }
     };
 
     useEffect(() => {
@@ -73,7 +75,6 @@ export const ListMenuSettingBlock = ({ id, idx, name, path, isParent, category, 
     
     return (
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
-            <p>{id},{idx},{changeTitle},{changeUrl},{String(checked)}</p>
             <label className="text-body2m text-grayscale-600">제목</label>
             <InputFormPublic type={"title"} inputWidth={"long"} placeholder={""} defaultValue={name} onChangeValue={setChangeTitle}/>
             <div className="flex items-center">
