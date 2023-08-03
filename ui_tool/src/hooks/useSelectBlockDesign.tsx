@@ -124,38 +124,125 @@ const blockDesignData: any[] = [
       },
     ],
   },
-  // {
-  //   id: 3,
-  //   type: 'list',
-  //   name: '목록',
-  //   element() {
-  //     return <ListContent />;
-  //   },
-  // },
-  // {
-  //   id: 4,
-  //   type: 'text',
-  //   name: '텍스트',
-  //   element() {
-  //     return <TextContent />;
-  //   },
-  // },
-  // {
-  //   id: 5,
-  //   type: 'table',
-  //   name: '표',
-  //   element() {
-  //     return <TableContent />;
-  //   },
-  // },
-  // {
-  //   id: 6,
-  //   type: 'layout',
-  //   name: '레이아웃',
-  //   element() {
-  //     return <LayoutContent />;
-  //   },
-  // },
+  {
+    id: 3,
+    type: 'list',
+    name: '목록',
+    element() {
+      return <ListContent list={this.contentList} />;
+    },
+    contentList: [
+      {
+        id: 1,
+        contentLayout: 1,
+        svgEl: await import('@assets/list/list-1-circle.svg'),
+      },
+      {
+        id: 2,
+        contentLayout: 2,
+        svgEl: await import('@assets/list/list-2-square.svg'),
+      },
+      {
+        id: 3,
+        contentLayout: 3,
+        svgEl: await import('@assets/list/list-3-square.svg'),
+      },
+      ,
+      {
+        id: 4,
+        contentLayout: 4,
+        svgEl: await import('@assets/list/list-4-square.svg'),
+      },
+    ],
+  },
+  {
+    id: 4,
+    type: 'text',
+    name: '텍스트',
+    element() {
+      return <TextContent list={this.contentList} />;
+    },
+    contentList: [
+      {
+        id: 1,
+        contentLayout: 1,
+        svgEl: await import('@assets/text/text-1.svg'),
+      },
+      {
+        id: 2,
+        contentLayout: 2,
+        svgEl: await import('@assets/text/text-2.svg'),
+      },
+      {
+        id: 3,
+        contentLayout: 3,
+        svgEl: await import('@assets/text/text-3.svg'),
+      },
+      {
+        id: 4,
+        contentLayout: 4,
+        svgEl: await import('@assets/text/text-4.svg'),
+      },
+      {
+        id: 5,
+        contentLayout: 5,
+        svgEl: await import('@assets/text/text-5.svg'),
+      },
+      {
+        id: 6,
+        contentLayout: 6,
+        svgEl: await import('@assets/text/text-6.svg'),
+      },
+    ],
+  },
+  {
+    id: 5,
+    type: 'table',
+    name: '표',
+    element() {
+      return <TableContent />;
+    },
+  },
+  {
+    id: 6,
+    type: 'layout',
+    name: '레이아웃',
+    element() {
+      return <LayoutContent list={this.contentList} />;
+    },
+    contentList: [
+      {
+        id: 1,
+        contentLayout: 1,
+        svgEl: await import('@assets/layout/layout-1.svg'),
+      },
+      {
+        id: 2,
+        contentLayout: 2,
+        svgEl: await import('@assets/layout/layout-2.svg'),
+      },
+      {
+        id: 3,
+        contentLayout: 3,
+        svgEl: await import('@assets/layout/layout-3.svg'),
+      },
+      {
+        id: 4,
+        contentLayout: 4,
+        svgEl: await import('@assets/layout/layout-4.svg'),
+      },
+      {
+        id: 5,
+        contentLayout: 5,
+        svgEl: await import('@assets/layout/layout-5.svg'),
+      },
+      {
+        id: 6,
+        contentLayout: 6,
+        svgEl: await import('@assets/layout/layout-6.svg'),
+      },
+    ],
+  },
 ];
 
 const sidebarInfo = blockDesignData.map((el) => ({

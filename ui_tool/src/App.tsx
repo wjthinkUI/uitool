@@ -8,7 +8,7 @@ import TestPage from './pages/testPage';
 import { EditPage } from '@pages/editPages/editPage';
 import { CompoTest } from '@pages/componentTest';
 import { AdminMangePageAction } from '@pages/adminManageList/adminManagePage';
-import { AdminManageLoader } from '@pages/adminManageList/adminManage';;
+import { AdminManageLoader } from '@pages/adminManageList/adminManage';
 import { AdminMangeMenuAction } from '@pages/adminManageList/adminManageMenu';
 
 const router = createBrowserRouter([
@@ -47,6 +47,7 @@ const router = createBrowserRouter([
     element: <CompoTest />,
   },
 ]);
+
 function App() {
   return (
     <>

@@ -1,11 +1,9 @@
 import { ManagePageTable } from '@organism/Management/ManagementPageTable';
-import { redirect, json, defer } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
 import { useActionData } from 'react-router-dom';
 import { useEffect } from 'react';
 import { initalizePagesInfo } from '@store/slice/slicePagesInfo';
-import { Space, Spin } from 'antd';
 export const AdminManagePage = () => {
   const data = useActionData();
   const dispatch = useDispatch<AppDispatch>();
@@ -34,7 +32,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...data }),
+      body: JSON.stringify(data),
     });
     if (!res.ok) {
       throw Error('fetching error, try again...');
@@ -50,7 +48,7 @@ export const AdminMangePageAction = async ({ request, params }: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...data }), //찾는 데이터 아이디로 추후 교체
+      body: JSON.stringify(data), //찾는 데이터 아이디로 추후 교체
     });
     if (!res.ok) {
       throw Error('fetching error, try again...');

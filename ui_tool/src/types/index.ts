@@ -70,7 +70,7 @@ interface treeDataProps {
 interface BlockDesignContent {
   id: number;
   contentLayout: number;
-  svgEl: React.ReactNode;
+  svgEl: typeof import('*.svg');
 }
 
 interface BlockDesignMap {
@@ -78,7 +78,7 @@ interface BlockDesignMap {
   type: string;
   name: string;
   element: () => JSX.Element;
-  contentList: BlockDesignContent[];
+  contentList?: BlockDesignContent[];
 }
 
 interface ToolsPropsType {
@@ -155,13 +155,13 @@ interface GroupProps {
 }
 
 interface ListInnerData {
-    id: number;
-    idx?: number | undefined;
-    title: string;
-    path: string;
-    isParent: boolean;
-    category: string;
-    date: string;
+  id: number;
+  idx?: number | undefined;
+  title: string;
+  path: string;
+  isParent: boolean;
+  category: string;
+  date: string;
 }
 
 interface DataType extends ListProps {
@@ -184,6 +184,6 @@ interface AdabtiveTabProps {
   onTabChange: (tabName: string) => void;
 }
 interface CheckBoxProps {
-    checked: boolean;
-    onChange: (checked: boolean) => void;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
 }

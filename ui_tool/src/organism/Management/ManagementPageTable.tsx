@@ -45,7 +45,7 @@ export const ManagePageTable = () => {
   return (
     <>
       {!data && (
-        <Space size="middle">
+        <Space size="middle" className="text-center">
           <Spin size="large" />
         </Space>
       )}
