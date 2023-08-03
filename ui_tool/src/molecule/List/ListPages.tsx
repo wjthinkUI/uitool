@@ -4,6 +4,7 @@ import type { ListProps } from 'types';
 import { useState } from 'react';
 import { ModalDetail } from '@organism/Modal/ModalDetail';
 import { ModalDuplication } from '@organism/Modal/ModalDuplication';
+import { Link } from 'react-router-dom';
 /**상세/복제/디자인 버튼 기능 미구현 */
 
 /**list atom : 최상위 div w-1220px 수정해야 할 듯 */
@@ -34,7 +35,9 @@ export const ListPage = ({ id, title, date, path, category }: ListProps) => {
         {showDuplModal && (
           <ModalDuplication id={id} onCancel={() => handleClickChips('dupl')} />
         )}
-        <ChipOrange text="디자인" />
+        <Link to={`/edit/${id}`}>
+          <ChipOrange text="디자인" />
+        </Link>
       </div>
     </div>
   );

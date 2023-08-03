@@ -1,11 +1,9 @@
 import { ManagePageTable } from '@organism/Management/ManagementPageTable';
-import { redirect, json, defer } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
 import { useActionData } from 'react-router-dom';
 import { useEffect } from 'react';
 import { initalizePagesInfo } from '@store/slice/slicePagesInfo';
-import { Space, Spin } from 'antd';
 export const AdminManagePage = () => {
   const data = useActionData();
   const dispatch = useDispatch<AppDispatch>();
