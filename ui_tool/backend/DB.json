@@ -103,6 +103,7 @@
                 "date": "2023-01-01",
                 "children": [
                     {
+                        "id": 0,
                         "idx": 0,
                         "name": "교육 서비스 소개",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -110,6 +111,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 0,
                         "idx": 1,
                         "name": "AI 서비스",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -117,6 +119,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 0,
                         "idx": 2,
                         "name": "AR인터랙티브북",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -124,6 +127,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 0,
                         "idx": 3,
                         "name": "투게더 (화상수업)",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -131,6 +135,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 0,
                         "idx": 4,
                         "name": "스마트올 AI 학교수학",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -138,6 +143,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 0,
                         "idx": 5,
                         "name": "스마트올 백과",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -145,13 +151,14 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 0,
                         "idx": 6,
                         "name": "캠페인 아카이브",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
                         "isParent": false,
                         "date": "2023-07-31 21:26:27"
                     },
-                    {
+                    {   "id": 0,
                         "idx": 7,
                         "name": "수상내역 소개",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -170,6 +177,7 @@
                 "date": "2023-01-01",
                 "children": [
                     {
+                        "id": 1,
                         "idx": 0,
                         "name": "웅진북클럽 소개",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -177,6 +185,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 1,
                         "idx": 1,
                         "name": "내게 맞는 씽크빅 찾기",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -184,6 +193,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 1,
                         "idx": 2,
                         "name": "연령별 제품 보기",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -191,6 +201,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 1,
                         "idx": 3,
                         "name": "웅진씽크빅 과목",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -198,6 +209,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 1,
                         "idx": 4,
                         "name": "웅진씽크빅 선생님",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -216,6 +228,7 @@
                 "date": "2023-01-01",
                 "children": [
                     {
+                        "id": 2,
                         "idx": 0,
                         "name": "웅진북클럽 소개",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -223,6 +236,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 1,
                         "name": "내게 맞는 북클럽 찾기",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -230,6 +244,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 2,
                         "name": "웅진북클럽 전집",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -237,6 +252,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 3,
                         "name": "웅진북클럽 화상관리",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -244,6 +260,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 4,
                         "name": "웅진북클럽 곰돌이",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -251,6 +268,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 5,
                         "name": "베베북클럽",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -258,6 +276,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 6,
                         "name": "웅진북클럽 AI독서케어",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -265,6 +284,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 7,
                         "name": "슈퍼팟잉글리시",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -272,6 +292,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 2,
                         "idx": 8,
                         "name": "북큐레이터 소개",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -290,6 +311,7 @@
                 "date": "2023-01-01",
                 "children": [
                     {
+                        "id": 3,
                         "idx": 0,
                         "name": "웅진스마트올 쿠키",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -297,6 +319,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 3,
                         "idx": 1,
                         "name": "웅진스마트올 키즈",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -304,6 +327,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 3,
                         "idx": 2,
                         "name": "웅진스마트올 예비초",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -311,6 +335,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 3,
                         "idx": 3,
                         "name": "웅진스마트올 초등",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -318,6 +343,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 3,
                         "idx": 4,
                         "name": "웅진스마트올 중학",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -336,6 +362,7 @@
                 "date": "2023-01-01",
                 "children": [
                     {
+                        "id": 4,
                         "idx": 0,
                         "name": "웅진씽크빅 출판부문",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -343,6 +370,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 4,
                         "idx": 1,
                         "name": "웅진주니어",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -350,6 +378,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 4,
                         "idx": 2,
                         "name": "웅진책방",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -357,6 +386,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 4,
                         "idx": 3,
                         "name": "Udemy Korea",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -375,6 +405,7 @@
                 "date": "2023-01-01",
                 "children": [
                     {
+                        "id": 5,
                         "idx": 0,
                         "name": "이벤트",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -382,6 +413,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 5,
                         "idx": 1,
                         "name": "당첨자 발표",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -389,6 +421,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 5,
                         "idx": 2,
                         "name": "고객 생생후기",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -396,6 +429,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 5,
                         "idx": 3,
                         "name": "회원혜택",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",
@@ -403,6 +437,7 @@
                         "date": "2023-07-31 21:26:27"
                     },
                     {
+                        "id": 5,
                         "idx": 4,
                         "name": "교육 자료실",
                         "path": "https://www.wjthinkbig.com/brand/brand_02.do",

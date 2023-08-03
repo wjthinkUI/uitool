@@ -92,14 +92,14 @@ async function deleteNavigations(id, idx = undefined) {
   const data = await readData();
   console.log('idx ===', idx);
   if (idx === undefined) {
-    const filteredData = data.navigations.filter((el) => el.category.id !== id);
+    const filteredData = data.navigations.filter((el) => !(el.category.id === id));
     data.navigations = [...filteredData];
     await writeData(data);
   } else {
     const index = data.navigations.findIndex((el) => el.category.id === id);
     let selectedData = data.navigations[index];
     const filterdChildrenData = selectedData.category.children.filter(
-      (el, index) => index !== idx
+      (el) => el.idx !== idx
     );
     data.navigations[index].category.children = [...filterdChildrenData];
     await writeData(data);
@@ -107,6 +107,7 @@ async function deleteNavigations(id, idx = undefined) {
 
   return getAllNavInfo();
 }
+
 
 async function updateNavigation(id, title, url, idx = undefined) {
   const data = await readData();
