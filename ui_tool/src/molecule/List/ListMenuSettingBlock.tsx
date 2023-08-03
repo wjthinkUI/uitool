@@ -3,22 +3,30 @@ import { InputFormPublic } from "@atom/Input/InputFormPublic";
 import { CheckBox } from "@atom/public/CheckBox";
 import { useDispatch, useSelector } from "react-redux";
 import sliceModal from "@store/slice/sliceModal";
-import { setTitle, setUrl, setBlankOption } from "@store/slice/sliceModal";
-import { useState } from "react";
+import { setTitle, setUrl, setBlankOption } from "@store/slice/sliceNavigations";
+import { useEffect, useState } from "react";
 import { ButtonOutline } from "@atom/Button/ButtonOutline";
+import { useSubmit } from "react-router-dom";
 
 interface ListMenuSettingBlockProps {
     id: number;
+    idx?: number;
     name: string;
     path: string;
+    isParent: boolean;
+    category: string;
+    date: string;
 }
 
-export const ListMenuSettingBlock = ({ id, name, path }:ListMenuSettingBlockProps) => {
+export const ListMenuSettingBlock = ({ id, idx, name, path, isParent, category, date }:ListMenuSettingBlockProps) => {
     const [checked, setChecked] = useState(false);
     const [changeTitle, setChangeTitle] = useState(name);
     const [changeUrl, setChangeUrl] = useState(path);
     const dispatch = useDispatch();
-    const pageData = useSelector((state: any) => state.modal);
+    const menuData = useSelector((state: any) => state.navigations);
+
+    const submit = useSubmit();
+
     // const handleTitleChange = (event: any) => {
     //     dispatch(setTitle(event.target.value));
     // };
@@ -28,25 +36,44 @@ export const ListMenuSettingBlock = ({ id, name, path }:ListMenuSettingBlockProp
     // };
     const handleBlankOptionChange = (isChecked:boolean) => {
         setChecked(isChecked);
-        dispatch(setBlankOption());
+        // dispatch(setBlankOption());
     };
-
-    const formData = {
-        title: pageData.title,
-        url: pageData.url,
-        blankOption: pageData.blankOption,
-    }
 
     //id 받아야함.
     const handleTitleChange = () => {
-        dispatch(setTitle(changeTitle));
+        const submitData = {
+            id: id,
+            idx: idx || 0,
+            title: changeTitle,
+            url: changeUrl,
+            // isParent: isParent,
+            // category: category,
+            // date: date,
+        };
+        submit(submitData, {
+            method: 'PUT',
+            action: '/adminlist/menu', 
+            encType: 'application/json',
+        });
+    };
+
+    useEffect(() => {
+        dispatch(setTitle({isParent: isParent, id: id, idx: idx, title: changeTitle}));
         dispatch(setUrl(changeUrl));
         dispatch(setBlankOption());
-    };
+    }, [changeTitle, changeUrl, checked]);
+
+
+    /**
+     * isParent true 일때
+     * 1단 [id]로 접근
+     * isParam false 일때
+     * 2단 [id][idx]로 접근
+     */
     
     return (
         <div className="bg-white w-[1080px] h-[180px] border-grayscale-300 border rounded items-center p-4 float-right">
-            <p>{changeTitle},{changeUrl},{String(checked)}</p>
+            <p>{id},{idx},{changeTitle},{changeUrl},{String(checked)}</p>
             <label className="text-body2m text-grayscale-600">제목</label>
             <InputFormPublic type={"title"} inputWidth={"long"} placeholder={""} defaultValue={name} onChangeValue={setChangeTitle}/>
             <div className="flex items-center">

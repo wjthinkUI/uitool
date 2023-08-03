@@ -22,8 +22,10 @@ export const ManageMenuListTree = () => {
         });
       }
     });
+    console.log(result, 'result')
     return result
   }
+
   const mappingmenuData = useMemo(() => menuDataMappingFlat(menuData), [menuData]);  
   
   return (
@@ -32,7 +34,7 @@ export const ManageMenuListTree = () => {
       <div className="w-[1220px] h-auto p-8 rounded-[26px] bg-grayscale-50 border border-grayscale-200 border-dashed">
         <div className="flex flex-col items-end gap-2">
           {mappingmenuData.map((value, index) => (
-            (value.isParent) ? (<ListParentsMenu key={index} id={value.id} title={value.name} path={value.children[0].path} category={value.name} date={value.date} isParent={value.isParent} />) : (<ListChildrenMenu key={index} id={value.idx} title={value.name} path={value.path} category={value.name} date={value.date} isParent={value.isParent} />))
+            (value.isParent) ? (<ListParentsMenu key={index} id={value.id} title={value.name} path={value.children[0].path} category={value.name} date={value.date} isParent={value.isParent} />) : (<ListChildrenMenu key={index} id={value.id} idx={value.idx} title={value.name} path={value.path} category={value.name} date={value.date} isParent={value.isParent} />))
           )}
         </div>
       </div>
