@@ -2,21 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   pageInfo: {
-    key: 0,
+    id: 0,
     title: 'test',
     path: '/test',
+    category: 'test',
     date: Date(),
   },
   page: [
     {
-      block: [
-        {
+          index: 0,
           type: '',
-          detail: '',
-          layout: '',
-          chidren: [],
-        },
-      ],
+          layoutTable: [],
+          layout: 1,
     },
   ],
 };
