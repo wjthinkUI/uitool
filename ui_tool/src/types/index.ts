@@ -98,11 +98,19 @@ interface EditPageContextType {
 }
 
 interface EditPageDataType {
-  key: string | undefined;
-  title: string;
-  page: string;
-  date: string;
-  layout: Array<{ id: string; position: string }>;
+  pageInfo: {
+    id: number;
+    title: string;
+    path: string;
+    category: string;
+    date: string;
+  };
+  page:{
+      index: number;
+      type: string;
+      layoutTable: number[];
+      layout: number;
+    }[];
 }
 
 interface btnType {
