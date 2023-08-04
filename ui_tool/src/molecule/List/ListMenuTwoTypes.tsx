@@ -82,7 +82,6 @@ export const ListChildrenMenu = ({
   const [isToggle, setIsToggle] = useState(false);
   const toggle = () => setIsToggle(!isToggle);
   const submit = useSubmit();
-
   const handleDelete = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
       console.log('삭제');

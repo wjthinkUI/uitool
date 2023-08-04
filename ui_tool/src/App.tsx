@@ -10,7 +10,7 @@ import { CompoTest } from '@pages/componentTest';
 import { AdminMangePageAction } from '@pages/adminManageList/adminManagePage';
 import { AdminManageLoader } from '@pages/adminManageList/adminManage';
 import { AdminMangeMenuAction } from '@pages/adminManageList/adminManageMenu';
-
+import { editPageLoader } from '@pages/editPages/editPageLoaderAndAction';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: '/edit/:id',
     element: <EditPage />,
+    loader: editPageLoader,
   },
   {
     path: '/adminlist',

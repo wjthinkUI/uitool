@@ -92,7 +92,9 @@ async function deleteNavigations(id, idx = undefined) {
   const data = await readData();
   console.log('idx ===', idx);
   if (idx === undefined) {
-    const filteredData = data.navigations.filter((el) => !(el.category.id === id));
+    const filteredData = data.navigations.filter(
+      (el) => !(el.category.id === id)
+    );
     data.navigations = [...filteredData];
     await writeData(data);
   } else {
@@ -107,7 +109,6 @@ async function deleteNavigations(id, idx = undefined) {
 
   return getAllNavInfo();
 }
-
 
 async function updateNavigation(id, title, url, idx = undefined) {
   const data = await readData();
@@ -135,7 +136,17 @@ async function updateNavigation(id, title, url, idx = undefined) {
 
   return getAllNavInfo();
 }
+
+async function getPageData(id) {
+  const data = await readData();
+  const page = data.pages.find((el) =>
+    el.pageInfo.id === parseInt(id) ? el : undefined
+  );
+  if (!page) throw new Error('can not find page');
+  return page;
+}
 exports.readData = readData;
+exports.getPageData = getPageData;
 exports.getAllPagesInfo = getAllPagesInfo;
 exports.getAllNavInfo = getAllNavInfo;
 exports.getAllNavInfo = getAllNavInfo;
