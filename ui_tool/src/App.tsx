@@ -48,7 +48,6 @@ const router = createBrowserRouter([
     element: <CompoTest />,
   },
 ]);
-
 function App() {
   return (
     <>

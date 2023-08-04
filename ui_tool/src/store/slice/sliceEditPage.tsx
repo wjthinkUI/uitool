@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {
+let initialState = {
   pageInfo: {
     id: 0,
     title: '',
@@ -10,7 +10,7 @@ const initialState = {
   page: [
     {
       index: 0,
-      type: 'image',
+      type: '',
       contentLayout: 0,
       src: [],
       link: [],
@@ -22,8 +22,12 @@ const sliceEditPage = createSlice({
   name: 'editpage',
   initialState: initialState,
   reducers: {
-    pageInitialize: (state, action) => {
-      return action.payload;
+    testUpate: (state, action) => {
+      state.pageInfo.title = action.payload;
+    },
+    setInitialState: (state, action) => {
+      state.pageInfo = action.payload.pageInfo;
+      state.page = action.payload.page;
     },
     updateTypeAndContentLayout: (state, action) => {
       const { index, type, contentLayout } = action.payload;
@@ -51,8 +55,9 @@ const sliceEditPage = createSlice({
 });
 
 export const {
+  testUpate,
   blockInitialize,
-  pageInitialize,
+  setInitialState,
   updateTypeAndContentLayout,
   updateLink,
   updateSrc,

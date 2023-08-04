@@ -1,14 +1,12 @@
-import { defer, json } from 'react-router-dom';
 export const editPageLoader = async ({ request, params }: any) => {
-  // const res = await fetch(`http://localhost:5174/edit/${params.id}`);
-
-  // // console.log('LOADER = ', res);
-  // if (!res.ok) {
-  //   throw json({'fetching error, try again...'});
-  // }
-  // const resData = await res.json();
-  // console.log('PageData = ', resData);
-  return defer({ data: loadFn(params.id) });
+  const res = await fetch(`http://localhost:5174/edit/${params.id}`);
+  if (!res.ok) {
+    throw Error('fetching error, try again...');
+  }
+  const resData = await res.json();
+  console.log('PageData = ', resData);
+  return resData;
+  // return defer({ data: loadFn(params.id) });
 };
 
 const loadFn = async (id: string) => {
