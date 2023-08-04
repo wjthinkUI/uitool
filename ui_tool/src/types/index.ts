@@ -105,12 +105,12 @@ interface EditPageDataType {
     category: string;
     date: string;
   };
-  page:{
-      index: number;
-      type: string;
-      layoutTable: number[];
-      layout: number;
-    }[];
+  page: {
+    index: number;
+    type: string;
+    layoutTable: number[];
+    layout: number;
+  }[];
 }
 
 interface btnType {

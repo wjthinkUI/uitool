@@ -8,6 +8,7 @@ const {
   getAllNavInfo,
   deleteNavigations,
   updateNavigation,
+  getPageData,
 } = require('./models');
 
 app.use(bodyParser.json());
@@ -16,6 +17,16 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
+});
+
+app.get('/edit/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const page = await getPageData(id);
+    res.status(200).json({ pageData: page });
+  } catch (err) {
+    console.log(err);
+  }
 });
 app.get('/adminlist', async (req, res, next) => {
   const pagesInfoData = await getAllPagesInfo();

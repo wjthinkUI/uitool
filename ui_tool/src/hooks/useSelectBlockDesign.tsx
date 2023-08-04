@@ -7,7 +7,9 @@ import { ListContent } from '@molecule/Modal/ModalBlockDesign/ListContent';
 import { TextContent } from '@molecule/Modal/ModalBlockDesign/TextContent';
 import { TableContent } from '@molecule/Modal/ModalBlockDesign/TableContent';
 import { LayoutContent } from '@molecule/Modal/ModalBlockDesign/LayoutContent';
+import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
 import type { BlockDesignMap } from 'types';
+
 export const useSelectBlockDesign = () => {
   const selectedType = useSelector(
     (state: RootState) => state.sidebar.selectItem
@@ -29,7 +31,7 @@ const blockDesignData: any[] = [
     type: 'image',
     name: '이미지',
     element() {
-      return <ImageContent list={this.contentList} />;
+      return <ImageContent list={this.contentList} type={this.type} />;
     },
     contentList: [
       {

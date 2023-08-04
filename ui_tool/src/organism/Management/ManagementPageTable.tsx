@@ -20,7 +20,6 @@ export const ManagePageTable = () => {
   const { Search } = Input;
   useEffect(() => {
     setData(() => pageData);
-    console.log(data, '낯짝을 보자');
   }, [pageData, setData]);
 
   const onSearch = (value: string) => {

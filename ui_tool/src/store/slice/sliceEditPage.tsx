@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-const initialState = {
+let initialState = {
   pageInfo: {
     id: 0,
-    title: 'test',
-    path: '/test',
-    category: 'test',
-    date: Date(),
+    title: '',
+    path: '',
+    date: '',
+    category: '',
   },
   page: [
     {
-          index: 0,
-          type: '',
-          layoutTable: [],
-          layout: 1,
+      index: 0,
+      type: '',
+      contentLayout: 0,
+      src: [],
+      link: [],
     },
   ],
 };
@@ -21,8 +21,45 @@ const initialState = {
 const sliceEditPage = createSlice({
   name: 'editpage',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    testUpate: (state, action) => {
+      state.pageInfo.title = action.payload;
+    },
+    setInitialState: (state, action) => {
+      state.pageInfo = action.payload.pageInfo;
+      state.page = action.payload.page;
+    },
+    updateTypeAndContentLayout: (state, action) => {
+      const { index, type, contentLayout } = action.payload;
+      state.page[index].type = type;
+      state.page[index].contentLayout = contentLayout;
+    },
+    updateSrc: (state, action) => {
+      const { index, src } = action.payload;
+      state.page[index].src = src;
+    },
+    updateLink: (state, action) => {
+      const { index, link } = action.payload;
+      state.page[index].link = link;
+    },
+    blockInitialize: (state) => {
+      state.page.push({
+        index: state.page.length,
+        type: '',
+        contentLayout: 0,
+        src: [],
+        link: [],
+      });
+    },
+  },
 });
 
-export const {} = sliceEditPage.actions;
+export const {
+  testUpate,
+  blockInitialize,
+  setInitialState,
+  updateTypeAndContentLayout,
+  updateLink,
+  updateSrc,
+} = sliceEditPage.actions;
 export default sliceEditPage;

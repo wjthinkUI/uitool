@@ -5,8 +5,10 @@ import sliceBlockDesignSideBar from '@store/slice/sliceBlockDesignSideBar';
 import sliceModal from './slice/sliceModal';
 import slicePagesInfo from './slice/slicePagesInfo';
 import sliceNavigations from './slice/sliceNavigations';
+import sliceEditPage from './slice/sliceEditPage';
 export const store = configureStore({
   reducer: {
+    editPage: sliceEditPage.reducer,
     tab: tabStateSlice.reducer,
     sidebar: sliceBlockDesignSideBar.reducer,
     modal: sliceModal.reducer,
