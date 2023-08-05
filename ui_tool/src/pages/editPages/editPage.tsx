@@ -15,7 +15,22 @@ import { Image3 } from '@atom/Edit/Image3';
 import { Image4 } from '@atom/Edit/Image4';
 import { ImageCustom } from '@atom/Edit/ImageCustom';
 import { Line1 } from '@atom/Edit/line/line1';
-import {
+import { Line2 } from '@atom/Edit/line/line2';
+import { Line3 } from '@atom/Edit/line/line3';
+import { Line4 } from '@atom/Edit/line/line4';
+import { Line5 } from '@atom/Edit/line/line5';
+import { Line6 } from '@atom/Edit/line/line6';
+import { Line7 } from '@atom/Edit/line/line7';
+import { Line8 } from '@atom/Edit/line/line8';
+import { Line9 } from '@atom/Edit/line/line9';
+import { Line10 } from '@atom/Edit/line/line10';
+import { Text1 } from '@atom/Edit/text/Text1';
+import { Text2 } from '@atom/Edit/text/Text2';
+import { Text3 } from '@atom/Edit/text/Text3';
+import { Text4 } from '@atom/Edit/text/Text4';
+import { Text5 } from '@atom/Edit/text/Text5';
+import { Text6 } from '@atom/Edit/text/Text6';
+import { 
   setInitialState,
   putNewBlockBottom,
   putNewBlockTop,
@@ -61,12 +76,23 @@ const LAYOUT_COMPONENT = {
   },
   line: {
     layout1: Line1,
+    layout2: Line2,
+    layout3: Line3,
+    layout4: Line4,
+    layout5: Line5,
+    layout6: Line6,
+    layout7: Line7,
+    layout8: Line8,
+    layout9: Line9,
+    layout10: Line10,
   },
   text: {
-    layout1: Image1,
-    layout2: Image2,
-    layout3: Image3,
-    layout4: Image4,
+    layout1: Text1,
+    layout2: Text2,
+    layout3: Text3,
+    layout4: Text4,
+    layout5: Text5,
+    layout6: Text6,
   },
   video: {
     layout1: Image1,
@@ -162,6 +188,7 @@ export const EditPage = () => {
             {/* <ModalBlockDesign /> */}
             {/* <EditAddSelectDesign key={0} block_id={0} /> */}
             {pageData.page.map((v: any, i: any) => {
+              console.log('v = ', v);
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (

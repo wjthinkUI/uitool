@@ -12,6 +12,7 @@ export const ImageContent = ({ list, type }: any) => {
   );
   const dispatch = useDispatch<AppDispatch>();
   const handleDispatch = (contentLayout: number, type: string) => {
+    console.log('contentLayout = ', contentLayout, 'type = ', type);
     dispatch(
       updateTypeAndContentLayout({
         index: blockIndex,
