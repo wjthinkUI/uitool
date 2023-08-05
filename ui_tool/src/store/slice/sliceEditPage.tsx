@@ -11,8 +11,8 @@ const initialState = {
     {
       type: 'initial',
       contentLayout: 0,
-      src: [],
-      link: [],
+      src: [{}],
+      link: [{}],
     },
   ],
   selectedBlockIndex: 0,
@@ -46,11 +46,17 @@ const sliceEditPage = createSlice({
     },
     updateSrc: (state, action) => {
       const { index, src } = action.payload;
-      state.page[index].src = src;
+      const srcIndex = src.srcIndex;
+      // const hasData = state.page[index].src.find(
+      //   (item) => item.imageSrc === src.imageSrc
+      // );
+      // if (!hasData)
+      state.page[index].src[srcIndex] = src;
     },
     updateLink: (state, action) => {
       const { index, link } = action.payload;
-      state.page[index].link = link;
+      const linkIndex = link.linkIndex;
+      state.page[index].link[linkIndex] = link;
     },
     moveUpBlock: (state, action) => {
       const { index } = action.payload;

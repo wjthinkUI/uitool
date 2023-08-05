@@ -16,7 +16,6 @@ import { Image4 } from '@atom/Edit/Image4';
 import { ImageCustom } from '@atom/Edit/ImageCustom';
 import { Line1 } from '@atom/Edit/line/line1';
 import {
-  blockInitialize,
   setInitialState,
   putNewBlockBottom,
   putNewBlockTop,

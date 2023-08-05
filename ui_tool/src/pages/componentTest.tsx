@@ -1,10 +1,5 @@
-import { Image1 } from "@atom/Edit/Image1"
+import { Image1 } from '@atom/Edit/ImageBox';
 
 export const CompoTest = () => {
-
-    return (
-        <>
-            
-        </>
-    )
-}
+  return <></>;
+};
