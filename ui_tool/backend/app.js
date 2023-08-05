@@ -9,6 +9,7 @@ const {
   deleteNavigations,
   updateNavigation,
   getPageData,
+  updatePage,
 } = require('./models');
 
 app.use(bodyParser.json());
@@ -18,12 +19,24 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-
+//편집페이지에서 페이지 불러오기
 app.get('/edit/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
     const page = await getPageData(id);
     res.status(200).json({ pageData: page });
+  } catch (err) {
+    console.log(err);
+  }
+});
+//편집페이지에서 페이지 저장하기
+app.post('/edit/:id', async (req, res, next) => {
+  const { id } = req.params;
+  const pageData = req.body;
+  // console.log(id, pageData);
+  try {
+    const message = await updatePage(id, pageData);
+    res.status(200).json({ message: message });
   } catch (err) {
     console.log(err);
   }

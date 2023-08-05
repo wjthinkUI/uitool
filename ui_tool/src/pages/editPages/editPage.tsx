@@ -26,6 +26,8 @@ import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { EditBlock } from '@organism/Edit/EditBlock';
 import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
+import { PageNavigation } from '@organism/Nav/Navigation';
+import { Footer } from '@organism/Nav/Footer';
 /**
  * 1. EditPage에서는 페이지의 정보를 받아와서 페이지를 렌더링한다.
  * 2. 페이지의 정보는 store에서 받아온다.
@@ -92,9 +94,10 @@ const LAYOUT_COMPONENT = {
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [render, setRender] = useState<boolean>(false);
   const loadedData: any = useLoaderData(); //promise, page type
   const dispatch = useDispatch<AppDispatch>();
-  console.log('loadedData =', loadedData);
+  // console.log('loadedData =', loadedData);
 
   useEffect(() => {
     dispatch(
@@ -155,8 +158,9 @@ export const EditPage = () => {
                 : 0
             }
           >
+            <PageNavigation />
             {/* <ModalBlockDesign /> */}
-            <EditAddSelectDesign key={0} block_id={0} />
+            {/* <EditAddSelectDesign key={0} block_id={0} /> */}
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
@@ -172,6 +176,7 @@ export const EditPage = () => {
                 </div>
               );
             })}
+            <Footer />
           </GridContainer>
         </div>
       )}

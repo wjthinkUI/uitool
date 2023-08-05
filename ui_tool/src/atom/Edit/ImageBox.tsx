@@ -15,6 +15,7 @@ interface Image1Props {
 
 export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
   const dispatch = useDispatch<AppDispatch>();
+  const loadedpageData = useSelector((state: RootState) => state.editPage);
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [inputId, setInputId] = useState<string>('');
   const [imageId, setImageId] = useState<string>('');
@@ -27,6 +28,13 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
     setImageId(() => imageId);
   }, []);
 
+  useEffect(() => {
+    if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
+      setSelectedImage(
+        () => loadedpageData.page[blockIndex].src[boxIndex].imageSrc
+      );
+    }
+  }, [loadedpageData]);
   // if (!boxIndex) return <LoadingSpinner />;
   // console.log(boxIndex, blockIndex);
 
@@ -61,6 +69,12 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
     if (!target.src.endsWith('https://via.placeholder.com/400')) {
       target.src = 'https://via.placeholder.com/400';
     }
+    // const target = event.currentTarget;
+    // if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
+    //   target.src = loadedpageData.page[blockIndex].src[boxIndex].imageSrc;
+    // } else {
+    //   target.src = 'https://via.placeholder.com/400';
+    // }
   };
   return (
     <div

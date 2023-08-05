@@ -55,7 +55,7 @@ const sliceEditPage = createSlice({
     },
     moveUpBlock: (state, action) => {
       const { index } = action.payload;
-      if (index <= 0) return;
+      if (index <= 0) return state;
       const pageCopy = [...state.page];
       const temp = pageCopy[index];
       pageCopy[index] = pageCopy[index - 1];
@@ -64,17 +64,18 @@ const sliceEditPage = createSlice({
     },
     moveDownBlock: (state, action) => {
       const { index } = action.payload;
-      if (index >= state.page.length - 1) return;
+      if (index >= state.page.length - 1) return state;
       const pageCopy = [...state.page];
       const temp = pageCopy[index];
       pageCopy[index] = pageCopy[index + 1];
       pageCopy[index + 1] = temp;
+      console.log('pageCopy = ', pageCopy);
       state.page = pageCopy;
     },
 
     deleteBlock: (state, action) => {
       const { index } = action.payload;
-      if (state.page.length === 1) return state;
+      if (state.page.length === 0) return state;
       const filteredPage = state.page.filter((_, idx) => idx !== index);
       state.page = filteredPage;
     },
