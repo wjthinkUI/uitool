@@ -13,7 +13,7 @@ const sliceBlockDesignSideBar = createSlice({
       if (validate.includes(type)) {
         state.selectItem = type;
       } else {
-        throw Error('something went wrong...');
+        throw Error('invalid payload type, try again...');
       }
     },
   },
