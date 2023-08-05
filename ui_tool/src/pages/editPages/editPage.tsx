@@ -6,7 +6,7 @@ import {
   useFetcher,
   json,
 } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import { EditPageDataType } from 'types';
 import { GridContainer } from '@atom/public/GridContainer';
 import { Image1 } from '@atom/Edit/Image1';
@@ -14,11 +14,13 @@ import { Image2 } from '@atom/Edit/Image2';
 import { Image3 } from '@atom/Edit/Image3';
 import { Image4 } from '@atom/Edit/Image4';
 import { ImageCustom } from '@atom/Edit/ImageCustom';
-import { setInitialState } from '@store/slice/sliceEditPage';
+import { blockInitialize, setInitialState, putNewBlockBottom, putNewBlockTop } from '@store/slice/sliceEditPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
+import { EditBlock } from '@organism/Edit/EditBlock';
+import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
 /**
  * 1. EditPage에서는 페이지의 정보를 받아와서 페이지를 렌더링한다.
  * 2. 페이지의 정보는 store에서 받아온다.
@@ -41,6 +43,9 @@ import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
  *
  */
 const LAYOUT_COMPONENT = {
+  '' : {
+    layout0: EditAddSelectDesign,
+  },
   image: {
     layout1: Image1,
     layout2: Image2,
@@ -103,6 +108,27 @@ export const EditPage = () => {
     return <LoadingSpinner />;
   }
 
+  const handleEditAddBlockHere = (i:number) => {
+    dispatch(putNewBlockTop({ index: i}));
+  };
+
+  const handleEditAddBlockBottom = (i:number) => {
+    dispatch(putNewBlockBottom({ index: i}));
+  };
+  /** 230805 메모
+   * 1. 블록 추가 버튼 클릭 시, 빈 블록값 생성
+   * 2. 새로 생성된 블록에서 디자인 수정 클릭 시, 디자인 선택 모달 띄움
+   * 3. 디자인 선택 모달에서 디자인 선택 시, 디자인 타입과 디자인 아이디를 블록에 저장
+   * 4. 블록에 저장된 디자인 타입과 디자인 아이디를 통해 디자인 렌더링
+   * 
+   * EditBlock을 누르면 new Block이 생기는데, 이때 newBlock은 initial한 상태
+   * 그 상태에선 EditAddSelectDesign을 렌더링
+   * EditAddSelectDesign에서 디자인 선택 시, EditBlock의 상태를 바꿔줘야 함
+   * 
+   * 집갔다와서 해야지
+   * 
+   */
+
   return (
     <>
       {!isLoading && (
@@ -119,12 +145,14 @@ export const EditPage = () => {
                 : 0
             }
           >
-            <ModalBlockDesign />
+            {/* <ModalBlockDesign /> */}
+            <EditAddSelectDesign onClick={() => console.log('modal on -> new block + design')} />
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
-              return <Component key={i} />;
+              return <EditBlock onClickTop={()=>handleEditAddBlockHere(i)} onClickBottom={()=> handleEditAddBlockBottom(i)}><Component key={i} /></EditBlock>
             })}
+            
           </GridContainer>
         </div>
       )}

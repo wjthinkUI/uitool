@@ -51,6 +51,26 @@ const sliceEditPage = createSlice({
         link: [],
       });
     },
+    putNewBlockTop: (state, action) => {
+      const { index } = action.payload;
+      state.page.splice(index, 0, {
+        index: state.page.length,
+        type: '',
+        contentLayout: 0,
+        src: [],
+        link: [],
+      });
+    },
+    putNewBlockBottom: (state, action) => {
+      const { index } = action.payload;
+      state.page.splice(index + 1, 0, {
+        index: state.page.length,
+        type: '',
+        contentLayout: 0,
+        src: [],
+        link: [],
+      });
+    }
   },
 });
 
@@ -61,5 +81,7 @@ export const {
   updateTypeAndContentLayout,
   updateLink,
   updateSrc,
+  putNewBlockTop,
+  putNewBlockBottom,
 } = sliceEditPage.actions;
 export default sliceEditPage;
