@@ -2,7 +2,6 @@
 
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-
 import ckeditor5 from '@ckeditor/vite-plugin-ckeditor5';
 
 import { defineConfig } from 'vite';
@@ -28,4 +27,11 @@ export default defineConfig({
       '@pages': '/src/pages',
     },
   },
+  optimizeDeps: {
+    include: ['@ckeditor/ckeditor5-react', '@ckeditor/ckeditor5-build-balloon'],
+  },
+  build: {
+    commonjsOptions: {
+      exclude: ['ckeditor5-custom-build'], include: [] },
+    },
 });
