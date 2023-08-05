@@ -1,32 +1,50 @@
 import { useSubmit, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { RootState } from '@store/store';
+import { AppDispatch, RootState } from '@store/store';
+import { useDispatch } from 'react-redux';
+import { updateLink } from '@store/slice/sliceEditPage';
 interface ModalButtonProps {
   onCancel: () => void;
-  method: 'PUT' | 'POST';
+  method: 'PUT' | 'POST' | 'Dispatch';
+  boxIndex?: number;
 }
 
-export const ModalButton = ({ onCancel, method }: ModalButtonProps) => {
+export const ModalButton = ({
+  onCancel,
+  method,
+  boxIndex,
+}: ModalButtonProps) => {
   const submit = useSubmit();
   const location = useLocation();
   const data = useSelector((state: RootState) => state.modal);
-  // console.log(data);
+  const selectedBlockIndex = useSelector(
+    (state: RootState) => state.editPage.selectedBlockIndex
+  );
+  const dispatch = useDispatch<AppDispatch>();
   const submitHandler = () => {
     const url = location.pathname;
     console.log(url);
     // '/adminList/page' 페이지 action 함수로 전달 -> db저장 -> 리덕스 스토어 업데이트
 
-    const submitData = {
-      id: data.id,
-    };
-    submit(data, {
-      method: method,
-      action: '/adminlist/page', // link setting 에서도 사용해야하기 때문에 추후 url 변수로 변경해야함
-      encType: 'application/json',
-    });
+    if (method === 'PUT' || method === 'POST') {
+      submit(data, {
+        method: method,
+        action: '/adminlist/page', // 메뉴관리 페이지관리에서 사용하도록 url설정
+        encType: 'application/json',
+      });
+    } else if (method === 'Dispatch') {
+      console.log(data.url, boxIndex);
+      //edit page에서 사용 , index 부분 나중에 블럭 인덱스로 바꿔야함
+      dispatch(
+        updateLink({ index: 0, link: { link: data.url, linkIndex: boxIndex } })
+      );
+    }
+
     console.log(data);
     onCancel();
   };
+
+  // if (!boxIndex) return <div>Loading...</div>;
   return (
     <div className="w-[614px] h-[53px] flex">
       <button
