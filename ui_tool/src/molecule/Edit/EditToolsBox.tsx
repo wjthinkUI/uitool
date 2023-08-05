@@ -8,6 +8,7 @@ import {
   moveUpBlock,
   moveDownBlock,
   deleteBlock,
+  updateTypeAndContentLayout,
 } from '@store/slice/sliceEditPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/store';
@@ -36,8 +37,15 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
     dispatch(moveDownBlock({ index: block_id }));
   };
   const Trash = (block_id: number) => {
-    if (pageData.page.length === 1) return;
-    if (window.confirm('정말 삭제하시겠습니까?')) {
+    if (pageData.page.length === 1) {
+      dispatch(
+        updateTypeAndContentLayout({
+          index: 0,
+          type: 'initial',
+          contentLayout: 0,
+        })
+      );
+    } else if (window.confirm('정말 삭제하시겠습니까?')) {
       dispatch(deleteBlock({ index: block_id }));
     }
   };
