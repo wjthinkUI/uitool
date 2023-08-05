@@ -6,7 +6,6 @@ export const ModalBlockDesignHeader = ({
   onCancel,
 }: ModalBlockDesignHeaderProps) => {
 
-  console.log(onCancel)
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     onCancel()

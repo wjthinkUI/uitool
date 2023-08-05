@@ -52,18 +52,23 @@ const sliceEditPage = createSlice({
     },
     moveUpBlock: (state, action) => {
       const { index } = action.payload;
-      if (index === 0) return state;
-      const temp = state.page[index];
-      state.page[index] = state.page[index - 1];
-      state.page[index - 1] = temp;
+      if (index <= 0) return;
+      const pageCopy = [...state.page];
+      const temp = pageCopy[index];
+      pageCopy[index] = pageCopy[index - 1];
+      pageCopy[index - 1] = temp;
+      state.page = pageCopy;
     },
     moveDownBlock: (state, action) => {
       const { index } = action.payload;
-      if (index === state.page.length - 1) return state;
-      const temp = state.page[index];
-      state.page[index] = state.page[index + 1];
-      state.page[index + 1] = temp;
+      if (index >= state.page.length - 1) return;
+      const pageCopy = [...state.page];
+      const temp = pageCopy[index];
+      pageCopy[index] = pageCopy[index + 1];
+      pageCopy[index + 1] = temp;
+      state.page = pageCopy;
     },
+    
     deleteBlock: (state, action) => {
       const { index } = action.payload;
       if (state.page.length === 1) return state;
@@ -72,6 +77,7 @@ const sliceEditPage = createSlice({
     },
     putNewBlockTop: (state, action) => {
       const { index } = action.payload;
+      if (index < 0 || index >= state.page.length) return state;
       state.page.splice(index, 0, {
         type: '',
         contentLayout: 0,
@@ -81,6 +87,7 @@ const sliceEditPage = createSlice({
     },
     putNewBlockBottom: (state, action) => {
       const { index } = action.payload;
+      if (index < 0 || index >= state.page.length) return state;
       state.page.splice(index + 1, 0, {
         type: '',
         contentLayout: 0,
@@ -99,6 +106,7 @@ export const {
   updateSrc,
   moveUpBlock,
   moveDownBlock,
+  deleteBlock,
   putNewBlockTop,
   putNewBlockBottom,
 } = sliceEditPage.actions;

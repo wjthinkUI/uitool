@@ -134,6 +134,8 @@ export const EditPage = () => {
    *
    */
 
+  // new Block - design select - modal On
+
   return (
     <>
       {!isLoading && (
@@ -151,20 +153,21 @@ export const EditPage = () => {
             }
           >
             {/* <ModalBlockDesign /> */}
-            <EditAddSelectDesign
-              onClick={() => console.log('modal on -> new block + design')}
+            <EditAddSelectDesign index={0}
             />
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (
+                <div key={i}>
                 <EditBlock
                   onClickTop={() => handleEditAddBlockHere(i)}
                   onClickBottom={() => handleEditAddBlockBottom(i)}
-                  key={i}
+                  index={i}
                 >
                   <Component key={i} />
                 </EditBlock>
+                </div>
               );
             })}
           </GridContainer>

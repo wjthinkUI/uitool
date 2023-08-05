@@ -11,8 +11,9 @@ import { useEffect } from 'react';
 import { selectBlockIndex } from '@store/slice/sliceEditPage';
 interface ModalBlockDesignProps {
   blockIndex: number;
+  closeModal: () => void;
 }
-export const ModalBlockDesign = ({ blockIndex }: ModalBlockDesignProps) => {
+export const ModalBlockDesign = ({ blockIndex, closeModal }: ModalBlockDesignProps) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -24,7 +25,7 @@ export const ModalBlockDesign = ({ blockIndex }: ModalBlockDesignProps) => {
       {/* {createPortal(<ModalBackDrop />, modalElement)} */}
       {createPortal(
         <ModalBlockDesignContainer>
-          <ModalBlockDesignHeader onCancel={() => {}} />
+          <ModalBlockDesignHeader onCancel={closeModal} />
           <div className="flex">
             <ModalBlockDesignSideBar />
             <div className="flex justify-center grow">
