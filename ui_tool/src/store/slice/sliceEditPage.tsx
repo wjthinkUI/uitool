@@ -9,7 +9,7 @@ const initialState = {
   },
   page: [
     {
-      type: '',
+      type: 'initial',
       contentLayout: 0,
       src: [],
       link: [],
@@ -27,7 +27,7 @@ const sliceEditPage = createSlice({
       if (state.page.length === 0) {
         //빈페이지 일경우
         state.page.push({
-          type: '',
+          type: 'initial',
           contentLayout: 0,
           src: [],
           link: [],
@@ -39,8 +39,10 @@ const sliceEditPage = createSlice({
     },
     updateTypeAndContentLayout: (state, action) => {
       const { index, type, contentLayout } = action.payload;
-      state.page[index].type = type;
-      state.page[index].contentLayout = contentLayout;
+      if (index >= 0 && index < state.page.length) {
+        state.page[index].type = type;
+        state.page[index].contentLayout = contentLayout;
+      }
     },
     updateSrc: (state, action) => {
       const { index, src } = action.payload;
@@ -79,7 +81,7 @@ const sliceEditPage = createSlice({
       const { index } = action.payload;
       if (index < 0 || index >= state.page.length) return state;
       state.page.splice(index, 0, {
-        type: '',
+        type: 'initial',
         contentLayout: 0,
         src: [],
         link: [],
@@ -89,7 +91,7 @@ const sliceEditPage = createSlice({
       const { index } = action.payload;
       if (index < 0 || index >= state.page.length) return state;
       state.page.splice(index + 1, 0, {
-        type: '',
+        type: 'initial',
         contentLayout: 0,
         src: [],
         link: [],

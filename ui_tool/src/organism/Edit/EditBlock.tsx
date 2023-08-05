@@ -10,9 +10,7 @@ interface EditBlockProps {
     index: number
 }
 export const EditBlock = ({children, onClickTop, onClickBottom, index}:EditBlockProps) => {
-    const [modal, setModal] = useState(false)
 
-console.log(index)
     return (
         <EditGroupContainer>
             <EditAddBlockHereTop onClick={onClickTop}/>

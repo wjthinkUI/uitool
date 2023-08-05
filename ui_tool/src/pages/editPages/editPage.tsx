@@ -48,7 +48,7 @@ import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
  *
  */
 const LAYOUT_COMPONENT = {
-  '': {
+  initial: {
     layout0: EditAddSelectDesign,
   },
   image: {
@@ -153,8 +153,7 @@ export const EditPage = () => {
             }
           >
             {/* <ModalBlockDesign /> */}
-            <EditAddSelectDesign index={0}
-            />
+            <EditAddSelectDesign key={0} block_id={0} />
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
@@ -165,7 +164,7 @@ export const EditPage = () => {
                   onClickBottom={() => handleEditAddBlockBottom(i)}
                   index={i}
                 >
-                  <Component key={i} />
+                  <Component key={i} block_id={i}/>
                 </EditBlock>
                 </div>
               );

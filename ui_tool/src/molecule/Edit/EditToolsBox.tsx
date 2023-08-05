@@ -18,6 +18,7 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
     const pageData = useSelector((state: RootState) => state.editPage);
     const Write = (block_id: number) => { }
     const ReDesignSelect = () => {
+        console.log(block_id)
         setModal(true)
      }
     const MoveUp = (block_id: number) => {
