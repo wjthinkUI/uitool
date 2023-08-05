@@ -8,15 +8,7 @@
         "category": "웅진북클럽",
         "date": "2023-08-01 20:48:12"
       },
-      "page": [
-        {
-          "index": 0,
-          "type": "image",
-          "contentLayout": 1,
-          "src": [],
-          "link": []
-        }
-      ]
+      "page": []
     },
     {
       "pageInfo": {
@@ -26,7 +18,7 @@
         "category": "웅진북클럽",
         "date": "2023-07-31 21:26:27"
       },
-      "page": [{}]
+      "page": []
     },
     {
       "pageInfo": {
@@ -36,7 +28,7 @@
         "category": "웅진스마트올",
         "date": "2023-07-31 21:26:27"
       },
-      "page": {}
+      "page": []
     },
     {
       "pageInfo": {
@@ -46,7 +38,7 @@
         "category": "출판/e러닝",
         "date": "2023-07-31 21:26:27"
       },
-      "page": {}
+      "page": []
     },
     {
       "pageInfo": {
@@ -56,7 +48,7 @@
         "category": "웅진스마트올",
         "date": "2023-07-31 21:26:27"
       },
-      "page": {}
+      "page": []
     },
     {
       "pageInfo": {
@@ -66,7 +58,7 @@
         "category": "출판/e러닝",
         "date": "2023-07-31 21:26:27"
       },
-      "page": {}
+      "page": []
     },
     {
       "pageInfo": {
@@ -76,7 +68,7 @@
         "category": "웅진북클럽",
         "date": "2023-07-31 21:26:27"
       },
-      "page": {}
+      "page": []
     },
     {
       "pageInfo": {
@@ -86,7 +78,7 @@
         "category": "웅진스마트올",
         "date": "2023-07-31 21:26:27"
       },
-      "page": {}
+      "page": []
     }
   ],
   "navigations": [

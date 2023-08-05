@@ -41,6 +41,8 @@ import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { EditBlock } from '@organism/Edit/EditBlock';
 import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
+import { PageNavigation } from '@organism/Nav/Navigation';
+import { Footer } from '@organism/Nav/Footer';
 /**
  * 1. EditPage에서는 페이지의 정보를 받아와서 페이지를 렌더링한다.
  * 2. 페이지의 정보는 store에서 받아온다.
@@ -118,9 +120,10 @@ const LAYOUT_COMPONENT = {
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [render, setRender] = useState<boolean>(false);
   const loadedData: any = useLoaderData(); //promise, page type
   const dispatch = useDispatch<AppDispatch>();
-  console.log('loadedData =', loadedData);
+  // console.log('loadedData =', loadedData);
 
   useEffect(() => {
     dispatch(
@@ -138,7 +141,7 @@ export const EditPage = () => {
     setActiveTab(tabName);
   };
 
-  if (isLoading) {
+  if (isLoading && !pageData) {
     return <LoadingSpinner />;
   }
 
@@ -167,7 +170,7 @@ export const EditPage = () => {
 
   return (
     <>
-      {!isLoading && (
+      {!isLoading && pageData && (
         <div className="w-[100vw] h-auto">
           <AdabtiveTab onTabChange={handleTabChange} />
           <GridContainer
@@ -181,30 +184,26 @@ export const EditPage = () => {
                 : 0
             }
           >
+            <PageNavigation />
             {/* <ModalBlockDesign /> */}
-            <EditAddSelectDesign key={0} block_id={0} />
-            {/* <Text1 />
-            <Text2 />
-            <Text3 />
-            <Text4 />
-            <Text5 />
-            <Text6 /> */}
+            {/* <EditAddSelectDesign key={0} block_id={0} /> */}
             {pageData.page.map((v: any, i: any) => {
               console.log('v = ', v);
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (
                 <div key={i}>
-                <EditBlock
-                  onClickTop={() => handleEditAddBlockHere(i)}
-                  onClickBottom={() => handleEditAddBlockBottom(i)}
-                  index={i}
-                >
-                  <Component key={i} block_id={i}/>
-                </EditBlock>
+                  <EditBlock
+                    onClickTop={() => handleEditAddBlockHere(i)}
+                    onClickBottom={() => handleEditAddBlockBottom(i)}
+                    index={i}
+                  >
+                    <Component key={i} block_id={i} />
+                  </EditBlock>
                 </div>
               );
             })}
+            <Footer />
           </GridContainer>
         </div>
       )}

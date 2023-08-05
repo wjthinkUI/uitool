@@ -10,15 +10,17 @@ import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 interface Image1Props {
   height: string;
   boxIndex: number;
+  blockIndex: number;
 }
 
-export const Image = ({ height, boxIndex }: Image1Props) => {
+export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
   const dispatch = useDispatch<AppDispatch>();
+  const loadedpageData = useSelector((state: RootState) => state.editPage);
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [inputId, setInputId] = useState<string>('');
   const [imageId, setImageId] = useState<string>('');
   const [showModalLink, setShowModalLink] = useState<boolean>(false);
-  const { src } = useSelector((state: RootState) => state.editPage.page[0]);
+
   useEffect(() => {
     const uniqueId = uuidv4();
     setInputId(() => uniqueId);
@@ -26,7 +28,15 @@ export const Image = ({ height, boxIndex }: Image1Props) => {
     setImageId(() => imageId);
   }, []);
 
+  useEffect(() => {
+    if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
+      setSelectedImage(
+        () => loadedpageData.page[blockIndex].src[boxIndex].imageSrc
+      );
+    }
+  }, [loadedpageData]);
   // if (!boxIndex) return <LoadingSpinner />;
+  // console.log(boxIndex, blockIndex);
 
   const addImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files?.[0];
@@ -38,7 +48,7 @@ export const Image = ({ height, boxIndex }: Image1Props) => {
           console.log(boxIndex);
           dispatch(
             updateSrc({
-              index: 0, //추후 인덱스 받아와야함
+              index: blockIndex, //추후 인덱스 받아와야함
               src: {
                 imageSrc: reader.result,
                 imageId: imageId,
@@ -59,6 +69,12 @@ export const Image = ({ height, boxIndex }: Image1Props) => {
     if (!target.src.endsWith('https://via.placeholder.com/400')) {
       target.src = 'https://via.placeholder.com/400';
     }
+    // const target = event.currentTarget;
+    // if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
+    //   target.src = loadedpageData.page[blockIndex].src[boxIndex].imageSrc;
+    // } else {
+    //   target.src = 'https://via.placeholder.com/400';
+    // }
   };
   return (
     <div
@@ -78,12 +94,14 @@ export const Image = ({ height, boxIndex }: Image1Props) => {
         >
           <IconPhoto />
         </label>
+
         <span className="hover:bg-primary-950 flex items-center justify-center w-[30px] h-[30px] bg-primary-900 rounded cursor-pointer">
           <IconLink onClick={() => setShowModalLink((prev) => !prev)} />
           {showModalLink && (
             <ModalLinkSetting
               onCancel={() => setShowModalLink((prev) => !prev)}
               boxIndex={boxIndex}
+              blockIndex={blockIndex}
             />
           )}
         </span>

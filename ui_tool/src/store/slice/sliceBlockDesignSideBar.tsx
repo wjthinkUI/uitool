@@ -6,6 +6,7 @@ const sliceBlockDesignSideBar = createSlice({
   name: 'sidebar',
   initialState: {
     selectItem: '',
+    modalCancel: () => {},
   },
   reducers: {
     setDesign: (state, action) => {
@@ -16,8 +17,12 @@ const sliceBlockDesignSideBar = createSlice({
         throw Error('invalid payload type, try again...');
       }
     },
+    closeBlockDesignModal: (state, action) => {
+      state.modalCancel = action.payload;
+    },
   },
 });
 
-export const { setDesign } = sliceBlockDesignSideBar.actions;
+export const { setDesign, closeBlockDesignModal } =
+  sliceBlockDesignSideBar.actions;
 export default sliceBlockDesignSideBar;
