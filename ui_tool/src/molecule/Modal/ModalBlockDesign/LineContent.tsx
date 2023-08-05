@@ -11,9 +11,6 @@ export const LineContent = ({ list, type }: { list: BlockDesignContent[], type: 
   );
   const dispatch = useDispatch<AppDispatch>();
 
-  const tempHandler = (id: number) => {
-    console.log('clicked id = ', id);
-  };
   const handleDispatch = (contentLayout: number, type: string) => {
     dispatch(
       updateTypeAndContentLayout({

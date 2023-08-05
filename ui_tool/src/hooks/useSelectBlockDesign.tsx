@@ -159,7 +159,7 @@ const blockDesignData: any[] = [
     type: 'text',
     name: '텍스트',
     element() {
-      return <TextContent list={this.contentList} />;
+      return <TextContent list={this.contentList} type={this.type} />;
     },
     contentList: [
       {
