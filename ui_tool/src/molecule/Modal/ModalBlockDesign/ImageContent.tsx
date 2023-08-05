@@ -1,18 +1,21 @@
 import { ModalBlockDesignMediumBox } from '@atom/Modal/ModalBlockDesign/ModalBlockDesignMediumBox';
 import type { BlockDesignContent } from 'types';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@store/store';
 import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
-export const ImageContent = ({
-  list,
-  type,
-}: {
-  list: BlockDesignContent[];
-  type: BlockDesignContent;
-}) => {
+export const ImageContent = ({ list, type }: any) => {
+  const blockIndex = useSelector(
+    (state: RootState) => state.editPage.selectedBlockIndex
+  );
   const dispatch = useDispatch<AppDispatch>();
   const handleDispatch = (contentLayout: number, type: string) => {
-    dispatch(updateTypeAndContentLayout({ index: 0, type, contentLayout }));
+    dispatch(
+      updateTypeAndContentLayout({
+        index: blockIndex,
+        type,
+        contentLayout,
+      })
+    );
   };
 
   return (

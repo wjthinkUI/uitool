@@ -7,7 +7,6 @@ import { ListContent } from '@molecule/Modal/ModalBlockDesign/ListContent';
 import { TextContent } from '@molecule/Modal/ModalBlockDesign/TextContent';
 import { TableContent } from '@molecule/Modal/ModalBlockDesign/TableContent';
 import { LayoutContent } from '@molecule/Modal/ModalBlockDesign/LayoutContent';
-import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
 import type { BlockDesignMap } from 'types';
 
 export const useSelectBlockDesign = () => {
@@ -15,10 +14,8 @@ export const useSelectBlockDesign = () => {
     (state: RootState) => state.sidebar.selectItem
   );
   const [selectedDesign, setSelectedDesign] = useState<ReactNode>(null);
-
   useEffect(() => {
     const data = blockDesignData.find((el) => el.type === selectedType);
-    // console.log(data[0].contentList[0].svgEl);
     setSelectedDesign(data?.element());
   }, [selectedType]);
 

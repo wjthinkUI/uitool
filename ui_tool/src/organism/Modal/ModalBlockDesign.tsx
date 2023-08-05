@@ -5,31 +5,37 @@ import { ModalBlockDesignWrapper } from '@atom/Modal/ModalBlockDesign/ModalBlock
 import { useSelectBlockDesign } from '@hooks/useSelectBlockDesign';
 import { ModalBackDrop } from '@atom/Modal/ModalBackDrop';
 import { createPortal } from 'react-dom';
-
-const ModalBlockDesignPortal = () => {
-  const { selectedDesign, selectedType } = useSelectBlockDesign();
-  return (
-    <ModalBlockDesignContainer>
-      <ModalBlockDesignHeader onCancel={() => {}} />
-      <div className="flex">
-        <ModalBlockDesignSideBar />
-        <div className="flex justify-center grow">
-          <ModalBlockDesignWrapper type={selectedType}>
-            {selectedDesign}
-          </ModalBlockDesignWrapper>
-        </div>
-      </div>
-    </ModalBlockDesignContainer>
-  );
-};
-
-export const ModalBlockDesign = () => {
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@store/store';
+import { useEffect } from 'react';
+import { selectBlockIndex } from '@store/slice/sliceEditPage';
+interface ModalBlockDesignProps {
+  blockIndex: number;
+}
+export const ModalBlockDesign = ({ blockIndex }: ModalBlockDesignProps) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
-
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(selectBlockIndex(blockIndex));
+  }, []);
+  const { selectedDesign, selectedType } = useSelectBlockDesign();
   return (
     <>
       {/* {createPortal(<ModalBackDrop />, modalElement)} */}
-      {createPortal(<ModalBlockDesignPortal />, modalElement)}
+      {createPortal(
+        <ModalBlockDesignContainer>
+          <ModalBlockDesignHeader onCancel={() => {}} />
+          <div className="flex">
+            <ModalBlockDesignSideBar />
+            <div className="flex justify-center grow">
+              <ModalBlockDesignWrapper type={selectedType}>
+                {selectedDesign}
+              </ModalBlockDesignWrapper>
+            </div>
+          </div>
+        </ModalBlockDesignContainer>,
+        modalElement
+      )}
     </>
   );
 };

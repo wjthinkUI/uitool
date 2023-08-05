@@ -119,7 +119,7 @@ export const EditPage = () => {
                 : 0
             }
           >
-            <ModalBlockDesign />
+            <ModalBlockDesign blockIndex={0} />
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
