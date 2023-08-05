@@ -13,9 +13,10 @@ import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 interface props {
   onCancel: () => void;
   boxIndex: number;
+  blockIndex: number;
 }
 
-export const ModalLinkSetting = ({ onCancel, boxIndex }: props) => {
+export const ModalLinkSetting = ({ onCancel, boxIndex, blockIndex }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   const dispath = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -26,7 +27,8 @@ export const ModalLinkSetting = ({ onCancel, boxIndex }: props) => {
     clearState();
   }, []);
 
-  // if (!boxIndex) return <LoadingSpinner />;
+  // if (boxIndex === undefined || blockIndex === undefined)
+  //   return <LoadingSpinner />;
   return (
     <>
       {createPortal(<ModalBackDrop onCancel={onCancel} />, modalElement)}
@@ -38,6 +40,7 @@ export const ModalLinkSetting = ({ onCancel, boxIndex }: props) => {
             onCancel={onCancel}
             method="Dispatch"
             boxIndex={boxIndex}
+            blockIndex={blockIndex}
           />
         </ModalContainer>,
         modalElement

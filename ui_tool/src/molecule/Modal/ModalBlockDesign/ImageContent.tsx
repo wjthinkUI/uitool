@@ -7,6 +7,9 @@ export const ImageContent = ({ list, type }: any) => {
   const blockIndex = useSelector(
     (state: RootState) => state.editPage.selectedBlockIndex
   );
+  const modalCancel = useSelector(
+    (state: RootState) => state.sidebar.modalCancel
+  );
   const dispatch = useDispatch<AppDispatch>();
   const handleDispatch = (contentLayout: number, type: string) => {
     dispatch(
@@ -16,6 +19,7 @@ export const ImageContent = ({ list, type }: any) => {
         contentLayout,
       })
     );
+    modalCancel();
   };
 
   return (

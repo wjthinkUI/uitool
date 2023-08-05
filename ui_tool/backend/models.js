@@ -145,6 +145,20 @@ async function getPageData(id) {
   if (!page) throw new Error('can not find page');
   return page;
 }
+
+async function updatePage(id, receivedData) {
+  const data = await readData();
+  // console.log(typeof id);
+  // console.log(receivedData.page);
+  const index = data.pages.findIndex((el) => el.pageInfo.id === parseInt(id));
+  // console.log(index);
+  if (index === undefined) throw new Error('update error...');
+  data.pages[index].page = [...receivedData.page];
+  // console.log(JSON.stringify(data));
+  await writeData(data);
+
+  return 'update success';
+}
 exports.readData = readData;
 exports.getPageData = getPageData;
 exports.getAllPagesInfo = getAllPagesInfo;
@@ -154,4 +168,5 @@ exports.updatePageInfo = updatePageInfo;
 exports.duplicatePage = duplicatePage;
 exports.deleteNavigations = deleteNavigations;
 exports.updateNavigation = updateNavigation;
+exports.updatePage = updatePage;
 // exports.createPage = createPage;

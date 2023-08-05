@@ -24,15 +24,10 @@ const sliceEditPage = createSlice({
   reducers: {
     setInitialState: (state, action) => {
       state.pageInfo = action.payload.pageInfo;
-      if (state.page.length === 0) {
-        //빈페이지 일경우
-        state.page.push({
-          type: 'initial',
-          contentLayout: 0,
-          src: [],
-          link: [],
-        });
-      } else state.page = action.payload.page; //빈페이지 아닐 경우
+      if (action.payload.page.length !== 0) {
+        state.page = action.payload.page; //빈페이지 아닐 경우
+      }
+      //빈페이지 일 경우 자동으로 초기값 들어감
     },
     selectBlockIndex: (state, action) => {
       state.selectedBlockIndex = action.payload;
@@ -60,7 +55,7 @@ const sliceEditPage = createSlice({
     },
     moveUpBlock: (state, action) => {
       const { index } = action.payload;
-      if (index <= 0) return;
+      if (index <= 0) return state;
       const pageCopy = [...state.page];
       const temp = pageCopy[index];
       pageCopy[index] = pageCopy[index - 1];
@@ -69,17 +64,18 @@ const sliceEditPage = createSlice({
     },
     moveDownBlock: (state, action) => {
       const { index } = action.payload;
-      if (index >= state.page.length - 1) return;
+      if (index >= state.page.length - 1) return state;
       const pageCopy = [...state.page];
       const temp = pageCopy[index];
       pageCopy[index] = pageCopy[index + 1];
       pageCopy[index + 1] = temp;
+      console.log('pageCopy = ', pageCopy);
       state.page = pageCopy;
     },
-    
+
     deleteBlock: (state, action) => {
       const { index } = action.payload;
-      if (state.page.length === 1) return state;
+      if (state.page.length === 0) return state;
       const filteredPage = state.page.filter((_, idx) => idx !== index);
       state.page = filteredPage;
     },

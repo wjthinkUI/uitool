@@ -1,3 +1,5 @@
+import { redirect } from 'react-router-dom';
+
 export const editPageLoader = async ({ request, params }: any) => {
   const res = await fetch(`http://localhost:5174/edit/${params.id}`);
   if (!res.ok) {
@@ -23,7 +25,7 @@ const loadFn = async (id: string) => {
 
 export const editPageAction = async ({ request, params }: any) => {
   const data = await request.json(); //페이지 데이터
-
+  console.log('action data', data);
   if (request.method === 'POST') {
     //db에 페이지 전송
     const res = await fetch(`http://localhost:5174/edit/${params.id}`, {
@@ -38,8 +40,8 @@ export const editPageAction = async ({ request, params }: any) => {
     }
 
     //미정, 저장 후 디자인한 페이지로 redirect or 페이지 관리로 redirect
-    const updatedData = await res.json();
-    console.log(updatedData.data);
-    return updatedData.data;
+    const message = await res.json();
+    console.log(message);
+    return redirect('/adminlist/page');
   }
 };
