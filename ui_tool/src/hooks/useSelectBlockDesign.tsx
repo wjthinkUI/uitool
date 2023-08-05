@@ -68,7 +68,7 @@ const blockDesignData: any[] = [
     type: 'line',
     name: '구분선',
     element() {
-      return <LineContent list={this.contentList} />;
+      return <LineContent list={this.contentList} type={this.type}/>;
     },
     contentList: [
       {

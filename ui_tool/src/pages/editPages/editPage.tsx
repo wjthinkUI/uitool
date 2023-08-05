@@ -14,6 +14,7 @@ import { Image2 } from '@atom/Edit/Image2';
 import { Image3 } from '@atom/Edit/Image3';
 import { Image4 } from '@atom/Edit/Image4';
 import { ImageCustom } from '@atom/Edit/ImageCustom';
+import { Line1 } from '@atom/Edit/line/line1';
 import {
   blockInitialize,
   setInitialState,
@@ -56,6 +57,9 @@ const LAYOUT_COMPONENT = {
     layout2: Image2,
     layout3: Image3,
     layout4: Image4,
+  },
+  line: {
+    layout1: Line1,
   },
   text: {
     layout1: Image1,
