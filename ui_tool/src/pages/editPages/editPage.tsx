@@ -15,7 +15,6 @@ import { Image3 } from '@atom/Edit/Image3';
 import { Image4 } from '@atom/Edit/Image4';
 import { ImageCustom } from '@atom/Edit/ImageCustom';
 import {
-  blockInitialize,
   setInitialState,
   putNewBlockBottom,
   putNewBlockTop,
@@ -150,7 +149,7 @@ export const EditPage = () => {
                 : 0
             }
           >
-            {/* <ModalBlockDesign /> */}
+            {/* <ModalBlockDesign blockIndex={0} /> */}
             <EditAddSelectDesign
               onClick={() => console.log('modal on -> new block + design')}
             />
