@@ -7,19 +7,19 @@ interface ModalButtonProps {
   onCancel: () => void;
   method: 'PUT' | 'POST' | 'Dispatch';
   boxIndex?: number;
+  blockIndex?: number;
 }
 
 export const ModalButton = ({
   onCancel,
   method,
   boxIndex,
+  blockIndex,
 }: ModalButtonProps) => {
   const submit = useSubmit();
   const location = useLocation();
   const data = useSelector((state: RootState) => state.modal);
-  const selectedBlockIndex = useSelector(
-    (state: RootState) => state.editPage.selectedBlockIndex
-  );
+  console.log(boxIndex, blockIndex);
   const dispatch = useDispatch<AppDispatch>();
   const submitHandler = () => {
     const url = location.pathname;
@@ -36,7 +36,10 @@ export const ModalButton = ({
       console.log(data.url, boxIndex);
       //edit page에서 사용 , index 부분 나중에 블럭 인덱스로 바꿔야함
       dispatch(
-        updateLink({ index: 0, link: { link: data.url, linkIndex: boxIndex } })
+        updateLink({
+          index: blockIndex,
+          link: { link: data.url, linkIndex: boxIndex },
+        })
       );
     }
 

@@ -112,7 +112,7 @@ export const EditPage = () => {
     setActiveTab(tabName);
   };
 
-  if (isLoading) {
+  if (isLoading && !pageData) {
     return <LoadingSpinner />;
   }
 
@@ -141,7 +141,7 @@ export const EditPage = () => {
 
   return (
     <>
-      {!isLoading && (
+      {!isLoading && pageData && (
         <div className="w-[100vw] h-auto">
           <AdabtiveTab onTabChange={handleTabChange} />
           <GridContainer
@@ -162,13 +162,13 @@ export const EditPage = () => {
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (
                 <div key={i}>
-                <EditBlock
-                  onClickTop={() => handleEditAddBlockHere(i)}
-                  onClickBottom={() => handleEditAddBlockBottom(i)}
-                  index={i}
-                >
-                  <Component key={i} block_id={i}/>
-                </EditBlock>
+                  <EditBlock
+                    onClickTop={() => handleEditAddBlockHere(i)}
+                    onClickBottom={() => handleEditAddBlockBottom(i)}
+                    index={i}
+                  >
+                    <Component key={i} block_id={i} />
+                  </EditBlock>
                 </div>
               );
             })}
