@@ -14,6 +14,7 @@ import { Image2 } from '@atom/Edit/Image2';
 import { Image3 } from '@atom/Edit/Image3';
 import { Image4 } from '@atom/Edit/Image4';
 import { ImageCustom } from '@atom/Edit/ImageCustom';
+import { Line1 } from '@atom/Edit/line/line1';
 import {
   setInitialState,
   putNewBlockBottom,
@@ -47,7 +48,7 @@ import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
  *
  */
 const LAYOUT_COMPONENT = {
-  '': {
+  initial: {
     layout0: EditAddSelectDesign,
   },
   image: {
@@ -55,6 +56,9 @@ const LAYOUT_COMPONENT = {
     layout2: Image2,
     layout3: Image3,
     layout4: Image4,
+  },
+  line: {
+    layout1: Line1,
   },
   text: {
     layout1: Image1,
@@ -133,6 +137,8 @@ export const EditPage = () => {
    *
    */
 
+  // new Block - design select - modal On
+
   return (
     <>
       {!isLoading && (
@@ -149,21 +155,21 @@ export const EditPage = () => {
                 : 0
             }
           >
-            {/* <ModalBlockDesign blockIndex={0} /> */}
-            <EditAddSelectDesign
-              onClick={() => console.log('modal on -> new block + design')}
-            />
+            {/* <ModalBlockDesign /> */}
+            <EditAddSelectDesign key={0} block_id={0} />
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (
+                <div key={i}>
                 <EditBlock
                   onClickTop={() => handleEditAddBlockHere(i)}
                   onClickBottom={() => handleEditAddBlockBottom(i)}
-                  key={i}
+                  index={i}
                 >
-                  <Component key={i} />
+                  <Component key={i} block_id={i}/>
                 </EditBlock>
+                </div>
               );
             })}
           </GridContainer>
