@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-let initialState = {
+const initialState = {
   pageInfo: {
     id: 0,
     title: '',
@@ -9,7 +9,6 @@ let initialState = {
   },
   page: [
     {
-      index: 0,
       type: '',
       contentLayout: 0,
       src: [],
@@ -25,11 +24,9 @@ const sliceEditPage = createSlice({
   reducers: {
     setInitialState: (state, action) => {
       state.pageInfo = action.payload.pageInfo;
-
-      //빈페이지 일경우
       if (state.page.length === 0) {
+        //빈페이지 일경우
         state.page.push({
-          index: 0,
           type: '',
           contentLayout: 0,
           src: [],
@@ -58,32 +55,43 @@ const sliceEditPage = createSlice({
       if (index === 0) return state;
       const temp = state.page[index];
       state.page[index] = state.page[index - 1];
-      state.page[index].index = index;
       state.page[index - 1] = temp;
-      state.page[index - 1].index = index - 1;
     },
     moveDownBlock: (state, action) => {
       const { index } = action.payload;
       if (index === state.page.length - 1) return state;
       const temp = state.page[index];
       state.page[index] = state.page[index + 1];
-      state.page[index].index = index;
       state.page[index + 1] = temp;
-      state.page[index + 1].index = index + 1;
     },
     deleteBlock: (state, action) => {
       const { index } = action.payload;
+      if (state.page.length === 1) return state;
       const filteredPage = state.page.filter((_, idx) => idx !== index);
       state.page = filteredPage;
-      state.page.forEach((block, idx) => {
-        block.index = idx;
+    },
+    putNewBlockTop: (state, action) => {
+      const { index } = action.payload;
+      state.page.splice(index, 0, {
+        type: '',
+        contentLayout: 0,
+        src: [],
+        link: [],
+      });
+    },
+    putNewBlockBottom: (state, action) => {
+      const { index } = action.payload;
+      state.page.splice(index + 1, 0, {
+        type: '',
+        contentLayout: 0,
+        src: [],
+        link: [],
       });
     },
   },
 });
 
 export const {
-  blockInitialize,
   setInitialState,
   selectBlockIndex,
   updateTypeAndContentLayout,
@@ -91,5 +99,7 @@ export const {
   updateSrc,
   moveUpBlock,
   moveDownBlock,
+  putNewBlockTop,
+  putNewBlockBottom,
 } = sliceEditPage.actions;
 export default sliceEditPage;
