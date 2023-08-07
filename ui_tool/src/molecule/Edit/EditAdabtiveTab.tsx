@@ -59,7 +59,7 @@ export const AdabtiveTab = ({ onTabChange }: AdabtiveTabProps) => {
       </div>
       <div className="absolute right-0 inline-block mr-5 top-1 w-fit h-fit">
         <button
-          className="w-[120px] h-[55px] text-primary-600 bg-grayscale-500 rounded-lg text-body1r hover:text-primary-950"
+          className="w-[120px] h-[55px] text-primary-800 bg-grayscale-900 rounded-lg text-body1r hover:text-primary-950"
           onClick={handlePageSubmit}
         >
           적용하기
