@@ -22,6 +22,7 @@ export const Text2 = () => {
             <CKEditor
                 editor={Editor}
                 config={textDefaultConfig}
+                disabled={!location.pathname.startsWith('/edit/')}
                 data={content}
                 onChange={(event: any, editor: any) => {
                     const data = editor.getData();

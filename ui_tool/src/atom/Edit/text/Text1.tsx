@@ -12,7 +12,7 @@ export const Text1 = () => {
 	const id = useMemo(() => uuidv4(), []);
 	const content = useSelector((state: RootState) => state.textEditor.textBlocks[id]?.content || '<p>내용을 작성해주세요.</p>');
 	const templateContent = `<p style="text-align:center;"><span style="color:hsl(210,75%,60%);">Lorem Ipsum is simply dummy</span></p><p style="text-align:center;"><span class="text-big"><strong>Lorem Ipsum has been the industry's standard</strong></span></p><p style="text-align:center;">when an unknown printer took a galley of type and scrambled it to make a type specimen book.&nbsp;</p><p style="text-align:center;">It has survived not only five centuries, but also the leap into electronic typesetting</p>`
-		
+
 	useEffect(() => {
 		dispatch(addTextBlock({id, content: templateContent}));
 	}, [dispatch, id]);
@@ -22,6 +22,7 @@ export const Text1 = () => {
             <CKEditor
                 editor={Editor}
                 config={textDefaultConfig}
+                disabled={!location.pathname.startsWith('/edit/')}
                 data={content}
                 onChange={(event: any, editor: any) => {
                     const data = editor.getData();
