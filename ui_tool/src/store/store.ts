@@ -6,6 +6,7 @@ import sliceModal from './slice/sliceModal';
 import slicePagesInfo from './slice/slicePagesInfo';
 import sliceNavigations from './slice/sliceNavigations';
 import sliceEditPage from './slice/sliceEditPage';
+import sliceTextEditor from './slice/sliceTextEditor';
 export const store = configureStore({
   reducer: {
     editPage: sliceEditPage.reducer,
@@ -14,6 +15,7 @@ export const store = configureStore({
     modal: sliceModal.reducer,
     pagesinfo: slicePagesInfo.reducer,
     navigations: sliceNavigations.reducer,
+    textEditor: sliceTextEditor.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
