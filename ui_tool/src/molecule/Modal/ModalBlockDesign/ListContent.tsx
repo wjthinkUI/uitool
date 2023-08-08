@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
-import { modalToggle } from '@store/slice/sliceModalToggle';
+import { blockModalToggle } from '@store/slice/sliceModalToggle';
 export const ListContent = ({
   list,
   type,
@@ -25,7 +25,7 @@ export const ListContent = ({
         contentLayout,
       })
     );
-    dispatch(modalToggle());
+    dispatch(blockModalToggle());
   };
   return (
     <>

@@ -38,23 +38,30 @@ const sliceEditPage = createSlice({
         state.page[index].link = [{}];
       }
     },
+    // updateSrc: (state, action) => {
+    //   const { index, src } = action.payload;
+    //   const srcIndex = src.srcIndex;
+    //   // const hasData = state.page[index].src.find(
+    //   //   (item) => item.imageSrc === src.imageSrc
+    //   // );
+    //   // if (!hasData)
+    //   state.page[index].src[srcIndex] = src;
+    // },
     updateSrc: (state, action) => {
       const { index, src } = action.payload;
       const srcIndex = src.srcIndex;
-      // const hasData = state.page[index].src.find(
-      //   (item) => item.imageSrc === src.imageSrc
-      // );
-      // if (!hasData)
-      state.page[index].src[srcIndex] = src;
+      const existingData = state.page[index].src[srcIndex];
+      state.page[index].src[srcIndex] = { ...existingData, ...src };
     },
     updateLink: (state, action) => {
       const { index, link } = action.payload;
       const linkIndex = link.linkIndex;
-      state.page[index].link[linkIndex] = link;
+      const existingData = state.page[index].link[linkIndex];
+      state.page[index].link[linkIndex] = { ...existingData, ...link };
     },
     pushEmptyObjToSrcAndLink: (state, action) => {
       const { index } = action.payload;
-      state.page[index].src.push({});
+      // state.page[index].src.push({});
       state.page[index].link.push({});
     },
     deleteSrcAndLink: (state, action) => {

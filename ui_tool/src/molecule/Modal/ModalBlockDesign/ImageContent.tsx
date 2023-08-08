@@ -3,7 +3,7 @@ import type { BlockDesignContent } from 'types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
-import { modalToggle } from '@store/slice/sliceModalToggle';
+import { blockModalToggle } from '@store/slice/sliceModalToggle';
 export const ImageContent = ({ list, type }: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const blockIndex = useSelector(
@@ -26,7 +26,7 @@ export const ImageContent = ({ list, type }: any) => {
         contentLayout,
       })
     );
-    dispatch(modalToggle());
+    dispatch(blockModalToggle());
   };
 
   return (

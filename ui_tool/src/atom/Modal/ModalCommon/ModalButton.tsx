@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { AppDispatch, RootState } from '@store/store';
 import { useDispatch } from 'react-redux';
 import { updateLink } from '@store/slice/sliceEditPage';
-import { modalToggle } from '@store/slice/sliceModalToggle';
+import { commonModalToggle } from '@store/slice/sliceModalToggle';
 interface ModalButtonProps {
   method: 'PUT' | 'POST' | 'Dispatch';
   boxIndex?: number;
@@ -43,7 +43,7 @@ export const ModalButton = ({
     }
 
     console.log(data);
-    dispatch(modalToggle());
+    dispatch(commonModalToggle());
   };
 
   // if (!boxIndex) return <div>Loading...</div>;
@@ -51,7 +51,7 @@ export const ModalButton = ({
     <div className="w-[614px] h-[53px] flex">
       <button
         className="text-grayscale-0 bg-grayscale-800 grow text-body1B rounded-bl-[10px] hover:bg-grayscale-700"
-        onClick={() => dispatch(modalToggle())}
+        onClick={() => dispatch(commonModalToggle())}
       >
         닫기
       </button>

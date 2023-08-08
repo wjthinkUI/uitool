@@ -14,7 +14,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
-import { modalToggle, selectBlockIndex } from '@store/slice/sliceModalToggle';
+import {
+  blockModalToggle,
+  selectBlockIndex,
+} from '@store/slice/sliceModalToggle';
 import { pushEmptyObjToSrcAndLink } from '@store/slice/sliceEditPage';
 /** onClick 설정 필요 */
 export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
@@ -32,7 +35,7 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
   const Write = (block_id: number) => {};
   const ReDesignSelect = () => {
     dispatch(selectBlockIndex(block_id));
-    dispatch(modalToggle());
+    dispatch(blockModalToggle());
   };
   const MoveUp = (block_id: number) => {
     console.log('moveup', block_id);

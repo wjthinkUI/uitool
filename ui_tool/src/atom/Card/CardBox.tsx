@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { updateSrc, deleteSrcAndLink } from '@store/slice/sliceEditPage';
+import { commonModalToggle } from '@store/slice/sliceModalToggle';
 interface CardBoxProps {
   isCircle: boolean;
   blockIndex: number;
@@ -17,8 +18,10 @@ interface CardBoxProps {
 export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [selectedImage, setSelectedImage] = useState<string>('');
-  const [showModal, setShowModal] = useState<boolean>(false);
   const loadedpageData = useSelector((state: RootState) => state.editPage);
+  const commonModalState = useSelector(
+    (state: RootState) => state.modalToggle.commonModalState
+  );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
@@ -36,8 +39,7 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
   };
 
   const handleLinkSettingModal = () => {
-    //링크셋팅 모달창 열기
-    setShowModal((prev) => !prev);
+    dispatch(commonModalToggle());
   };
   const handleDeleteImageAndLink = () => {
     //미완성 리덕스 상태관리 -> 이미지 id삭제, 이미지 링크 삭제 / 로컬스토리지 이미지 삭제
@@ -103,12 +105,8 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
               className="hidden m-1 cursor-pointer group-hover/item:inline"
               onClick={handleLinkSettingModal}
             />
-            {showModal && (
-              <ModalLinkSetting
-                boxIndex={boxIndex}
-                blockIndex={blockIndex}
-                onCancel={handleLinkSettingModal}
-              />
+            {commonModalState && (
+              <ModalLinkSetting boxIndex={boxIndex} blockIndex={blockIndex} />
             )}
           </div>
         </>
