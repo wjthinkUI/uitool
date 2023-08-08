@@ -4,14 +4,10 @@ import { useEffect, useState } from 'react';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 
 interface EditAddSelectDesignProps {
-  key: number;
   block_id: number;
 }
 
-export const EditAddSelectDesign = ({
-  key,
-  block_id,
-}: EditAddSelectDesignProps) => {
+export const EditAddSelectDesign = ({ block_id }: EditAddSelectDesignProps) => {
   const [modal, setModal] = useState(false);
   const ReDesignSelect = () => {
     setModal(true);

@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/store';
 import { useEffect } from 'react';
 import { selectBlockIndex } from '@store/slice/sliceEditPage';
-import { closeBlockDesignModal } from '@store/slice/sliceBlockDesignSideBar';
 interface ModalBlockDesignProps {
   blockIndex: number;
   closeModal: () => void;
@@ -22,7 +21,6 @@ export const ModalBlockDesign = ({
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(selectBlockIndex(blockIndex));
-    dispatch(closeBlockDesignModal(closeModal));
   }, []);
   const { selectedDesign, selectedType } = useSelectBlockDesign();
   return (
@@ -30,7 +28,7 @@ export const ModalBlockDesign = ({
       {createPortal(<ModalBackDrop onCancel={closeModal} />, modalElement)}
       {createPortal(
         <ModalBlockDesignContainer>
-          <ModalBlockDesignHeader onCancel={closeModal} />
+          <ModalBlockDesignHeader />
           <div className="flex">
             <ModalBlockDesignSideBar />
             <div className="flex justify-center grow">

@@ -11,20 +11,28 @@ import {
   updateTypeAndContentLayout,
 } from '@store/slice/sliceEditPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store/store';
+import { AppDispatch, RootState } from '@store/store';
 import { useState } from 'react';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
-
+import { modalToggle } from '@store/slice/sliceModalToggle';
+import { pushEmptyObjToSrcAndLink } from '@store/slice/sliceEditPage';
 /** onClick 설정 필요 */
 export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [modal, setModal] = useState(false);
   //   console.log('BLOCK ID = ', block_id);
   const pageData = useSelector((state: RootState) => state.editPage);
+  const modalState = useSelector(
+    (state: RootState) => state.modalToggle.modalState
+  );
+
+  const AddList = (block_id: number) => {
+    dispatch(pushEmptyObjToSrcAndLink({ index: block_id }));
+  };
+
   const Write = (block_id: number) => {};
   const ReDesignSelect = () => {
-    // console.log(block_id);
-    setModal(true);
+    dispatch(modalToggle());
   };
   const MoveUp = (block_id: number) => {
     console.log('moveup', block_id);
@@ -52,6 +60,14 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
 
   return (
     <div className="absolute top-[30px] right-[100px] w-[246px] h-[54px] rounded-full bg-grayscale-600 hidden group-hover:flex z-20 justify-evenly pr-4 pl-4">
+      {pageData.page[block_id].type === 'list' ? (
+        <button
+          className="absolute -left-28 w-[90px] h-full bg-grayscale-600 rounded-3xl text-grayscale-0 text-body2r hover:text-primary-900"
+          onClick={() => AddList(block_id)}
+        >
+          ADD
+        </button>
+      ) : null}
       <button onClick={() => console.log('write')}>
         <IconPencil className="fill-white hover:fill-primary-900" />
       </button>
@@ -67,7 +83,7 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
       <button onClick={() => Trash(block_id)}>
         <IconTrashCan className="fill-white hover:fill-primary-900" />
       </button>
-      {modal && (
+      {modalState && (
         <ModalBlockDesign
           blockIndex={block_id}
           closeModal={() => setModal(false)}

@@ -4,8 +4,14 @@ import type { BlockDesignContent } from 'types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
-
-export const LineContent = ({ list, type }: { list: BlockDesignContent[], type: any }) => {
+import { modalToggle } from '@store/slice/sliceModalToggle';
+export const LineContent = ({
+  list,
+  type,
+}: {
+  list: BlockDesignContent[];
+  type: any;
+}) => {
   const blockIndex = useSelector(
     (state: RootState) => state.editPage.selectedBlockIndex
   );
@@ -19,6 +25,7 @@ export const LineContent = ({ list, type }: { list: BlockDesignContent[], type: 
         contentLayout,
       })
     );
+    dispatch(modalToggle());
   };
 
   return (

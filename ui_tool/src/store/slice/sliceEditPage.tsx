@@ -37,6 +37,8 @@ const sliceEditPage = createSlice({
       if (index >= 0 && index < state.page.length) {
         state.page[index].type = type;
         state.page[index].contentLayout = contentLayout;
+        state.page[index].src = [{}];
+        state.page[index].link = [{}];
       }
     },
     updateSrc: (state, action) => {
@@ -52,6 +54,22 @@ const sliceEditPage = createSlice({
       const { index, link } = action.payload;
       const linkIndex = link.linkIndex;
       state.page[index].link[linkIndex] = link;
+    },
+    pushEmptyObjToSrcAndLink: (state, action) => {
+      const { index } = action.payload;
+      state.page[index].src.push({});
+      state.page[index].link.push({});
+    },
+    deleteSrcAndLink: (state, action) => {
+      const { index, boxIndex } = action.payload;
+      const filteredSrc = state.page[index].src.filter(
+        (_, idx) => idx !== boxIndex
+      );
+      const filteredLink = state.page[index].link.filter(
+        (_, idx) => idx !== boxIndex
+      );
+      state.page[index].src = filteredSrc;
+      state.page[index].link = filteredLink;
     },
     moveUpBlock: (state, action) => {
       const { index } = action.payload;
@@ -108,6 +126,8 @@ export const {
   updateTypeAndContentLayout,
   updateLink,
   updateSrc,
+  pushEmptyObjToSrcAndLink,
+  deleteSrcAndLink,
   moveUpBlock,
   moveDownBlock,
   deleteBlock,

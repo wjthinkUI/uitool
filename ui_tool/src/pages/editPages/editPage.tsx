@@ -30,7 +30,11 @@ import { Text3 } from '@atom/Edit/text/Text3';
 import { Text4 } from '@atom/Edit/text/Text4';
 import { Text5 } from '@atom/Edit/text/Text5';
 import { Text6 } from '@atom/Edit/text/Text6';
-import { 
+import { list1 } from '@atom/Edit/list/list1';
+import { list2 } from '@atom/Edit/list/list2';
+import { list3 } from '@atom/Edit/list/list3';
+import { list4 } from '@atom/Edit/list/list4';
+import {
   setInitialState,
   putNewBlockBottom,
   putNewBlockTop,
@@ -94,11 +98,11 @@ const LAYOUT_COMPONENT = {
     layout5: Text5,
     layout6: Text6,
   },
-  video: {
-    layout1: Image1,
-    layout2: Image2,
-    layout3: Image3,
-    layout4: Image4,
+  list: {
+    layout1: list1,
+    layout2: list2,
+    layout3: list3,
+    layout4: list4,
   },
   custom: {
     layout1: Image1,
