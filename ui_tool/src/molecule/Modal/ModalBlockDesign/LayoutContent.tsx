@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ModalBlockDesignMediumBox } from '@atom/Modal/ModalBlockDesign/ModalBlockDesignMediumBox';
 import type { BlockDesignContent } from 'types';
 
-export const LayoutContent = ({ list }: { list: BlockDesignContent[] }) => {
+export const LayoutContent = ({ list, type }: any) => {
   const tempHandler = (id: number) => {
     console.log('clicked id = ', id);
   };

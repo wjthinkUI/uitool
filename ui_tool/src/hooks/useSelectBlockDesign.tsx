@@ -207,7 +207,7 @@ const blockDesignData: any[] = [
     type: 'layout',
     name: '레이아웃',
     element() {
-      return <LayoutContent list={this.contentList} />;
+      return <LayoutContent list={this.contentList} type={this.type} />;
     },
     contentList: [
       {

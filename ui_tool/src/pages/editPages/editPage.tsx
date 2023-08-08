@@ -95,8 +95,8 @@ const LAYOUT_COMPONENT = {
     layout5: Text5,
     layout6: Text6,
   },
-  video: {
-    layout1: Image1,
+  layout: {
+    layout1: Layout1,
     layout2: Image2,
     layout3: Image3,
     layout4: Image4,
@@ -187,7 +187,7 @@ export const EditPage = () => {
           >
             <PageNavigation />
             {/* <ModalBlockDesign /> */}
-            {/* <Layout1 /> */}
+            <Layout1 />
             {pageData.page.map((v: any, i: any) => {
               console.log('v = ', v);
               const Component =
