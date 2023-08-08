@@ -104,7 +104,11 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
               onClick={handleLinkSettingModal}
             />
             {showModal && (
-              <ModalLinkSetting onCancel={handleLinkSettingModal} />
+              <ModalLinkSetting
+                boxIndex={boxIndex}
+                blockIndex={blockIndex}
+                onCancel={handleLinkSettingModal}
+              />
             )}
           </div>
         </>

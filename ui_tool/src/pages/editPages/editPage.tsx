@@ -1,11 +1,6 @@
 import { AdabtiveTab } from '@molecule/Edit/EditAdabtiveTab';
-import {
-  useParams,
-  useLoaderData,
-  Await,
-  useFetcher,
-  json,
-} from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { MouseEvent, useEffect, useState } from 'react';
 import { EditPageDataType } from 'types';
 import { GridContainer } from '@atom/public/GridContainer';
@@ -196,15 +191,14 @@ export const EditPage = () => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (
-                <div key={i}>
-                  <EditBlock
-                    onClickTop={() => handleEditAddBlockHere(i)}
-                    onClickBottom={() => handleEditAddBlockBottom(i)}
-                    index={i}
-                  >
-                    <Component key={i} block_id={i} />
-                  </EditBlock>
-                </div>
+                <EditBlock
+                  onClickTop={() => handleEditAddBlockHere(i)}
+                  onClickBottom={() => handleEditAddBlockBottom(i)}
+                  index={i}
+                  key={i + 1}
+                >
+                  <Component key={i + 1} block_id={i} />
+                </EditBlock>
               );
             })}
             <Footer />
