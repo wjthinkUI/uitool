@@ -30,6 +30,7 @@ import { Text3 } from '@atom/Edit/text/Text3';
 import { Text4 } from '@atom/Edit/text/Text4';
 import { Text5 } from '@atom/Edit/text/Text5';
 import { Text6 } from '@atom/Edit/text/Text6';
+import { Layout1 } from '@atom/Edit/layout/Layout1';
 import { 
   setInitialState,
   putNewBlockBottom,
@@ -186,7 +187,7 @@ export const EditPage = () => {
           >
             <PageNavigation />
             {/* <ModalBlockDesign /> */}
-            {/* <EditAddSelectDesign key={0} block_id={0} /> */}
+            {/* <Layout1 /> */}
             {pageData.page.map((v: any, i: any) => {
               console.log('v = ', v);
               const Component =

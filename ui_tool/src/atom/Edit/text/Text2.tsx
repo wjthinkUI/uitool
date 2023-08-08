@@ -1,6 +1,6 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from 'ckeditor5-custom-build/build/ckeditor'
-import { textDefaultConfig } from "./TextdefalutConfig";
+import { textDefaultConfig } from "./TextDefalutConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { RootState } from "@store/store";
