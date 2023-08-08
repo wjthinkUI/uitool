@@ -34,7 +34,7 @@ import {
   putNewBlockBottom,
   putNewBlockTop,
 } from '@store/slice/sliceEditPage';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
@@ -118,7 +118,7 @@ const LAYOUT_COMPONENT = {
 
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // const [isLoading, setIsLoading] = useState<boolean>(true);
   const [render, setRender] = useState<boolean>(false);
   const loadedData: any = useLoaderData(); //promise, page type
   const dispatch = useDispatch<AppDispatch>();
@@ -131,18 +131,20 @@ export const EditPage = () => {
         pageInfo: loadedData.pageData.pageInfo,
       })
     );
+  }, [dispatch]);
 
-    setIsLoading(() => false);
-  }, [dispatch, setIsLoading]);
-
-  const pageData = useSelector((state: RootState) => state.editPage);
+  const pageData = useSelector(
+    (state: RootState) => state.editPage,
+    shallowEqual
+  );
+  console.log(pageData);
   const handleTabChange = (tabName: string) => {
     setActiveTab(tabName);
   };
 
-  if (isLoading && !pageData) {
-    return <LoadingSpinner />;
-  }
+  // if (isLoading && !pageData) {
+  //   return <LoadingSpinner />;
+  // }
 
   const handleEditAddBlockHere = (i: number) => {
     dispatch(putNewBlockTop({ index: i }));
@@ -169,7 +171,7 @@ export const EditPage = () => {
 
   return (
     <>
-      {!isLoading && pageData && (
+      {pageData && (
         <div className="w-[100vw] h-auto">
           <AdabtiveTab onTabChange={handleTabChange} />
           <GridContainer
@@ -191,14 +193,16 @@ export const EditPage = () => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (
-                <EditBlock
-                  onClickTop={() => handleEditAddBlockHere(i)}
-                  onClickBottom={() => handleEditAddBlockBottom(i)}
-                  index={i}
-                  key={i + 1}
-                >
-                  <Component key={i + 1} block_id={i} />
-                </EditBlock>
+                <div key={i}>
+                  <EditBlock
+                    onClickTop={() => handleEditAddBlockHere(i)}
+                    onClickBottom={() => handleEditAddBlockBottom(i)}
+                    index={i}
+                    key={i}
+                  >
+                    <Component key={i} block_id={i} />
+                  </EditBlock>
+                </div>
               );
             })}
             <Footer />

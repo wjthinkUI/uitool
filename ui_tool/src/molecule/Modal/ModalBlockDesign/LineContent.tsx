@@ -13,7 +13,7 @@ export const LineContent = ({
   type: any;
 }) => {
   const blockIndex = useSelector(
-    (state: RootState) => state.editPage.selectedBlockIndex
+    (state: RootState) => state.modalToggle.selectedBlockIndex
   );
   const dispatch = useDispatch<AppDispatch>();
 

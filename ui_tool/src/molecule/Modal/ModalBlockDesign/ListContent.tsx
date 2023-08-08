@@ -14,7 +14,7 @@ export const ListContent = ({
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const blockIndex = useSelector(
-    (state: RootState) => state.editPage.selectedBlockIndex
+    (state: RootState) => state.modalToggle.selectedBlockIndex
   );
   const handleDispatch = (contentLayout: number, type: string) => {
     console.log('contentLayout = ', contentLayout, 'type = ', type);

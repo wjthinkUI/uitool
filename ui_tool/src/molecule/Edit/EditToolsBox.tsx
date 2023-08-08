@@ -12,15 +12,14 @@ import {
 } from '@store/slice/sliceEditPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
-import { useState } from 'react';
+
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
-import { modalToggle } from '@store/slice/sliceModalToggle';
+import { modalToggle, selectBlockIndex } from '@store/slice/sliceModalToggle';
 import { pushEmptyObjToSrcAndLink } from '@store/slice/sliceEditPage';
 /** onClick 설정 필요 */
 export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
   const dispatch = useDispatch<AppDispatch>();
-  const [modal, setModal] = useState(false);
-  //   console.log('BLOCK ID = ', block_id);
+
   const pageData = useSelector((state: RootState) => state.editPage);
   const modalState = useSelector(
     (state: RootState) => state.modalToggle.modalState
@@ -32,6 +31,7 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
 
   const Write = (block_id: number) => {};
   const ReDesignSelect = () => {
+    dispatch(selectBlockIndex(block_id));
     dispatch(modalToggle());
   };
   const MoveUp = (block_id: number) => {
@@ -71,7 +71,7 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
       <button onClick={() => console.log('write')}>
         <IconPencil className="fill-white hover:fill-primary-900" />
       </button>
-      <button onClick={ReDesignSelect}>
+      <button onClick={() => ReDesignSelect()}>
         <IconReset className="fill-white hover:fill-primary-900" />
       </button>
       <button onClick={() => MoveUp(block_id)}>
@@ -83,12 +83,7 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
       <button onClick={() => Trash(block_id)}>
         <IconTrashCan className="fill-white hover:fill-primary-900" />
       </button>
-      {modalState && (
-        <ModalBlockDesign
-          blockIndex={block_id}
-          closeModal={() => setModal(false)}
-        />
-      )}
+      {modalState && <ModalBlockDesign />}
     </div>
   );
 };

@@ -7,7 +7,7 @@ export const list1 = ({ block_id }: { block_id: number }) => {
   const pageData = useSelector((state: RootState) => state.editPage.page);
   console.log('block_id = ', block_id);
   return (
-    <div className="flex items-center justify-center h-72">
+    <div className="flex items-center justify-center h-auto">
       {block_id !== undefined &&
         pageData[block_id]?.src?.map((_, idx) => (
           <CardCircle key={uuidv4()} blockIndex={block_id} boxIndex={idx} />

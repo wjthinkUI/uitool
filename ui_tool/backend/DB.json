@@ -3,14 +3,13 @@
     {
       "pageInfo": {
         "id": 1,
-        "title": "내게 맞는 북클럽 찾기 변경1",
+        "title": "내게 맞는 북클럽 찾기 ",
         "path": "/test1",
         "category": "웅진북클럽",
-        "date": "2023-08-01 20:48:12"
+        "date": "2023-08-08 17:25:41"
       },
       "page": [
-        { "type": "image", "contentLayout": 1, "src": [{}], "link": [{}] },
-        { "type": "initial", "contentLayout": 0, "src": [], "link": [] }
+        { "type": "initial", "contentLayout": 0, "src": [{}], "link": [{}] }
       ]
     },
     {

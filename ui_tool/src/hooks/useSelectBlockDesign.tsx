@@ -8,12 +8,15 @@ import { TextContent } from '@molecule/Modal/ModalBlockDesign/TextContent';
 import { TableContent } from '@molecule/Modal/ModalBlockDesign/TableContent';
 import { LayoutContent } from '@molecule/Modal/ModalBlockDesign/LayoutContent';
 import type { BlockDesignMap } from 'types';
-
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@store/store';
+import { selectBlockIndex } from '@store/slice/sliceModalToggle';
 export const useSelectBlockDesign = () => {
   const selectedType = useSelector(
     (state: RootState) => state.sidebar.selectItem
   );
   const [selectedDesign, setSelectedDesign] = useState<ReactNode>(null);
+
   useEffect(() => {
     const data = blockDesignData.find((el) => el.type === selectedType);
     setSelectedDesign(data?.element());

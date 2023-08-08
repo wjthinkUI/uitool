@@ -11,12 +11,11 @@ import { useDispatch } from 'react-redux';
 import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 interface props {
-  onCancel: () => void;
   boxIndex: number;
   blockIndex: number;
 }
 
-export const ModalLinkSetting = ({ onCancel, boxIndex, blockIndex }: props) => {
+export const ModalLinkSetting = ({ boxIndex, blockIndex }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   const dispath = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -31,13 +30,12 @@ export const ModalLinkSetting = ({ onCancel, boxIndex, blockIndex }: props) => {
   //   return <LoadingSpinner />;
   return (
     <>
-      {createPortal(<ModalBackDrop onCancel={onCancel} />, modalElement)}
+      {createPortal(<ModalBackDrop />, modalElement)}
       {createPortal(
         <ModalContainer height="high">
           <ModalTitle title="링크 설정" />
           <ModalLinkSettingContent />
           <ModalButton
-            onCancel={onCancel}
             method="Dispatch"
             boxIndex={boxIndex}
             blockIndex={blockIndex}

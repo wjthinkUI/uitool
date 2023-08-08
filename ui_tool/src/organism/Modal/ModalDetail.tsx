@@ -12,11 +12,10 @@ import { clearModalState, initalize } from '@store/slice/sliceModal';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { RootState } from '@store/store';
 interface props {
-  onCancel: () => void;
   id: number;
 }
 
-export const ModalDetail = ({ onCancel, id }: props) => {
+export const ModalDetail = ({ id }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   const dispatch = useDispatch<AppDispatch>();
   const pageData = useSelector((state: RootState) => state.pagesinfo);
@@ -44,12 +43,12 @@ export const ModalDetail = ({ onCancel, id }: props) => {
   usePreventMouseWheel();
   return (
     <>
-      {createPortal(<ModalBackDrop onCancel={onCancel} />, modalElement)}
+      {createPortal(<ModalBackDrop />, modalElement)}
       {createPortal(
         <ModalContainer height="low">
           <ModalTitle title="페이지 상세" />
           <ModalDetailContent />
-          <ModalButton onCancel={onCancel} method="PUT" />
+          <ModalButton method="PUT" />
         </ModalContainer>,
         modalElement
       )}

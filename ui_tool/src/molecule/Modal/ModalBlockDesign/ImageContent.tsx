@@ -7,11 +7,18 @@ import { modalToggle } from '@store/slice/sliceModalToggle';
 export const ImageContent = ({ list, type }: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const blockIndex = useSelector(
-    (state: RootState) => state.editPage.selectedBlockIndex
+    (state: RootState) => state.modalToggle.selectedBlockIndex
   );
 
   const handleDispatch = (contentLayout: number, type: string) => {
-    console.log('contentLayout = ', contentLayout, 'type = ', type);
+    console.log(
+      'contentLayout = ',
+      contentLayout,
+      'type = ',
+      type,
+      'blockIndex =',
+      blockIndex
+    );
     dispatch(
       updateTypeAndContentLayout({
         index: blockIndex,

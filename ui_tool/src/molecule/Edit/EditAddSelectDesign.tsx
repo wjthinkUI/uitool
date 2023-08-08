@@ -2,15 +2,21 @@ import { ReactComponent as IconMaginStick } from '@assets/icon/icon_magicStick.s
 import type { AddBlock } from 'types';
 import { useEffect, useState } from 'react';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@store/store';
+import { modalToggle, selectBlockIndex } from '@store/slice/sliceModalToggle';
 interface EditAddSelectDesignProps {
   block_id: number;
 }
 
 export const EditAddSelectDesign = ({ block_id }: EditAddSelectDesignProps) => {
-  const [modal, setModal] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const modalState = useSelector(
+    (state: RootState) => state.modalToggle.modalState
+  );
   const ReDesignSelect = () => {
-    setModal(true);
+    dispatch(selectBlockIndex(block_id));
+    dispatch(modalToggle());
   };
   return (
     <div
@@ -19,13 +25,7 @@ export const EditAddSelectDesign = ({ block_id }: EditAddSelectDesignProps) => {
     >
       <IconMaginStick />
       디자인을 선택하세요
-      {/* {(modal) ? <ModalBlockDesign blockIndex={index} closeModal={closeModal}/>:null} */}
-      {modal && (
-        <ModalBlockDesign
-          blockIndex={block_id}
-          closeModal={() => setModal(false)}
-        />
-      )}
+      {modalState && <ModalBlockDesign />}
     </div>
   );
 };

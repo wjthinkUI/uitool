@@ -6,7 +6,7 @@ import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
 import { modalToggle } from '@store/slice/sliceModalToggle';
 export const TextContent = ({ list, type }: any) => {
   const blockIndex = useSelector(
-    (state: RootState) => state.editPage.selectedBlockIndex
+    (state: RootState) => state.modalToggle.selectedBlockIndex
   );
   const dispatch = useDispatch<AppDispatch>();
 

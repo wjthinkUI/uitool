@@ -15,7 +15,6 @@ const initialState = {
       link: [{}],
     },
   ],
-  selectedBlockIndex: 0,
 };
 
 const sliceEditPage = createSlice({
@@ -29,9 +28,7 @@ const sliceEditPage = createSlice({
       }
       //빈페이지 일 경우 자동으로 초기값 들어감
     },
-    selectBlockIndex: (state, action) => {
-      state.selectedBlockIndex = action.payload;
-    },
+
     updateTypeAndContentLayout: (state, action) => {
       const { index, type, contentLayout } = action.payload;
       if (index >= 0 && index < state.page.length) {
@@ -103,8 +100,8 @@ const sliceEditPage = createSlice({
       state.page.splice(index, 0, {
         type: 'initial',
         contentLayout: 0,
-        src: [],
-        link: [],
+        src: [{}],
+        link: [{}],
       });
     },
     putNewBlockBottom: (state, action) => {
@@ -113,8 +110,8 @@ const sliceEditPage = createSlice({
       state.page.splice(index + 1, 0, {
         type: 'initial',
         contentLayout: 0,
-        src: [],
-        link: [],
+        src: [{}],
+        link: [{}],
       });
     },
   },
@@ -122,7 +119,6 @@ const sliceEditPage = createSlice({
 
 export const {
   setInitialState,
-  selectBlockIndex,
   updateTypeAndContentLayout,
   updateLink,
   updateSrc,

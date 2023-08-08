@@ -24,8 +24,7 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
   useEffect(() => {
     const uniqueId = uuidv4();
     setInputId(() => uniqueId);
-    const imageId = uuidv4();
-    setImageId(() => imageId);
+    setImageId(() => uniqueId);
   }, []);
 
   useEffect(() => {
