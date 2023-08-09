@@ -21,6 +21,9 @@ export const EditAddSelectDesign = ({ block_id }: EditAddSelectDesignProps) => {
     dispatch(selectBlockIndex(block_id));
     dispatch(blockModalToggle());
   };
+  // if (!location.pathname.startsWith('/edit/')) {
+  //   return (null);
+  // }
   return (
     <div
       onClick={ReDesignSelect}

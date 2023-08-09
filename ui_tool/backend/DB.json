@@ -3,8 +3,8 @@
     {
       "pageInfo": {
         "id": 1,
-        "title": "내게 맞는 북클럽 찾기 ",
-        "path": "/test1",
+        "title": "내게 맞는 북클럽 찾기 변경1",
+        "path": "/1",
         "category": "웅진북클럽",
         "date": "2023-08-09 16:27:37"
       },
@@ -14,7 +14,7 @@
       "pageInfo": {
         "id": 2,
         "title": "웅진북클럽 전집",
-        "path": "/test2",
+        "path": "/2",
         "category": "웅진북클럽",
         "date": "2023-07-31 21:26:27"
       },
@@ -24,7 +24,7 @@
       "pageInfo": {
         "id": 3,
         "title": "웅진북클럽 화상관리",
-        "path": "/test3",
+        "path": "/3",
         "category": "웅진스마트올",
         "date": "2023-07-31 21:26:27"
       },
@@ -34,7 +34,7 @@
       "pageInfo": {
         "id": 4,
         "title": "웅진북클럽 곰돌이",
-        "path": "/test4",
+        "path": "/4",
         "category": "출판/e러닝",
         "date": "2023-07-31 21:26:27"
       },
@@ -44,7 +44,7 @@
       "pageInfo": {
         "id": 5,
         "title": "베베북클럽",
-        "path": "/test5",
+        "path": "/5",
         "category": "웅진스마트올",
         "date": "2023-07-31 21:26:27"
       },
@@ -54,7 +54,7 @@
       "pageInfo": {
         "id": 6,
         "title": "웅진북클럽 AI 독서케어",
-        "path": "/test6",
+        "path": "/6",
         "category": "출판/e러닝",
         "date": "2023-07-31 21:26:27"
       },
@@ -64,7 +64,7 @@
       "pageInfo": {
         "id": 7,
         "title": "슈퍼팟잉글리시",
-        "path": "/test7",
+        "path": "/7",
         "category": "웅진북클럽",
         "date": "2023-07-31 21:26:27"
       },
@@ -74,7 +74,7 @@
       "pageInfo": {
         "id": 8,
         "title": "북큐레이터 소개",
-        "path": "/test8",
+        "path": "/8",
         "category": "웅진스마트올",
         "date": "2023-07-31 21:26:27"
       },

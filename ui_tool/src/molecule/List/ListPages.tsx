@@ -22,7 +22,7 @@ export const ListPage = ({ id, title, date, path, category }: ListProps) => {
       <div className=" basis-1/12">
         <CheckBox checked={false} onChange={() => {}} />
       </div>
-      <p className="basis-3/12">{title}</p>
+      <p className="basis-3/12"><a target='_blank' href={`/preview/${path.slice(1)}`}>{title}</a></p>
       <p className="basis-3/12">{path}</p>
       <div className="basis-1/12">
         <ChipGray text={category} />
