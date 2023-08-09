@@ -10,10 +10,16 @@ export const CardSquareBig = ({ blockIndex, boxIndex }: CardProps) => {
   return (
     <div className="w-[360px] h-[433px] flex flex-col items-center m-5 font-noto">
       <div className="w-[360px] h-[270px] bg-grayscale-200 mb-5">
-        <CardBox isCircle={false} blockIndex={blockIndex} boxIndex={boxIndex} />
+        {blockIndex !== undefined && (
+          <CardBox
+            isCircle={false}
+            blockIndex={blockIndex}
+            boxIndex={boxIndex}
+          />
+        )}
       </div>
       <div>
-        {blockIndex && (
+        {blockIndex !== undefined && (
           <CardEditor blockIndex={blockIndex} boxIndex={boxIndex} shape="big" />
         )}
       </div>

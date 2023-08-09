@@ -9,7 +9,7 @@ export const CardSquareNomal = ({ blockIndex, boxIndex }: CardProps) => {
   return (
     <div className="w-[192px] h-[302px] m-2 cursor-pointer font-noto">
       <div className="w-[192px] h-[182px] bg-grayscale-200 mb-5">
-        {blockIndex && (
+        {blockIndex !== undefined && (
           <CardBox
             isCircle={false}
             blockIndex={blockIndex}
@@ -18,7 +18,7 @@ export const CardSquareNomal = ({ blockIndex, boxIndex }: CardProps) => {
         )}
       </div>
       <div>
-        {blockIndex && (
+        {blockIndex !== undefined && (
           <CardEditor
             blockIndex={blockIndex}
             boxIndex={boxIndex}

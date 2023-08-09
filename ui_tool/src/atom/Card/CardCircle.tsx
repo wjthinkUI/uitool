@@ -12,12 +12,12 @@ export const CardCircle = ({ blockIndex, boxIndex }: CardProps) => {
     <>
       <div className="w-[144px] h-[174px] m-4  font-noto">
         <div className="mb-3 rounded-full w-[144px] h-[144px] bg-grayscale-200">
-          {blockIndex && (
+          {blockIndex !== undefined && (
             <CardBox isCircle blockIndex={blockIndex} boxIndex={boxIndex} />
           )}
         </div>
         <div>
-          {blockIndex && (
+          {blockIndex !== undefined && (
             <CardEditor
               blockIndex={blockIndex}
               boxIndex={boxIndex}
