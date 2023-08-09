@@ -54,11 +54,6 @@ const CardEditorComponent = ({
             config={textDefaultConfig}
             disabled={!location.pathname.startsWith('/edit/')}
             data={fetchedContent[boxIndex].src}
-            //   data={
-            //     fetchedContent[blockIndex].src[boxIndex].src
-            //       ? fetchedContent[blockIndex].src[boxIndex].src
-            //       : templateContent
-            //   }
             onChange={(event: any, editor: any) => {
               const data = editor.getData();
               dispatch(

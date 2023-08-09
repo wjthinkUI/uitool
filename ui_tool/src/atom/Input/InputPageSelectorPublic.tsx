@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { ReactComponent as ArrowIcon } from '@assets/icon/icon_arrow.svg';
-import { DropDownMenuList } from './InputPageSelectorDropDownPublic';
+import { DropDownMenuList } from './InputPageSelectorDropDown';
 import { AppDispatch, RootState } from '@store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearModalState } from '@store/slice/sliceModal';
@@ -27,11 +27,15 @@ export const InputPageSelector = ({
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    if(onChangeUrl) {onChangeUrl(e.target.value)};
+    if (onChangeUrl) {
+      onChangeUrl(e.target.value);
+    }
   };
   const handleSelectUrl = (id: number, title: string, url: string) => {
     setValue(url);
-    if(onChangeUrl) {onChangeUrl(url)};
+    if (onChangeUrl) {
+      onChangeUrl(url);
+    }
   };
   return (
     <div className="relative m-3">
@@ -48,7 +52,12 @@ export const InputPageSelector = ({
           <ArrowIcon />
         </div>
       </div>
-      {dropdown && <DropDownMenuList onCancel={dropDownToggle} onSelect={handleSelectUrl}/>}
+      {dropdown && (
+        <DropDownMenuList
+          onCancel={dropDownToggle}
+          onSelect={handleSelectUrl}
+        />
+      )}
     </div>
   );
 };

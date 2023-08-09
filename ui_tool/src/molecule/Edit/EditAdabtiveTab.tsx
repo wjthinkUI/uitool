@@ -1,13 +1,13 @@
 import { ReactComponent as IconDesktop } from '@assets/icon/icon_desktop.svg';
 import { ReactComponent as IconTablet } from '@assets/icon/icon_tablet.svg';
 import { ReactComponent as IconMobile } from '@assets/icon/icon_mobile.svg';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useSubmit } from 'react-router-dom';
 import type { AdabtiveTabProps } from 'types';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@store/store';
-import { filteringInitialState } from '@store/slice/sliceEditPage';
+import { useSelector } from 'react-redux';
+import { RootState } from '@store/store';
+
 export const AdabtiveTab = ({ onTabChange }: AdabtiveTabProps) => {
   const tabStyle = {
     active:
@@ -21,14 +21,11 @@ export const AdabtiveTab = ({ onTabChange }: AdabtiveTabProps) => {
     setCurrentTab(tabName);
     onTabChange(tabName);
   };
-  const { id } = useParams();
   const location = useLocation();
-  const dispatch = useDispatch<AppDispatch>();
   const pageData = useSelector((state: RootState) => state.editPage);
   const submit = useSubmit();
   const handlePageSubmit = () => {
     const url = location.pathname;
-    // dispatch(filteringInitialState());
     submit(pageData, {
       method: 'POST',
       action: url, // 메뉴관리 페이지관리에서 사용하도록 url설정

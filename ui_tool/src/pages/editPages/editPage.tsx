@@ -1,14 +1,12 @@
 import { AdabtiveTab } from '@molecule/Edit/EditAdabtiveTab';
 import { useLoaderData } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import { MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { EditPageDataType } from 'types';
 import { GridContainer } from '@atom/public/GridContainer';
 import { Image1 } from '@atom/Edit/Image1';
 import { Image2 } from '@atom/Edit/Image2';
 import { Image3 } from '@atom/Edit/Image3';
 import { Image4 } from '@atom/Edit/Image4';
-import { ImageCustom } from '@atom/Edit/ImageCustom';
 import { Line1 } from '@atom/Edit/line/line1';
 import { Line2 } from '@atom/Edit/line/line2';
 import { Line3 } from '@atom/Edit/line/line3';
@@ -190,14 +188,9 @@ export const EditPage = () => {
             }
           >
             <PageNavigation />
-            {/* <ModalBlockDesign /> */}
-            <Layout1 />
             {pageData.page.map((v: any, i: any) => {
-              // console.log('v = ', v);
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
-              // console.log(pageData.page, 'pageData.page');
-              // console.log('mainComponent = ', Component);
               return (
                 <div key={i}>
                   <EditBlock
@@ -218,9 +211,3 @@ export const EditPage = () => {
     </>
   );
 };
-// {pageData.page.map((v: any, i: any) => {
-//   const Component =
-//     LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
-//   console.log('working');
-//   return <Component key={i} />;
-// })}

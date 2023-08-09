@@ -140,7 +140,7 @@ async function updateNavigation(id, title, url, idx = undefined) {
 async function getPageData(id) {
   const data = await readData();
   const page = data.pages.find((el) =>
-    el.pageInfo.id === parseInt(id) ? el : undefined
+    el.pageInfo.id.toString() === id.toString() ? el : undefined
   );
   if (!page) throw new Error('can not find page');
   return page;
@@ -150,7 +150,9 @@ async function updatePage(id, receivedData) {
   const data = await readData();
   // console.log(typeof id);
   // console.log(receivedData.page);
-  const index = data.pages.findIndex((el) => el.pageInfo.id === parseInt(id));
+  const index = data.pages.findIndex(
+    (el) => el.pageInfo.id.toString() === id.toString()
+  );
   // console.log(index);
   if (index === undefined) throw new Error('update error...');
   data.pages[index].page = [...receivedData.page];

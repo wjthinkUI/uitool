@@ -1,13 +1,10 @@
 import { AppDispatch, RootState } from '@store/store';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { textDefaultConfig } from '@atom/Edit/text/TextDefalutConfig';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import {
-  updateSrc,
-  updateTypeAndContentLayout,
-} from '@store/slice/sliceEditPage';
+import { updateSrc } from '@store/slice/sliceEditPage';
 export const Table = ({ block_id }: { block_id: number }) => {
   const editorRef = useRef(null);
   const [tableData, setTableData] = useState<any>('');
