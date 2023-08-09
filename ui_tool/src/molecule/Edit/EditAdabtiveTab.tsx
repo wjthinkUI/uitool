@@ -5,8 +5,8 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useSubmit } from 'react-router-dom';
 import type { AdabtiveTabProps } from 'types';
-import { useSelector } from 'react-redux';
-import { RootState } from '@store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@store/store';
 
 export const AdabtiveTab = ({ onTabChange }: AdabtiveTabProps) => {
   const tabStyle = {
@@ -25,6 +25,7 @@ export const AdabtiveTab = ({ onTabChange }: AdabtiveTabProps) => {
   const location = useLocation();
 
   const pageData = useSelector((state: RootState) => state.editPage);
+  const dispatch = useDispatch<AppDispatch>();
   const submit = useSubmit();
   const handlePageSubmit = () => {
     const url = location.pathname;

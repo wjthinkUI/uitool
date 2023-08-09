@@ -200,7 +200,7 @@ const blockDesignData: any[] = [
     type: 'table',
     name: '표',
     element() {
-      return <TableContent />;
+      return <TableContent type={this.type} />;
     },
   },
   {
@@ -208,7 +208,7 @@ const blockDesignData: any[] = [
     type: 'layout',
     name: '레이아웃',
     element() {
-      return <LayoutContent list={this.contentList} />;
+      return <LayoutContent list={this.contentList} type={this.type} />;
     },
     contentList: [
       {

@@ -30,6 +30,7 @@ import { list2 } from '@atom/Edit/list/list2';
 import { list3 } from '@atom/Edit/list/list3';
 import { list4 } from '@atom/Edit/list/list4';
 import { Table } from '@atom/Edit/Table';
+import { Layout1 } from '@atom/Edit/layout/Layout1';
 import {
   setInitialState,
   putNewBlockBottom,
@@ -62,7 +63,7 @@ import { Footer } from '@organism/Nav/Footer';
  * 저장 버튼 클릭 시, 페이지 정보와 블록 정보를 서버에 전송 (http fetch)
  *
  */
-const LAYOUT_COMPONENT = {
+export const LAYOUT_COMPONENT: any = {
   initial: {
     layout0: EditAddSelectDesign,
   },
@@ -103,6 +104,9 @@ const LAYOUT_COMPONENT = {
   },
   custom: {
     layout1: Image1,
+  },
+  layout: {
+    layout1: Layout1,
     layout2: Image2,
     layout3: Image3,
     layout4: Image4,
@@ -137,7 +141,7 @@ export const EditPage = () => {
     (state: RootState) => state.editPage,
     shallowEqual
   );
-  console.log(pageData);
+  // console.log(pageData);
   const handleTabChange = (tabName: string) => {
     setActiveTab(tabName);
   };
@@ -187,11 +191,13 @@ export const EditPage = () => {
           >
             <PageNavigation />
             {/* <ModalBlockDesign /> */}
-            {/* <EditAddSelectDesign key={0} block_id={0} /> */}
+            <Layout1 />
             {pageData.page.map((v: any, i: any) => {
-              console.log('v = ', v);
+              // console.log('v = ', v);
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
+              // console.log(pageData.page, 'pageData.page');
+              // console.log('mainComponent = ', Component);
               return (
                 <div key={i}>
                   <EditBlock
