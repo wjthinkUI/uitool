@@ -45,13 +45,13 @@ export const ListParentsMenu = ({
         <p className="ml-[20px] grow text-grayscale-600 text-body2m">{title}</p>
         <div
           onClick={toggle}
-          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300"
+          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300 cursor-pointer"
         >
           <SettingIcon />
         </div>
         <div
           onClick={handleDelete}
-          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300"
+          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300 cursor-pointer"
         >
           <CloseIcon />
         </div>
@@ -107,13 +107,13 @@ export const ListChildrenMenu = ({
         <p className="ml-[20px] grow text-grayscale-600 text-body2m">{title}</p>
         <div
           onClick={toggle}
-          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300"
+          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300 cursor-pointer"
         >
           <SettingIcon />
         </div>
         <div
           onClick={handleDelete}
-          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300"
+          className="w-[70px] h-[70px] items-center justify-center flex border-l border-grayscale-300 cursor-pointer"
         >
           <CloseIcon />
         </div>

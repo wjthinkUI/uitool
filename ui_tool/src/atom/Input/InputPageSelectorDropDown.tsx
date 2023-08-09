@@ -36,7 +36,7 @@ export const DropDownMenuList = ({ onCancel }: any) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const pagesinfo = useSelector((state: RootState) => state.pagesinfo);
-  console.log(pagesinfo);
+  console.log('DROPDOWN MENU ========', pagesinfo);
   const handleDropDownList = async (el: any) => {
     // dispatch(setId(el.id));
     // dispatch(setTitle(el.title));
@@ -69,15 +69,16 @@ export const DropDownMenuList = ({ onCancel }: any) => {
         사용자 추가 페이지
       </div>
       <ul>
-        {pagesinfo.map((el) => (
-          <li
-            key={el.id}
-            className="m-2 ml-6 cursor-pointer text-body4m hover:text-primary-950"
-            onClick={() => handleDropDownList(el)}
-          >
-            {el.title}
-          </li>
-        ))}
+        {pagesinfo !== undefined &&
+          pagesinfo.map((el) => (
+            <li
+              key={el.id}
+              className="m-2 ml-6 cursor-pointer text-body4m hover:text-primary-950"
+              onClick={() => handleDropDownList(el)}
+            >
+              {el.title}
+            </li>
+          ))}
       </ul>
     </div>
   );

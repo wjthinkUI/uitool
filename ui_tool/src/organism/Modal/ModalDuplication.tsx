@@ -3,7 +3,6 @@ import { ModalButton } from '@atom/Modal/ModalCommon/ModalButton';
 import { ModalContainer } from '@atom/Modal/ModalCommon/ModalContainer';
 import { ModalDuplicationContent } from '@molecule/Modal/ModalDuplicationContent';
 import { ModalBackDrop } from '@atom/Modal/ModalBackDrop';
-import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
 import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
 import { useEffect } from 'react';
 import { AppDispatch, RootState } from '@store/store';
@@ -16,18 +15,20 @@ interface props {
 
 export const ModalDuplication = ({ id }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
-  const pagesData = useSelector((state: RootState) => state.pagesinfo);
+  const pageData = useSelector((state: RootState) => state.pagesinfo);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    const modalData = pagesData.find((el) => el.id === id);
-    if (modalData)
-      dispatch(
-        initalize({
-          id: modalData.id,
-          title: modalData.title,
-          url: modalData.path,
-        })
-      );
+    if (pageData) {
+      const modalData = pageData.find((el) => el.id === id);
+      if (modalData)
+        dispatch(
+          initalize({
+            id: modalData.id,
+            title: modalData.title,
+            url: modalData.path,
+          })
+        );
+    }
 
     return () => {
       console.log('cleanup');

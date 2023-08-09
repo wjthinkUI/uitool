@@ -1,7 +1,6 @@
 import { ManageMenuListTree } from '@organism/Management/ManagementMenuListTree';
 
 export const AdminManageList = () => {
-  
   return (
     <div className="w-[1220px] h-auto">
       <ManageMenuListTree />
@@ -11,9 +10,8 @@ export const AdminManageList = () => {
 
 export const AdminManageListLoader = () => {};
 
-
 //Similar to 'adminMangePageAction', but an Action function to update the menu
-export const AdminMangeMenuAction = async ({ request, params }: any) => {
+export const AdminMangeMenuAction = async ({ request }: any) => {
   const data = await request.json();
   if (request.method === 'PUT') {
     const res = await fetch('http://localhost:5174/adminlist/menu', {
@@ -57,5 +55,4 @@ export const AdminMangeMenuAction = async ({ request, params }: any) => {
     console.log(deletedAfterData.data);
     return deletedAfterData.data;
   }
-
 };

@@ -1,24 +1,19 @@
-import { ChangeEvent } from 'react';
-
+import { ChangeEventHandler } from 'react';
 import type { InputPageProps } from 'types';
-//퍼센트로 바꾸기
+
 export const InputFormPublic = ({
-  type,
   inputWidth,
   placeholder,
   defaultValue,
   onChangeValue,
-}: InputPageProps & {onChangeValue: (value: string) => void}) => {
-  
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if(onChangeValue) {onChangeValue(e.target.value)};
-  };
-
+}: InputPageProps & {
+  onChangeValue: ChangeEventHandler<HTMLInputElement>;
+}) => {
   return (
     <input
       type="text"
       defaultValue={defaultValue}
-      onChange={handleInputChange}
+      onChange={onChangeValue}
       placeholder={placeholder}
       className={`${
         inputWidth === 'short' ? 'w-[576px]' : 'w-[943px]'

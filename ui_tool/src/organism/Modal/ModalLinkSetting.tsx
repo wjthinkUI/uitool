@@ -8,8 +8,6 @@ import { ModalTitle } from '@atom/Modal/ModalCommon/ModalTitle';
 import { clearModalState } from '@store/slice/sliceModal';
 import { AppDispatch } from '@store/store';
 import { useDispatch } from 'react-redux';
-import { usePreventMouseWheel } from '@hooks/usePreventMouseWheel';
-import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 interface props {
   boxIndex: number;
   blockIndex: number;
@@ -26,8 +24,6 @@ export const ModalLinkSetting = ({ boxIndex, blockIndex }: props) => {
     clearState();
   }, []);
 
-  // if (boxIndex === undefined || blockIndex === undefined)
-  //   return <LoadingSpinner />;
   return (
     <>
       {createPortal(<ModalBackDrop />, modalElement)}

@@ -3,7 +3,6 @@ import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { textDefaultConfig } from '@atom/Edit/text/TextDefalutConfig';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
-import { updateListSrc } from '@store/slice/sliceBlockList';
 import { updateSrc } from '@store/slice/sliceEditPage';
 import { memo, useEffect } from 'react';
 
@@ -55,11 +54,6 @@ const CardEditorComponent = ({
             config={textDefaultConfig}
             disabled={!location.pathname.startsWith('/edit/')}
             data={fetchedContent[boxIndex].src}
-            //   data={
-            //     fetchedContent[blockIndex].src[boxIndex].src
-            //       ? fetchedContent[blockIndex].src[boxIndex].src
-            //       : templateContent
-            //   }
             onChange={(event: any, editor: any) => {
               const data = editor.getData();
               dispatch(
