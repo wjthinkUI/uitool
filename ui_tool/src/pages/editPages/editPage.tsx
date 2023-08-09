@@ -100,8 +100,8 @@ export const LAYOUT_COMPONENT:any = {
     layout3: list3,
     layout4: list4,
   },
-  custom: {
-    layout1: Image1,
+  layout: {
+    layout1: Layout1,
     layout2: Image2,
     layout3: Image3,
     layout4: Image4,
