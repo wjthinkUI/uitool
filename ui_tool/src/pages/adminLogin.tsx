@@ -1,15 +1,9 @@
 import { InputLogin } from '@atom/Input/InputLogin';
 import { ButtonLogin } from '@atom/Button/ButtonLogin';
 import { ReactComponent as Wjlogo } from '@assets/Wjlogo.svg';
-import { NavLinkCustom } from '@atom/Nav/NavLinkCustom';
-import { Footer } from '@organism/Nav/Footer';
 export const AdminLogin = () => {
   return (
     <div className="w-[394px] m-auto mt-20">
-      <div className="group">
-        <NavLinkCustom title="교육 서비스" to="/" key="1234" end />
-        <NavLinkCustom title="웅진씽크빅" to="/test" key="1244" end />
-      </div>
       <div className="flex justify-center">
         <Wjlogo />
       </div>
@@ -24,7 +18,6 @@ export const AdminLogin = () => {
         </a>
       </div>
       <ButtonLogin />
-      <Footer />
     </div>
   );
 };

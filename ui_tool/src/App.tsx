@@ -6,7 +6,6 @@ import { AdminManagePage } from '@pages/adminManageList/adminManagePage';
 import { AdminManage } from '@pages/adminManageList/adminManage';
 import TestPage from './pages/testPage';
 import { EditPage } from '@pages/editPages/editPage';
-import { CompoTest } from '@pages/componentTest';
 import { AdminMangePageAction } from '@pages/adminManageList/adminManagePage';
 import { AdminManageLoader } from '@pages/adminManageList/adminManage';
 import { AdminMangeMenuAction } from '@pages/adminManageList/adminManageMenu';
@@ -57,8 +56,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: 'compotest',
-    element: <CompoTest />,
+    path: '/page/:id/:adminsetting',
+    element: <EditedPageByAdmin />,
   },
 ]);
 function App() {

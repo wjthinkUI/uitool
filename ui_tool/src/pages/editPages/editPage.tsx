@@ -1,14 +1,12 @@
 import { AdabtiveTab } from '@molecule/Edit/EditAdabtiveTab';
 import { useLoaderData } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import { MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { EditPageDataType } from 'types';
 import { GridContainer } from '@atom/public/GridContainer';
 import { Image1 } from '@atom/Edit/Image1';
 import { Image2 } from '@atom/Edit/Image2';
 import { Image3 } from '@atom/Edit/Image3';
 import { Image4 } from '@atom/Edit/Image4';
-import { ImageCustom } from '@atom/Edit/ImageCustom';
 import { Line1 } from '@atom/Edit/line/line1';
 import { Line2 } from '@atom/Edit/line/line2';
 import { Line3 } from '@atom/Edit/line/line3';
@@ -29,6 +27,7 @@ import { list1 } from '@atom/Edit/list/list1';
 import { list2 } from '@atom/Edit/list/list2';
 import { list3 } from '@atom/Edit/list/list3';
 import { list4 } from '@atom/Edit/list/list4';
+import { Table } from '@atom/Edit/Table';
 import { Layout1 } from '@atom/Edit/layout/Layout1';
 import {
   setInitialState,
@@ -37,8 +36,6 @@ import {
 } from '@store/slice/sliceEditPage';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
-import { LoadingSpinner } from '@atom/public/LoadingSpinner';
-import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { EditBlock } from '@organism/Edit/EditBlock';
 import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
 import { PageNavigation } from '@organism/Nav/Navigation';
@@ -81,6 +78,12 @@ export const LAYOUT_COMPONENT:any = {
     layout3: list3,
     layout4: list4,
   },
+  table: {
+    layout1: Table,
+  },
+  custom: {
+    layout1: Image1,
+  },
   layout: {
     layout1: Layout1,
     layout2: Image2,
@@ -91,8 +94,7 @@ export const LAYOUT_COMPONENT:any = {
 
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
-  const [render, setRender] = useState<boolean>(false);
-  const loadedData: any = useLoaderData(); //promise, page type
+  const loadedData: any = useLoaderData();
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -108,7 +110,7 @@ export const EditPage = () => {
     (state: RootState) => state.editPage,
     shallowEqual
   );
-  console.log(pageData);
+  // console.log(pageData);
   const handleTabChange = (tabName: string) => {
     setActiveTab(tabName);
   };
@@ -141,8 +143,6 @@ export const EditPage = () => {
             }
           >
             <PageNavigation />
-            {/* <ModalBlockDesign /> */}
-            <Layout1 />
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
@@ -166,9 +166,3 @@ export const EditPage = () => {
     </>
   );
 };
-// {pageData.page.map((v: any, i: any) => {
-//   const Component =
-//     LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
-//   console.log('working');
-//   return <Component key={i} />;
-// })}

@@ -33,8 +33,13 @@ app.get('/edit/:id', async (req, res, next) => {
 app.post('/edit/:id', async (req, res, next) => {
   const { id } = req.params;
   const pageData = req.body;
-  // console.log(id, pageData);
+
   try {
+    const filteredPage = pageData.page.filter(
+      (item) => item.type !== 'initial'
+    );
+    pageData.page = filteredPage;
+    console.log(pageData);
     const message = await updatePage(id, pageData);
     res.status(200).json({ message: message });
   } catch (err) {

@@ -25,8 +25,15 @@ const sliceEditPage = createSlice({
       state.pageInfo = action.payload.pageInfo;
       if (action.payload.page.length !== 0) {
         state.page = action.payload.page; //빈페이지 아닐 경우
+      } else {
+        state.page = initialState.page;
       }
       //빈페이지 일 경우 자동으로 초기값 들어감
+    },
+    filteringInitialState: (state) => {
+      //저장 전 initial이 있으면 모두 삭제
+      const filteredPage = state.page.filter((item) => item.type !== 'initial');
+      state.page = filteredPage;
     },
 
     updateTypeAndContentLayout: (state, action) => {
@@ -126,6 +133,7 @@ const sliceEditPage = createSlice({
 
 export const {
   setInitialState,
+  filteringInitialState,
   updateTypeAndContentLayout,
   updateLink,
   updateSrc,

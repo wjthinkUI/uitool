@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import type { GridContainerProps } from 'types'
+import { useState, useEffect } from 'react';
+import type { GridContainerProps } from 'types';
 
 export const GridContainer = ({children, deviceWidth}:GridContainerProps) => {
     const containerStyle = {

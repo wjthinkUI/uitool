@@ -7,7 +7,7 @@ import slicePagesInfo from './slice/slicePagesInfo';
 import sliceNavigations from './slice/sliceNavigations';
 import sliceEditPage from './slice/sliceEditPage';
 import sliceModalToggle from './slice/sliceModalToggle';
-import sliceBlockList from './slice/sliceBlockList';
+import sliceTable from './slice/sliceTable';
 import sliceEditMode from './slice/sliceEditMode';
 export const store = configureStore({
   reducer: {
@@ -18,7 +18,7 @@ export const store = configureStore({
     pagesinfo: slicePagesInfo.reducer,
     navigations: sliceNavigations.reducer,
     modalToggle: sliceModalToggle.reducer,
-    blockList: sliceBlockList.reducer,
+    table: sliceTable.reducer,
     editMode: sliceEditMode.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
