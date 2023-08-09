@@ -16,6 +16,13 @@ interface CardBoxProps {
 }
 
 export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
+  const [editMode, setEditMode] = useState<boolean>(false);
+  useEffect(() => {
+    if (location.pathname.startsWith('/edit/')) {
+      setEditMode(true);
+    }
+  }, []);
+
   const fileRef = useRef<HTMLInputElement>(null);
   const [selectedImage, setSelectedImage] = useState<string>('');
   const loadedpageData = useSelector((state: RootState) => state.editPage);
@@ -88,11 +95,12 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
       />
 
       <div className="relative w-full h-full group/item">
-        <Trashcan
+        {editMode && (
+        <>
+          <Trashcan
           className="absolute z-10 rounded-md cursor-pointer -left-3 -top-3 fill-white bg-grayscale-300 w-fit h-fit"
           onClick={handleDeleteImageAndLink}
-        />
-        <>
+          />
           <div className="absolute set__center">
             <Upload className="group-hover/item:invisible" />
           </div>
@@ -110,13 +118,13 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
             )}
           </div>
         </>
+        )}
         {selectedImage && (
           <img
             src={selectedImage}
             alt="Preview"
-            className={`object-cover w-full h-full ${
-              isCircle ? 'rounded-full' : ''
-            }`}
+            className={`object-cover w-full h-full ${isCircle ? 'rounded-full' : ''
+              }`}
           />
         )}
       </div>
