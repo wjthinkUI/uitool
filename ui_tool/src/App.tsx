@@ -14,6 +14,9 @@ import {
   editPageLoader,
   editPageAction,
 } from '@pages/editPages/editPageLoaderAndAction';
+import { PreviewPage } from '@pages/previewPages/previewPage';
+import { previewPageLoader } from '@pages/previewPages/previewPageLoader';
+import { previewPageAction } from '@pages/previewPages/previewPageLoader';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,6 +31,12 @@ const router = createBrowserRouter([
     element: <EditPage />,
     loader: editPageLoader,
     action: editPageAction,
+  },
+  {
+    path: '/preview/:id',
+    element: <PreviewPage />,
+    loader: previewPageLoader,
+    action: previewPageAction,
   },
   {
     path: '/adminlist',

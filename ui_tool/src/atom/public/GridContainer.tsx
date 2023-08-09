@@ -21,7 +21,6 @@ export const GridContainer = ({children, deviceWidth}:GridContainerProps) => {
     
     return (
         <div className={currentContainer}>
-            <p>{deviceWidth}</p>
                 {children}
         </div>
     )

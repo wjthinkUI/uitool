@@ -14,6 +14,13 @@ interface Image1Props {
 }
 
 export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
+  const [editMode, setEditMode] = useState<boolean>(false);
+  useEffect(() => {
+    if (location.pathname.startsWith('/edit/')) {
+      setEditMode(true);
+    }
+  }, []);
+
   const dispatch = useDispatch<AppDispatch>();
   const loadedpageData = useSelector((state: RootState) => state.editPage);
   const [selectedImage, setSelectedImage] = useState<string>('');
@@ -77,9 +84,11 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
     //   target.src = 'https://via.placeholder.com/400';
     // }
   };
+
+
   return (
     <div
-      className={`w-[100%] h-[${height}] group mx-auto flex justify-center items-center`}
+      className={`w-[100%] h-[${height}] ${editMode ? 'group':'group-disabled'} mx-auto flex justify-center items-center`}
     >
       <input
         id={inputId}

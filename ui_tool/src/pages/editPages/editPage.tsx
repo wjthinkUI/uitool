@@ -43,27 +43,8 @@ import { EditBlock } from '@organism/Edit/EditBlock';
 import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
 import { PageNavigation } from '@organism/Nav/Navigation';
 import { Footer } from '@organism/Nav/Footer';
-/**
- * 1. EditPage에서는 페이지의 정보를 받아와서 페이지를 렌더링한다.
- * 2. 페이지의 정보는 store에서 받아온다.
- * 3. 페이지의 정보는 페이지의 id를 통해 받아온다.
- * 4. pageInfo는 submit할 때 date만 변경해주면 된다.
- * 5. page는 submit할 때 layout만 변경해주면 된다.
- * 6. page는 layoutTable을 통해 렌더링한다.
- * 7. layoutTable은 layout에 따라서 다르게 렌더링한다.
- *
- *
- * design type, design id 정의
- * action addBlock - 블록 추가 버튼 클릭 시, 빈 블록값 생성
- * action modal on - 새로 생성된 블록에서 디자인 수정 클릭 시, 디자인 선택 모달 띄움
- * action setDesign - 디자인 선택 모달에서 디자인 선택 시, 디자인 타입과 디자인 아이디를 블록에 저장
- * selector store - 블록에 저장된 디자인 타입과 디자인 아이디를 통해 디자인 렌더링
- *
- * 반복),,,
- *
- * 저장 버튼 클릭 시, 페이지 정보와 블록 정보를 서버에 전송 (http fetch)
- *
- */
+import { setEditMode } from '@store/slice/sliceEditMode';
+
 export const LAYOUT_COMPONENT:any = {
   initial: {
     layout0: EditAddSelectDesign,
@@ -108,22 +89,11 @@ export const LAYOUT_COMPONENT:any = {
   },
 };
 
-// 사용방법 레퍼런스
-// return (
-//   <div className='w-[100vw] h-auto'>
-//     {page.map((v: any, i: any) => {
-//       const Component = LAYOUT_COMPONENT[v.type][`layout${v.layout}`];
-//       return <Component key={i} />
-//     }
-// )
-
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
-  // const [isLoading, setIsLoading] = useState<boolean>(true);
   const [render, setRender] = useState<boolean>(false);
   const loadedData: any = useLoaderData(); //promise, page type
   const dispatch = useDispatch<AppDispatch>();
-  // console.log('loadedData =', loadedData);
 
   useEffect(() => {
     dispatch(
@@ -142,11 +112,6 @@ export const EditPage = () => {
   const handleTabChange = (tabName: string) => {
     setActiveTab(tabName);
   };
-
-  // if (isLoading && !pageData) {
-  //   return <LoadingSpinner />;
-  // }
-
   const handleEditAddBlockHere = (i: number) => {
     dispatch(putNewBlockTop({ index: i }));
   };
@@ -154,21 +119,10 @@ export const EditPage = () => {
   const handleEditAddBlockBottom = (i: number) => {
     dispatch(putNewBlockBottom({ index: i }));
   };
-  /** 230805 메모
-   * 1. 블록 추가 버튼 클릭 시, 빈 블록값 생성
-   * 2. 새로 생성된 블록에서 디자인 수정 클릭 시, 디자인 선택 모달 띄움
-   * 3. 디자인 선택 모달에서 디자인 선택 시, 디자인 타입과 디자인 아이디를 블록에 저장
-   * 4. 블록에 저장된 디자인 타입과 디자인 아이디를 통해 디자인 렌더링
-   *
-   * EditBlock을 누르면 new Block이 생기는데, 이때 newBlock은 initial한 상태
-   * 그 상태에선 EditAddSelectDesign을 렌더링
-   * EditAddSelectDesign에서 디자인 선택 시, EditBlock의 상태를 바꿔줘야 함
-   *
-   * 집갔다와서 해야지
-   *
-   */
-
-  // new Block - design select - modal On
+  
+  useEffect(() => {
+    console.log('pageData = ', pageData);
+  }, [pageData]);
 
   return (
     <>
@@ -190,11 +144,8 @@ export const EditPage = () => {
             {/* <ModalBlockDesign /> */}
             <Layout1 />
             {pageData.page.map((v: any, i: any) => {
-              console.log('v = ', v);
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
-                console.log(pageData.page, 'pageData.page')
-                console.log('mainComponent = ', Component)
               return (
                 <div key={i}>
                   <EditBlock
