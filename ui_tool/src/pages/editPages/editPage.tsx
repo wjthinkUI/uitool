@@ -29,6 +29,7 @@ import { list1 } from '@atom/Edit/list/list1';
 import { list2 } from '@atom/Edit/list/list2';
 import { list3 } from '@atom/Edit/list/list3';
 import { list4 } from '@atom/Edit/list/list4';
+import { Table } from '@atom/Edit/Table';
 import {
   setInitialState,
   putNewBlockBottom,
@@ -36,8 +37,6 @@ import {
 } from '@store/slice/sliceEditPage';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
-import { LoadingSpinner } from '@atom/public/LoadingSpinner';
-import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
 import { EditBlock } from '@organism/Edit/EditBlock';
 import { EditAddSelectDesign } from '@molecule/Edit/EditAddSelectDesign';
 import { PageNavigation } from '@organism/Nav/Navigation';
@@ -99,6 +98,9 @@ const LAYOUT_COMPONENT = {
     layout3: list3,
     layout4: list4,
   },
+  table: {
+    layout1: Table,
+  },
   custom: {
     layout1: Image1,
     layout2: Image2,
@@ -118,9 +120,7 @@ const LAYOUT_COMPONENT = {
 
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
-  // const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [render, setRender] = useState<boolean>(false);
-  const loadedData: any = useLoaderData(); //promise, page type
+  const loadedData: any = useLoaderData();
   const dispatch = useDispatch<AppDispatch>();
   // console.log('loadedData =', loadedData);
 

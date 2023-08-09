@@ -24,7 +24,6 @@ export const AdminLogin = () => {
         </a>
       </div>
       <ButtonLogin />
-      <Footer />
     </div>
   );
 };

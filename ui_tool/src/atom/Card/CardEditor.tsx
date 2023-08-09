@@ -3,7 +3,6 @@ import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { textDefaultConfig } from '@atom/Edit/text/TextDefalutConfig';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
-import { updateListSrc } from '@store/slice/sliceBlockList';
 import { updateSrc } from '@store/slice/sliceEditPage';
 import { memo, useEffect } from 'react';
 

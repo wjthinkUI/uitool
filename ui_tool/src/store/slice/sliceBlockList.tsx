@@ -1,26 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const sliceBlockList = createSlice({
-  name: 'blockList',
+const sliceTable = createSlice({
+  name: 'table',
   initialState: {
-    page: [
-      {
-        src: [{}],
-      },
-    ],
+    col: 0,
+    row: 0,
   },
   reducers: {
-    updateListSrc: (state, action) => {
-      const { index, src } = action.payload;
-      const srcIndex = src.srcIndex;
-      // const hasData = state.page[index].src.find(
-      //   (item) => item.imageSrc === src.imageSrc
-      // );
-      // if (!hasData)
-      state.page[index].src[srcIndex] = src;
+    tableLayout: (state, action) => {
+      const { col, row } = action.payload;
+      state.col = col;
+      state.row = row;
     },
   },
 });
 
-export const { updateListSrc } = sliceBlockList.actions;
-export default sliceBlockList;
+export const { tableLayout } = sliceTable.actions;
+export default sliceTable;
