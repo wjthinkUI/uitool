@@ -14,6 +14,7 @@ export const useSelectBlockDesign = () => {
     (state: RootState) => state.sidebar.selectItem
   );
   const [selectedDesign, setSelectedDesign] = useState<ReactNode>(null);
+
   useEffect(() => {
     const data = blockDesignData.find((el) => el.type === selectedType);
     setSelectedDesign(data?.element());
@@ -128,7 +129,7 @@ const blockDesignData: any[] = [
     type: 'list',
     name: '목록',
     element() {
-      return <ListContent list={this.contentList} />;
+      return <ListContent list={this.contentList} type={this.type} />;
     },
     contentList: [
       {

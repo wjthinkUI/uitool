@@ -3,10 +3,10 @@ import { ModalBlockDesignMediumBox } from '@atom/Modal/ModalBlockDesign/ModalBlo
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
-
-export const TextContent = ({ list, type }:any) => {
+import { blockModalToggle } from '@store/slice/sliceModalToggle';
+export const TextContent = ({ list, type }: any) => {
   const blockIndex = useSelector(
-    (state: RootState) => state.editPage.selectedBlockIndex
+    (state: RootState) => state.modalToggle.selectedBlockIndex
   );
   const dispatch = useDispatch<AppDispatch>();
 
@@ -19,6 +19,7 @@ export const TextContent = ({ list, type }:any) => {
         contentLayout,
       })
     );
+    dispatch(blockModalToggle());
   };
 
   return (

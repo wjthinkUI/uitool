@@ -15,7 +15,6 @@ const initialState = {
       link: [{}],
     },
   ],
-  selectedBlockIndex: 0,
 };
 
 const sliceEditPage = createSlice({
@@ -29,29 +28,52 @@ const sliceEditPage = createSlice({
       }
       //빈페이지 일 경우 자동으로 초기값 들어감
     },
-    selectBlockIndex: (state, action) => {
-      state.selectedBlockIndex = action.payload;
-    },
+
     updateTypeAndContentLayout: (state, action) => {
       const { index, type, contentLayout } = action.payload;
       if (index >= 0 && index < state.page.length) {
         state.page[index].type = type;
         state.page[index].contentLayout = contentLayout;
+        state.page[index].src = [{}];
+        state.page[index].link = [{}];
       }
     },
+    // updateSrc: (state, action) => {
+    //   const { index, src } = action.payload;
+    //   const srcIndex = src.srcIndex;
+    //   // const hasData = state.page[index].src.find(
+    //   //   (item) => item.imageSrc === src.imageSrc
+    //   // );
+    //   // if (!hasData)
+    //   state.page[index].src[srcIndex] = src;
+    // },
     updateSrc: (state, action) => {
       const { index, src } = action.payload;
       const srcIndex = src.srcIndex;
-      // const hasData = state.page[index].src.find(
-      //   (item) => item.imageSrc === src.imageSrc
-      // );
-      // if (!hasData)
-      state.page[index].src[srcIndex] = src;
+      const existingData = state.page[index].src[srcIndex];
+      state.page[index].src[srcIndex] = { ...existingData, ...src };
     },
     updateLink: (state, action) => {
       const { index, link } = action.payload;
       const linkIndex = link.linkIndex;
-      state.page[index].link[linkIndex] = link;
+      const existingData = state.page[index].link[linkIndex];
+      state.page[index].link[linkIndex] = { ...existingData, ...link };
+    },
+    pushEmptyObjToSrcAndLink: (state, action) => {
+      const { index } = action.payload;
+      // state.page[index].src.push({});
+      state.page[index].link.push({});
+    },
+    deleteSrcAndLink: (state, action) => {
+      const { index, boxIndex } = action.payload;
+      const filteredSrc = state.page[index].src.filter(
+        (_, idx) => idx !== boxIndex
+      );
+      const filteredLink = state.page[index].link.filter(
+        (_, idx) => idx !== boxIndex
+      );
+      state.page[index].src = filteredSrc;
+      state.page[index].link = filteredLink;
     },
     moveUpBlock: (state, action) => {
       const { index } = action.payload;
@@ -85,8 +107,8 @@ const sliceEditPage = createSlice({
       state.page.splice(index, 0, {
         type: 'initial',
         contentLayout: 0,
-        src: [],
-        link: [],
+        src: [{}],
+        link: [{}],
       });
     },
     putNewBlockBottom: (state, action) => {
@@ -95,8 +117,8 @@ const sliceEditPage = createSlice({
       state.page.splice(index + 1, 0, {
         type: 'initial',
         contentLayout: 0,
-        src: [],
-        link: [],
+        src: [{}],
+        link: [{}],
       });
     },
   },
@@ -104,10 +126,11 @@ const sliceEditPage = createSlice({
 
 export const {
   setInitialState,
-  selectBlockIndex,
   updateTypeAndContentLayout,
   updateLink,
   updateSrc,
+  pushEmptyObjToSrcAndLink,
+  deleteSrcAndLink,
   moveUpBlock,
   moveDownBlock,
   deleteBlock,

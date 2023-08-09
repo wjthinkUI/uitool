@@ -11,11 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { initalize, clearModalState } from '@store/slice/sliceModal';
 
 interface props {
-  onCancel: () => void;
   id: number;
 }
 
-export const ModalDuplication = ({ onCancel, id }: props) => {
+export const ModalDuplication = ({ id }: props) => {
   const modalElement = document.getElementById('modal') as HTMLElement;
   const pagesData = useSelector((state: RootState) => state.pagesinfo);
   const dispatch = useDispatch<AppDispatch>();
@@ -38,12 +37,12 @@ export const ModalDuplication = ({ onCancel, id }: props) => {
   // usePreventMouseWheel();
   return (
     <>
-      {createPortal(<ModalBackDrop onCancel={onCancel} />, modalElement)}
+      {createPortal(<ModalBackDrop />, modalElement)}
       {createPortal(
         <ModalContainer height="low">
           <ModalTitle title="페이지 복제" />
           <ModalDuplicationContent />
-          <ModalButton onCancel={onCancel} method="POST" />
+          <ModalButton method="POST" />
         </ModalContainer>,
         modalElement
       )}

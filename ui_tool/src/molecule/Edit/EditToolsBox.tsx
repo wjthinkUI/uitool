@@ -8,22 +8,34 @@ import {
   moveUpBlock,
   moveDownBlock,
   deleteBlock,
+  updateTypeAndContentLayout,
 } from '@store/slice/sliceEditPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store/store';
-import { useState } from 'react';
-import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
+import { AppDispatch, RootState } from '@store/store';
 
+import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
+import {
+  blockModalToggle,
+  selectBlockIndex,
+} from '@store/slice/sliceModalToggle';
+import { pushEmptyObjToSrcAndLink } from '@store/slice/sliceEditPage';
 /** onClick 설정 필요 */
 export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
-  const dispatch = useDispatch();
-  const [modal, setModal] = useState(false);
-  //   console.log('BLOCK ID = ', block_id);
+  const dispatch = useDispatch<AppDispatch>();
+
   const pageData = useSelector((state: RootState) => state.editPage);
+  const modalState = useSelector(
+    (state: RootState) => state.modalToggle.modalState
+  );
+
+  const AddList = (block_id: number) => {
+    dispatch(pushEmptyObjToSrcAndLink({ index: block_id }));
+  };
+
   const Write = (block_id: number) => {};
   const ReDesignSelect = () => {
-    // console.log(block_id);
-    setModal(true);
+    dispatch(selectBlockIndex(block_id));
+    dispatch(blockModalToggle());
   };
   const MoveUp = (block_id: number) => {
     console.log('moveup', block_id);
@@ -36,18 +48,33 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
     dispatch(moveDownBlock({ index: block_id }));
   };
   const Trash = (block_id: number) => {
-    if (pageData.page.length === 1) return;
-    if (window.confirm('정말 삭제하시겠습니까?')) {
+    if (pageData.page.length === 1) {
+      dispatch(
+        updateTypeAndContentLayout({
+          index: 0,
+          type: 'initial',
+          contentLayout: 0,
+        })
+      );
+    } else if (window.confirm('정말 삭제하시겠습니까?')) {
       dispatch(deleteBlock({ index: block_id }));
     }
   };
 
   return (
     <div className="absolute top-[30px] right-[100px] w-[246px] h-[54px] rounded-full bg-grayscale-600 hidden group-hover:flex z-20 justify-evenly pr-4 pl-4">
+      {pageData.page[block_id].type === 'list' ? (
+        <button
+          className="absolute -left-28 w-[90px] h-full bg-grayscale-600 rounded-3xl text-grayscale-0 text-body2r hover:text-primary-900"
+          onClick={() => AddList(block_id)}
+        >
+          ADD
+        </button>
+      ) : null}
       <button onClick={() => console.log('write')}>
         <IconPencil className="fill-white hover:fill-primary-900" />
       </button>
-      <button onClick={ReDesignSelect}>
+      <button onClick={() => ReDesignSelect()}>
         <IconReset className="fill-white hover:fill-primary-900" />
       </button>
       <button onClick={() => MoveUp(block_id)}>
@@ -59,12 +86,7 @@ export const EditToolsBox = ({ block_id }: ToolsPropsType) => {
       <button onClick={() => Trash(block_id)}>
         <IconTrashCan className="fill-white hover:fill-primary-900" />
       </button>
-      {modal && (
-        <ModalBlockDesign
-          blockIndex={block_id}
-          closeModal={() => setModal(false)}
-        />
-      )}
+      {modalState && <ModalBlockDesign />}
     </div>
   );
 };

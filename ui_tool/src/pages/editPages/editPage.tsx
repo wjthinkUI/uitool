@@ -1,11 +1,6 @@
 import { AdabtiveTab } from '@molecule/Edit/EditAdabtiveTab';
-import {
-  useParams,
-  useLoaderData,
-  Await,
-  useFetcher,
-  json,
-} from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { MouseEvent, useEffect, useState } from 'react';
 import { EditPageDataType } from 'types';
 import { GridContainer } from '@atom/public/GridContainer';
@@ -30,12 +25,16 @@ import { Text3 } from '@atom/Edit/text/Text3';
 import { Text4 } from '@atom/Edit/text/Text4';
 import { Text5 } from '@atom/Edit/text/Text5';
 import { Text6 } from '@atom/Edit/text/Text6';
-import { 
+import { list1 } from '@atom/Edit/list/list1';
+import { list2 } from '@atom/Edit/list/list2';
+import { list3 } from '@atom/Edit/list/list3';
+import { list4 } from '@atom/Edit/list/list4';
+import {
   setInitialState,
   putNewBlockBottom,
   putNewBlockTop,
 } from '@store/slice/sliceEditPage';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 import { ModalBlockDesign } from '@organism/Modal/ModalBlockDesign';
@@ -94,11 +93,11 @@ const LAYOUT_COMPONENT = {
     layout5: Text5,
     layout6: Text6,
   },
-  video: {
-    layout1: Image1,
-    layout2: Image2,
-    layout3: Image3,
-    layout4: Image4,
+  list: {
+    layout1: list1,
+    layout2: list2,
+    layout3: list3,
+    layout4: list4,
   },
   custom: {
     layout1: Image1,
@@ -119,7 +118,7 @@ const LAYOUT_COMPONENT = {
 
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // const [isLoading, setIsLoading] = useState<boolean>(true);
   const [render, setRender] = useState<boolean>(false);
   const loadedData: any = useLoaderData(); //promise, page type
   const dispatch = useDispatch<AppDispatch>();
@@ -132,18 +131,20 @@ export const EditPage = () => {
         pageInfo: loadedData.pageData.pageInfo,
       })
     );
+  }, [dispatch]);
 
-    setIsLoading(() => false);
-  }, [dispatch, setIsLoading]);
-
-  const pageData = useSelector((state: RootState) => state.editPage);
+  const pageData = useSelector(
+    (state: RootState) => state.editPage,
+    shallowEqual
+  );
+  console.log(pageData);
   const handleTabChange = (tabName: string) => {
     setActiveTab(tabName);
   };
 
-  if (isLoading && !pageData) {
-    return <LoadingSpinner />;
-  }
+  // if (isLoading && !pageData) {
+  //   return <LoadingSpinner />;
+  // }
 
   const handleEditAddBlockHere = (i: number) => {
     dispatch(putNewBlockTop({ index: i }));
@@ -170,7 +171,7 @@ export const EditPage = () => {
 
   return (
     <>
-      {!isLoading && pageData && (
+      {pageData && (
         <div className="w-[100vw] h-auto">
           <AdabtiveTab onTabChange={handleTabChange} />
           <GridContainer
@@ -197,6 +198,7 @@ export const EditPage = () => {
                     onClickTop={() => handleEditAddBlockHere(i)}
                     onClickBottom={() => handleEditAddBlockBottom(i)}
                     index={i}
+                    key={i}
                   >
                     <Component key={i} block_id={i} />
                   </EditBlock>

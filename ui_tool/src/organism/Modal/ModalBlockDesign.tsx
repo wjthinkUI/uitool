@@ -5,32 +5,17 @@ import { ModalBlockDesignWrapper } from '@atom/Modal/ModalBlockDesign/ModalBlock
 import { useSelectBlockDesign } from '@hooks/useSelectBlockDesign';
 import { ModalBackDrop } from '@atom/Modal/ModalBackDrop';
 import { createPortal } from 'react-dom';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@store/store';
-import { useEffect } from 'react';
-import { selectBlockIndex } from '@store/slice/sliceEditPage';
-import { closeBlockDesignModal } from '@store/slice/sliceBlockDesignSideBar';
-interface ModalBlockDesignProps {
-  blockIndex: number;
-  closeModal: () => void;
-}
-export const ModalBlockDesign = ({
-  blockIndex,
-  closeModal,
-}: ModalBlockDesignProps) => {
+
+export const ModalBlockDesign = () => {
   const modalElement = document.getElementById('modal') as HTMLElement;
-  const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    dispatch(selectBlockIndex(blockIndex));
-    dispatch(closeBlockDesignModal(closeModal));
-  }, []);
+
   const { selectedDesign, selectedType } = useSelectBlockDesign();
   return (
     <>
-      {createPortal(<ModalBackDrop onCancel={closeModal} />, modalElement)}
+      {createPortal(<ModalBackDrop />, modalElement)}
       {createPortal(
         <ModalBlockDesignContainer>
-          <ModalBlockDesignHeader onCancel={closeModal} />
+          <ModalBlockDesignHeader />
           <div className="flex">
             <ModalBlockDesignSideBar />
             <div className="flex justify-center grow">
