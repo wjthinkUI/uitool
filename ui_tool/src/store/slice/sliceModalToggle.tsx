@@ -8,9 +8,6 @@ const sliceModalToggle = createSlice({
     selectedBlockIndex: 0,
   },
   reducers: {
-    modalToggle: (state) => {
-      state.modalState = !state.modalState;
-    },
     blockModalToggle: (state) => {
       state.modalState = !state.modalState;
     },

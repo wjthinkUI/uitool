@@ -11,21 +11,14 @@ export const editPageLoader = async ({ request, params }: any) => {
   // return defer({ data: loadFn(params.id) });
 };
 
-const loadFn = async (id: string) => {
-  const res = await fetch(`http://localhost:5174/edit/${id}`);
-
-  // console.log('LOADER = ', res);
-  if (!res.ok) {
-    throw Error('fetching error, try again...');
-  }
-  const resData = await res.json();
-  // console.log('PageData = ', resData);
-  return resData;
-};
-
 export const editPageAction = async ({ request, params }: any) => {
   const data = await request.json(); //페이지 데이터
   console.log('action data', data);
+
+  //editAdabtiveTab에서 initail 블럭 초기화하는 디스패치를 하지만 그전에 전송되서 한번더 필터링 해야함, 나중에 수정 예정
+  // const filteredPage = data.page.filter((item) => item.type !== 'initial');
+  // data.page = filteredPage;
+  // console.log(data);
   if (request.method === 'POST') {
     //db에 페이지 전송
     const res = await fetch(`http://localhost:5174/edit/${params.id}`, {

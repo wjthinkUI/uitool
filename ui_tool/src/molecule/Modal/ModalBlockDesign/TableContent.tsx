@@ -4,7 +4,7 @@ import type { Cell } from 'types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { blockModalToggle } from '@store/slice/sliceModalToggle';
-import { tableLayout } from '@store/slice/sliceBlockList';
+import { tableLayout } from '@store/slice/sliceTable';
 import { updateTypeAndContentLayout } from '@store/slice/sliceEditPage';
 import { LoadingSpinner } from '@atom/public/LoadingSpinner';
 interface TableProps {
@@ -26,7 +26,7 @@ export const TableContent = ({ type }: TableProps) => {
         contentLayout: 1,
       })
     );
-    dispatch(tableLayout({ row: row, col: col }));
+    dispatch(tableLayout({ row: row + 1, col: col + 1 }));
     dispatch(blockModalToggle());
   };
 

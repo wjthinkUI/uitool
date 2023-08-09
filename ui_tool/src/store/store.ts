@@ -7,7 +7,7 @@ import slicePagesInfo from './slice/slicePagesInfo';
 import sliceNavigations from './slice/sliceNavigations';
 import sliceEditPage from './slice/sliceEditPage';
 import sliceModalToggle from './slice/sliceModalToggle';
-import sliceTable from './slice/sliceBlockList';
+import sliceTable from './slice/sliceTable';
 export const store = configureStore({
   reducer: {
     editPage: sliceEditPage.reducer,

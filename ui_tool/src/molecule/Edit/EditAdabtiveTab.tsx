@@ -7,7 +7,7 @@ import { useSubmit } from 'react-router-dom';
 import type { AdabtiveTabProps } from 'types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
-
+import { filteringInitialState } from '@store/slice/sliceEditPage';
 export const AdabtiveTab = ({ onTabChange }: AdabtiveTabProps) => {
   const tabStyle = {
     active:
@@ -23,19 +23,19 @@ export const AdabtiveTab = ({ onTabChange }: AdabtiveTabProps) => {
   };
   const { id } = useParams();
   const location = useLocation();
-
-  const pageData = useSelector((state: RootState) => state.editPage);
   const dispatch = useDispatch<AppDispatch>();
+  const pageData = useSelector((state: RootState) => state.editPage);
   const submit = useSubmit();
   const handlePageSubmit = () => {
     const url = location.pathname;
-
+    // dispatch(filteringInitialState());
     submit(pageData, {
       method: 'POST',
       action: url, // 메뉴관리 페이지관리에서 사용하도록 url설정
       encType: 'application/json',
     });
   };
+
   return (
     <div className="relative w-screen ">
       <div className="flex flex-row justify-center bg-grayscale-600">
