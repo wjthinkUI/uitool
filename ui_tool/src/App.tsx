@@ -55,10 +55,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: '/page/:id/:adminsetting',
-    element: <EditedPageByAdmin />,
-  },
 ]);
 function App() {
   return (
