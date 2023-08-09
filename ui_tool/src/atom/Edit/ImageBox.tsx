@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { updateSrc, updateLink } from '@store/slice/sliceEditPage';
 import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
-import { LoadingSpinner } from '@atom/public/LoadingSpinner';
+import { commonModalToggle } from '@store/slice/sliceModalToggle';
 interface Image1Props {
   height: string;
   boxIndex: number;
@@ -20,12 +20,13 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
   const [inputId, setInputId] = useState<string>('');
   const [imageId, setImageId] = useState<string>('');
   const [showModalLink, setShowModalLink] = useState<boolean>(false);
-
+  const commonModalState = useSelector(
+    (state: RootState) => state.modalToggle.commonModalState
+  );
   useEffect(() => {
     const uniqueId = uuidv4();
     setInputId(() => uniqueId);
-    const imageId = uuidv4();
-    setImageId(() => imageId);
+    setImageId(() => uniqueId);
   }, []);
 
   useEffect(() => {
@@ -96,13 +97,9 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
         </label>
 
         <span className="hover:bg-primary-950 flex items-center justify-center w-[30px] h-[30px] bg-primary-900 rounded cursor-pointer">
-          <IconLink onClick={() => setShowModalLink((prev) => !prev)} />
-          {showModalLink && (
-            <ModalLinkSetting
-              onCancel={() => setShowModalLink((prev) => !prev)}
-              boxIndex={boxIndex}
-              blockIndex={blockIndex}
-            />
+          <IconLink onClick={() => dispatch(commonModalToggle())} />
+          {commonModalState && (
+            <ModalLinkSetting boxIndex={boxIndex} blockIndex={blockIndex} />
           )}
         </span>
       </div>

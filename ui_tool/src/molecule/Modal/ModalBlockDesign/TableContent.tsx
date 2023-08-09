@@ -16,6 +16,11 @@ export const TableContent = () => {
   // className="flex items-center m-auto"
   return (
     <ModalBlockDesignLargeBox>
+      <div className="fixed mb-4 text-center top-32 text-body1m">
+        {clickedCell
+          ? `${clickedCell.row + 1} X ${clickedCell.col + 1}`
+          : `${8} X ${5}`}
+      </div>
       {Array.from({ length: 8 }, (_, row) => (
         <div key={row}>
           {Array.from({ length: 5 }, (_, col) => (

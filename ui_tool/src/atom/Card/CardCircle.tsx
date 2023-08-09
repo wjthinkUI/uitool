@@ -1,28 +1,30 @@
 import type { CircleProps } from 'types';
-import { useState } from 'react';
-import { useImageAndLinkSetting } from '@hooks/useImageAndLinkSetting';
-export const CardCircle = ({ description }: CircleProps) => {
-  const [desc, setDesc] = useState(description);
-  const [editMode, setEditMode] = useState(false);
-  const { ImageAndLinkSelector } = useImageAndLinkSetting(true);
-  const handleDesc = (text: string) => {
-    setDesc(() => text);
-  };
 
+import { CardBox } from './CardBox';
+import { CardEditor } from './CardEditor';
+interface CardProps {
+  blockIndex: number;
+  boxIndex: number;
+}
+
+export const CardCircle = ({ blockIndex, boxIndex }: CardProps) => {
   return (
     <>
-      {/* {editMode && <TESTeditor desc={description} callback={handleDesc} />} */}
-      <div className="w-[144px] h-[174px] m-2  font-noto">
+      <div className="w-[144px] h-[174px] m-4  font-noto">
         <div className="mb-3 rounded-full w-[144px] h-[144px] bg-grayscale-200">
-          {ImageAndLinkSelector}
+          {blockIndex !== undefined && (
+            <CardBox isCircle blockIndex={blockIndex} boxIndex={boxIndex} />
+          )}
         </div>
-        <p
-          className="text-center text-[15px] font-light leading-5 text-grayscale-800 cursor-pointer"
-          onClick={() => setEditMode((prev) => !prev)}
-        >
-          {/* <TESTeditor /> */}
-          {desc}
-        </p>
+        <div>
+          {blockIndex !== undefined && (
+            <CardEditor
+              blockIndex={blockIndex}
+              boxIndex={boxIndex}
+              shape="circle"
+            />
+          )}
+        </div>
       </div>
     </>
   );
