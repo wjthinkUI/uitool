@@ -65,7 +65,7 @@ import { Footer } from '@organism/Nav/Footer';
  * 저장 버튼 클릭 시, 페이지 정보와 블록 정보를 서버에 전송 (http fetch)
  *
  */
-const LAYOUT_COMPONENT = {
+export const LAYOUT_COMPONENT:any = {
   initial: {
     layout0: EditAddSelectDesign,
   },
@@ -192,6 +192,8 @@ export const EditPage = () => {
               console.log('v = ', v);
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
+                console.log(pageData.page, 'pageData.page')
+                console.log('mainComponent = ', Component)
               return (
                 <div key={i}>
                   <EditBlock

@@ -6,18 +6,41 @@
  * div > edit block / div > edit block
  * 
  */
-import { EditAddSelectDesign } from "@molecule/Edit/EditAddSelectDesign"
 
+const dataForm = {
+    id: 1,
+    type: "layout",
+    contentLayout: 1,
+    src: [
+        {
+            "type": "initial",
+            "contentLayout": 0,
+            "src": [],
+            "link": []
+        },
+        {
+            "type": "initial",
+            "contentLayout": 0,
+            "src": [],
+            "link": []
+        }
+    ]
+}
+import { LAYOUT_COMPONENT } from "@pages/editPages/editPage"
 
-export const Layout1 = (children: any) => {
+export const Layout1 = () => {
     return (
         <div className="flex flex-row w-full h-full gap-5 p-10">
-            <div className="w-1/2 h-full bg-red-500">
-                <EditAddSelectDesign key={0} block_id={0} />
-            </div>
-            <div className="w-1/2 h-full bg-yellow-500">
-                <EditAddSelectDesign key={1} block_id={1} />
-            </div>
+            {dataForm.src.map((v: any, i: any) => {
+                const Component =
+                    LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
+                    console.log('Component = ', Component)
+                return (
+                    <div key={i} className="w-1/2 p-2 border-2">
+                        {<Component key={i} block_id={i}/>}
+                    </div>
+                );
+            })}
         </div>
     )
 }

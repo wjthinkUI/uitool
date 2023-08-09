@@ -15,6 +15,7 @@ export const EditAddSelectDesign = ({
   const [modal, setModal] = useState(false);
   const ReDesignSelect = () => {
     setModal(true);
+    console.log(block_id, '블록아이디')
   };
   return (
     <div
@@ -22,7 +23,7 @@ export const EditAddSelectDesign = ({
       className="h-[160px] select-none flex flex-col bg-grayscale-50 text-grayscale-400 items-center justify-center border-dashed border-2 border-grayscale-800 hover:bg-gray-200"
     >
       <IconMaginStick />
-      디자인을 선택하세요
+      디자인을 선택하세요{`${block_id}`}
       {/* {(modal) ? <ModalBlockDesign blockIndex={index} closeModal={closeModal}/>:null} */}
       {modal && (
         <ModalBlockDesign
