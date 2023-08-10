@@ -22,10 +22,6 @@ const router = createBrowserRouter([
     element: <AdminLogin />,
   },
   {
-    path: '/test',
-    element: <TestPage />,
-  },
-  {
     path: '/edit/:id',
     element: <EditPage />,
     loader: editPageLoader,

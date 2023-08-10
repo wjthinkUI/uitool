@@ -153,6 +153,11 @@ const blockDesignData: any[] = [
         contentLayout: 4,
         svgEl: await import('@assets/list/list-4-square.svg'),
       },
+      {
+        id: 5,
+        contentLayout: 5,
+        svgEl: await import('@assets/list/list-5-square.svg'),
+      },
     ],
   },
   {

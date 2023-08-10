@@ -27,6 +27,7 @@ import { list1 } from '@atom/Edit/list/list1';
 import { list2 } from '@atom/Edit/list/list2';
 import { list3 } from '@atom/Edit/list/list3';
 import { list4 } from '@atom/Edit/list/list4';
+import { list5 } from '@atom/Edit/list/list5';
 import { Table } from '@atom/Edit/Table';
 import { Layout1 } from '@atom/Edit/layout/Layout1';
 import {
@@ -42,7 +43,7 @@ import { PageNavigation } from '@organism/Nav/Navigation';
 import { Footer } from '@organism/Nav/Footer';
 import { setEditMode } from '@store/slice/sliceEditMode';
 
-export const LAYOUT_COMPONENT:any = {
+export const LAYOUT_COMPONENT: any = {
   initial: {
     layout0: EditAddSelectDesign,
   },
@@ -77,12 +78,10 @@ export const LAYOUT_COMPONENT:any = {
     layout2: list2,
     layout3: list3,
     layout4: list4,
+    layout5: list5,
   },
   table: {
     layout1: Table,
-  },
-  custom: {
-    layout1: Image1,
   },
   layout: {
     layout1: Layout1,
@@ -121,7 +120,7 @@ export const EditPage = () => {
   const handleEditAddBlockBottom = (i: number) => {
     dispatch(putNewBlockBottom({ index: i }));
   };
-  
+
   useEffect(() => {
     console.log('pageData = ', pageData);
   }, [pageData]);

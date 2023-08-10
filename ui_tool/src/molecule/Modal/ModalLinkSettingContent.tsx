@@ -55,7 +55,7 @@ export const ModalLinkSettingContent = () => {
           <InputPageInfo
             type="url"
             inputWidth="short"
-            placeholder="http://로 시작되는 링크 주소 입력"
+            placeholder="http:// , https:// 시작되는 링크 주소 입력"
           />
         </div>
       </div>

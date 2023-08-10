@@ -2,10 +2,8 @@ import { ReactComponent as ArrowIcon } from '@assets/icon/icon_arrow.svg';
 import { ReactComponent as SettingIcon } from '@assets/icon/icon_setting.svg';
 import { ReactComponent as CloseIcon } from '@assets/icon/icon_close.svg';
 import type { ListInnerData } from 'types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ListMenuSettingBlock } from './ListMenuSettingBlock';
-import { useSelector, useDispatch } from 'react-redux';
-import { deletePageData } from '@store/slice/sliceModal';
 import { useSubmit } from 'react-router-dom';
 
 export const ListParentsMenu = ({
