@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
 import { updateSrc, deleteSrcAndLink } from '@store/slice/sliceEditPage';
 import { commonModalToggle } from '@store/slice/sliceModalToggle';
+import { Link } from 'react-router-dom';
 interface CardBoxProps {
   isCircle: boolean;
   blockIndex: number;
@@ -17,6 +18,7 @@ interface CardBoxProps {
 
 export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [isExternal, setIsExternal] = useState<boolean>(false);
   useEffect(() => {
     if (location.pathname.startsWith('/edit/')) {
       setEditMode(true);
@@ -32,10 +34,15 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
+      //로컬스토리지 사용 , 추후 리팩토링해야함
       const getImage = localStorage.getItem(
         loadedpageData.page[blockIndex].src[boxIndex]?.imageId
       );
       setSelectedImage(() => getImage);
+    }
+    const link = loadedpageData.page[blockIndex].link[boxIndex]?.link;
+    if (link?.startsWith('http://') || link?.startsWith('https://')) {
+      setIsExternal(() => true);
     }
   }, [loadedpageData]);
 
@@ -50,7 +57,6 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
     dispatch(commonModalToggle(blockIndex));
   };
   const handleDeleteImageAndLink = () => {
-    //미완성 리덕스 상태관리 -> 이미지 id삭제, 이미지 링크 삭제 / 로컬스토리지 이미지 삭제
     if (loadedpageData.page[blockIndex].src.length > 1) {
       setSelectedImage(() => '');
       dispatch(deleteSrcAndLink({ index: blockIndex, boxIndex: boxIndex }));
@@ -84,9 +90,7 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
       reader.readAsDataURL(file);
     }
   };
-  //   if (!isEditMode) {
-  //     return <div>editmode가 false 일 경우 저장된 이미지 출력 </div>;
-  //   }
+
   return (
     <>
       <input
@@ -122,14 +126,36 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
             </div>
           </>
         )}
-        {selectedImage && (
+        {editMode && (
           <img
-            src={selectedImage}
-            alt="Preview"
             className={`object-cover w-full h-full ${
               isCircle ? 'rounded-full' : ''
             }`}
+            src={selectedImage}
           />
+        )}
+        {!editMode && isExternal && (
+          <a
+            href={loadedpageData.page[blockIndex].link[boxIndex]?.link}
+            target="_blank"
+          >
+            <img
+              className={`object-cover w-full h-full ${
+                isCircle ? 'rounded-full' : ''
+              }`}
+              src={selectedImage}
+            />
+          </a>
+        )}
+        {!editMode && !isExternal && (
+          <Link to={loadedpageData.page[blockIndex].link[boxIndex]?.link}>
+            <img
+              src={selectedImage}
+              className={`object-cover w-full h-full ${
+                isCircle ? 'rounded-full' : ''
+              }`}
+            />
+          </Link>
         )}
       </div>
     </>
