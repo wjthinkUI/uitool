@@ -40,9 +40,10 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
 
   useEffect(() => {
     if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
-      setSelectedImage(
-        () => loadedpageData.page[blockIndex].src[boxIndex].imageSrc
+      const getImage = localStorage.getItem(
+        loadedpageData.page[blockIndex].src[boxIndex]?.imageId
       );
+      setSelectedImage(() => getImage);
       const link = loadedpageData.page[blockIndex].link[boxIndex]?.link;
       console.log('link = ', link);
       if (link?.startsWith('http://') || link?.startsWith('https://')) {
@@ -61,12 +62,12 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
       reader.onload = () => {
         if (typeof reader.result === 'string') {
           setSelectedImage(reader.result);
-          console.log(boxIndex);
+          localStorage.setItem(imageId, reader.result);
           dispatch(
             updateSrc({
               index: blockIndex, //추후 인덱스 받아와야함
               src: {
-                imageSrc: reader.result,
+                // imageSrc: reader.result,
                 imageId: imageId,
                 srcIndex: boxIndex,
               }, // db로 저장 시 따로빼서 key-value 값으로 로컬스토리지 저장

@@ -32,9 +32,10 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
-      setSelectedImage(
-        () => loadedpageData.page[blockIndex].src[boxIndex].imageSrc
+      const getImage = localStorage.getItem(
+        loadedpageData.page[blockIndex].src[boxIndex]?.imageId
       );
+      setSelectedImage(() => getImage);
     }
   }, [loadedpageData]);
 
@@ -46,7 +47,7 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
   };
 
   const handleLinkSettingModal = () => {
-    dispatch(commonModalToggle());
+    dispatch(commonModalToggle(blockIndex));
   };
   const handleDeleteImageAndLink = () => {
     //미완성 리덕스 상태관리 -> 이미지 id삭제, 이미지 링크 삭제 / 로컬스토리지 이미지 삭제
@@ -66,12 +67,14 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
       reader.onload = () => {
         if (typeof reader.result === 'string') {
           setSelectedImage(reader.result);
+          const imageId = uuidv4();
+          localStorage.setItem(imageId, reader.result);
           dispatch(
             updateSrc({
               index: blockIndex,
               src: {
-                imageSrc: reader.result,
-                imageId: uuidv4(),
+                // imageSrc: reader.result,
+                imageId: imageId,
                 srcIndex: boxIndex,
               },
             })
@@ -96,35 +99,36 @@ export const CardBox = ({ isCircle, blockIndex, boxIndex }: CardBoxProps) => {
 
       <div className="relative w-full h-full group/item">
         {editMode && (
-        <>
-          <Trashcan
-          className="absolute z-10 rounded-md cursor-pointer -left-3 -top-3 fill-white bg-grayscale-300 w-fit h-fit"
-          onClick={handleDeleteImageAndLink}
-          />
-          <div className="absolute set__center">
-            <Upload className="group-hover/item:invisible" />
-          </div>
-          <div className="absolute z-10 inline-flex set__center">
-            <ImagePicker
-              className="hidden m-1 cursor-pointer group-hover/item:inline"
-              onClick={handlePickImage}
+          <>
+            <Trashcan
+              className="absolute z-10 rounded-md cursor-pointer -left-3 -top-3 fill-white bg-grayscale-300 w-fit h-fit"
+              onClick={handleDeleteImageAndLink}
             />
-            <LinkSetter
-              className="hidden m-1 cursor-pointer group-hover/item:inline"
-              onClick={handleLinkSettingModal}
-            />
-            {commonModalState && (
-              <ModalLinkSetting boxIndex={boxIndex} blockIndex={blockIndex} />
-            )}
-          </div>
-        </>
+            <div className="absolute set__center">
+              <Upload className="group-hover/item:invisible" />
+            </div>
+            <div className="absolute z-10 inline-flex set__center">
+              <ImagePicker
+                className="hidden m-1 cursor-pointer group-hover/item:inline"
+                onClick={handlePickImage}
+              />
+              <LinkSetter
+                className="hidden m-1 cursor-pointer group-hover/item:inline"
+                onClick={handleLinkSettingModal}
+              />
+              {commonModalState === blockIndex && (
+                <ModalLinkSetting boxIndex={boxIndex} blockIndex={blockIndex} />
+              )}
+            </div>
+          </>
         )}
         {selectedImage && (
           <img
             src={selectedImage}
             alt="Preview"
-            className={`object-cover w-full h-full ${isCircle ? 'rounded-full' : ''
-              }`}
+            className={`object-cover w-full h-full ${
+              isCircle ? 'rounded-full' : ''
+            }`}
           />
         )}
       </div>

@@ -90,11 +90,19 @@ export const LAYOUT_COMPONENT: any = {
     layout4: Image4,
   },
 };
-
+let overallIndex = 0;
 export const EditPage = () => {
   const [activeTab, setActiveTab] = useState<string>('desktop');
+  // const [idStorage, setIdStorage] = useState<string[]>([]);
   const loadedData: any = useLoaderData();
   const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    //페이지 떠날때 초기화
+    return () => {
+      overallIndex = 0;
+    };
+  }, []);
 
   useEffect(() => {
     dispatch(
@@ -141,12 +149,13 @@ export const EditPage = () => {
                 : 0
             }
           >
-            <PageNavigation />
+            {activeTab === 'desktop' && <PageNavigation />}
+
             {pageData.page.map((v: any, i: any) => {
               const Component =
                 LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
               return (
-                <div key={i}>
+                <div key={i} className={activeTab !== 'desktop' ? 'mt-24' : ''}>
                   <EditBlock
                     onClickTop={() => handleEditAddBlockHere(i)}
                     onClickBottom={() => handleEditAddBlockBottom(i)}
@@ -158,7 +167,7 @@ export const EditPage = () => {
                 </div>
               );
             })}
-            <Footer />
+            {activeTab === 'desktop' && <Footer />}
           </GridContainer>
         </div>
       )}
