@@ -4,7 +4,7 @@ const sliceModalToggle = createSlice({
   name: 'modalToggle',
   initialState: {
     modalState: false,
-    commonModalState: false,
+    commonModalState: null,
     modalDetailState: null,
     modalDuplState: null,
     selectedBlockIndex: 0,
@@ -13,8 +13,8 @@ const sliceModalToggle = createSlice({
     blockModalToggle: (state) => {
       state.modalState = !state.modalState;
     },
-    commonModalToggle: (state) => {
-      state.commonModalState = !state.commonModalState;
+    commonModalToggle: (state, action) => {
+      state.commonModalState = action.payload;
     },
     ModalDetailOpen: (state, action) => {
       state.modalDetailState = action.payload;
@@ -24,7 +24,7 @@ const sliceModalToggle = createSlice({
     },
     closeAll: (state) => {
       state.modalState = false;
-      state.commonModalState = false;
+      state.commonModalState = null;
       state.modalDetailState = null;
       state.modalDuplState = null;
     },

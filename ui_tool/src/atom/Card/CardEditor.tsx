@@ -9,7 +9,7 @@ import { memo, useEffect } from 'react';
 interface CardEditorProps {
   blockIndex: number;
   boxIndex: number;
-  shape: 'circle' | 'normal' | 'wide' | 'big';
+  shape: 'circle' | 'normal' | 'wide' | 'big' | 'default';
 }
 const CardEditorComponent = ({
   blockIndex,
@@ -30,6 +30,8 @@ const CardEditorComponent = ({
       big: `<p style="text-align:center;" class="text-big"><span class="text-big"><strong>[클래스]</strong></span></p><p style="text-align:center;">친구들과 함께 모여 교과과정에 필요한 핵심 과목을 집중적으로 관리
       받습니다. 전문 선생님의 학습 관리로 자기주도 학습을 성장시 킬 수
       있습니다.</p>`,
+      default: `<p><span class="text-big"><strong>[클래스]</strong></span><p>친구들과 함께 모여 교과과정에 필요한 핵심 과목을 집중적으로 관리
+      받습니다.</p></p>`,
     };
     if (!fetchedContent[boxIndex]?.src) {
       dispatch(
