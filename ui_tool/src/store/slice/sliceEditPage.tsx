@@ -11,6 +11,7 @@ const initialState = {
     {
       type: 'initial',
       contentLayout: 0,
+      groupId: '',
       src: [{}],
       link: [{}],
     },
@@ -45,6 +46,19 @@ const sliceEditPage = createSlice({
         state.page[index].link = [{}];
       }
     },
+    //아래 함수는 중첩 레이아웃구조를 위한 함수
+    // updateBlockForNestedLayout: (state, action) => {
+    //   const { index, contentLayout, numberOfLayout, groupId, type } =
+    //     action.payload;
+    //   const nestedLayoutObj = Array.from({ length: numberOfLayout }, () => ({
+    //     type,
+    //     contentLayout,
+    //     groupId,
+    //     src: [{}],
+    //     link: [[]],
+    //   }));
+    //   state.page.splice(index, numberOfLayout, ...nestedLayoutObj);
+    // },
     // updateSrc: (state, action) => {
     //   const { index, src } = action.payload;
     //   const srcIndex = src.srcIndex;
@@ -135,6 +149,7 @@ export const {
   setInitialState,
   filteringInitialState,
   updateTypeAndContentLayout,
+  updateBlockForNestedLayout,
   updateLink,
   updateSrc,
   pushEmptyObjToSrcAndLink,

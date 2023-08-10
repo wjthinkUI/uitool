@@ -4,10 +4,10 @@ import { ReactComponent as IconLink } from '@assets/icon/icon_link.svg';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@store/store';
-import { updateSrc, updateLink } from '@store/slice/sliceEditPage';
+import { updateSrc } from '@store/slice/sliceEditPage';
 import { ModalLinkSetting } from '@organism/Modal/ModalLinkSetting';
 import { commonModalToggle } from '@store/slice/sliceModalToggle';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 interface Image1Props {
   height: string;
   boxIndex: number;
@@ -15,7 +15,6 @@ interface Image1Props {
 }
 
 export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
-  const navigate = useNavigate();
   const [editMode, setEditMode] = useState<boolean>(false);
   useEffect(() => {
     if (location.pathname.startsWith('/edit/')) {
@@ -40,11 +39,11 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
 
   useEffect(() => {
     if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
-      setSelectedImage(
-        () => loadedpageData.page[blockIndex].src[boxIndex].imageSrc
+      const getImage = localStorage.getItem(
+        loadedpageData.page[blockIndex].src[boxIndex]?.imageId
       );
+      setSelectedImage(() => getImage);
       const link = loadedpageData.page[blockIndex].link[boxIndex]?.link;
-      console.log('link = ', link);
       if (link?.startsWith('http://') || link?.startsWith('https://')) {
         setIsExternal(() => true);
       }
@@ -61,15 +60,15 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
       reader.onload = () => {
         if (typeof reader.result === 'string') {
           setSelectedImage(reader.result);
-          console.log(boxIndex);
+          localStorage.setItem(imageId, reader.result);
           dispatch(
             updateSrc({
-              index: blockIndex, //추후 인덱스 받아와야함
+              index: blockIndex,
               src: {
-                imageSrc: reader.result,
+                // imageSrc: reader.result,
                 imageId: imageId,
                 srcIndex: boxIndex,
-              }, // db로 저장 시 따로빼서 key-value 값으로 로컬스토리지 저장
+              },
             })
           );
         }
@@ -85,12 +84,6 @@ export const Image = ({ height, boxIndex, blockIndex }: Image1Props) => {
     if (!target.src.endsWith('https://placehold.co/300x300')) {
       target.src = 'https://placehold.co/300x300';
     }
-    // const target = event.currentTarget;
-    // if (loadedpageData.page[blockIndex].src[boxIndex]?.imageId) {
-    //   target.src = loadedpageData.page[blockIndex].src[boxIndex].imageSrc;
-    // } else {
-    //   target.src = 'https://via.placeholder.com/400';
-    // }
   };
 
   return (

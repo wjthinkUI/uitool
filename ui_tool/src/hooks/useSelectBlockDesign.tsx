@@ -219,31 +219,37 @@ const blockDesignData: any[] = [
       {
         id: 1,
         contentLayout: 1,
+        numberOfLayout: 2,
         svgEl: await import('@assets/layout/layout-1.svg'),
       },
       {
         id: 2,
         contentLayout: 2,
+        numberOfLayout: 2,
         svgEl: await import('@assets/layout/layout-2.svg'),
       },
       {
         id: 3,
         contentLayout: 3,
+        numberOfLayout: 2,
         svgEl: await import('@assets/layout/layout-3.svg'),
       },
       {
         id: 4,
         contentLayout: 4,
+        numberOfLayout: 2,
         svgEl: await import('@assets/layout/layout-4.svg'),
       },
       {
         id: 5,
         contentLayout: 5,
+        numberOfLayout: 2,
         svgEl: await import('@assets/layout/layout-5.svg'),
       },
       {
         id: 6,
         contentLayout: 6,
+        numberOfLayout: 2,
         svgEl: await import('@assets/layout/layout-6.svg'),
       },
     ],
