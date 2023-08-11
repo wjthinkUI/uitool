@@ -35,7 +35,7 @@ export const ModalDetailContent = () => {
               onChangeValue={handleUrl}
             />
           </div>
-          <div className="m-3 ml-7">https://www.wjthinkbig.com/{data.url}</div>
+          <div className="m-3 ml-7">https://www.wjthinkbig.com{data.url}</div>
         </>
       )}
     </>

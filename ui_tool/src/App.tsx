@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     action: editPageAction,
   },
   {
-    path: '/preview/:id',
+    path: '/:path/:id',
     element: <PreviewPage />,
     loader: previewPageLoader,
     action: previewPageAction,
