@@ -26,7 +26,7 @@ export const TableContent = ({ type }: TableProps) => {
         contentLayout: 1,
       })
     );
-    dispatch(tableLayout({ row: row + 1, col: col + 1 }));
+    dispatch(tableLayout({ row: row, col: col }));
     dispatch(blockModalToggle());
   };
 
