@@ -11,59 +11,65 @@ import { useLoaderData } from 'react-router-dom';
 import { setInitialState } from '@store/slice/sliceEditPage';
 
 export const PreviewPage = () => {
-    const [activeTab, setActiveTab] = useState<string>('desktop');
-    const loadedData: any = useLoaderData();
-    const dispatch = useDispatch<AppDispatch>();
+  const [activeTab, setActiveTab] = useState<string>('desktop');
+  const loadedData: any = useLoaderData();
+  const dispatch = useDispatch<AppDispatch>();
 
-    useEffect(() => {
-        dispatch(
-        setInitialState({
-            page: loadedData.pageData.page,
-            pageInfo: loadedData.pageData.pageInfo,
-        })
-        );
-    }, [dispatch]);
-
-    const pageData = useSelector(
-        (state: RootState) => state.editPage,
-        shallowEqual
+  useEffect(() => {
+    dispatch(
+      setInitialState({
+        page: loadedData.pageData.page,
+        pageInfo: loadedData.pageData.pageInfo,
+      })
     );
-    const handleTabChange = (tabName: string) => {
-        setActiveTab(tabName);
-    };
+  }, [dispatch]);
 
-    // !location.pathname.startsWith('/edit/')
+  const pageData = useSelector(
+    (state: RootState) => state.editPage,
+    shallowEqual
+  );
+  const handleTabChange = (tabName: string) => {
+    setActiveTab(tabName);
+  };
 
-    return (
-        <>
-          {pageData && (
-            <div className="w-[100vw] h-auto">
-              {/* <AdabtiveTab onTabChange={handleTabChange} /> */}
-              <GridContainer
-                deviceWidth={
-                  activeTab === 'desktop'
-                    ? 1220
-                    : activeTab === 'tablet'
-                    ? 785
-                    : activeTab === 'mobile'
-                    ? 375
-                    : 0
-                }
-              >
-                <PageNavigation />
-                {pageData.page.map((v: any, i: any) => {
-                  const Component =
-                    LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
-                  return (
-                    <div key={i}>
-                        <Component key={i} block_id={i} />
-                    </div>
-                  );
-                })}
-                <Footer />
-              </GridContainer>
-            </div>
-          )}
-        </>
-      );
-    };
+  // !location.pathname.startsWith('/edit/')
+
+  return (
+    <>
+      {pageData && (
+        <div className="w-[100vw] h-auto">
+          {/* <AdabtiveTab onTabChange={handleTabChange} /> */}
+          <GridContainer
+            deviceWidth={
+              activeTab === 'desktop'
+                ? 1220
+                : activeTab === 'tablet'
+                ? 785
+                : activeTab === 'mobile'
+                ? 375
+                : 0
+            }
+          >
+            <PageNavigation />
+            {pageData.page.map((v: any, i: any) => {
+              if (v.type === 'initial')
+                return (
+                  <div className="flex items-center justify-center w-full h-60">
+                    <div>빈 페이지 입니다</div>
+                  </div>
+                );
+              const Component =
+                LAYOUT_COMPONENT[v.type][`layout${v.contentLayout}`];
+              return (
+                <div key={i}>
+                  <Component key={i} block_id={i} />
+                </div>
+              );
+            })}
+            <Footer />
+          </GridContainer>
+        </div>
+      )}
+    </>
+  );
+};
