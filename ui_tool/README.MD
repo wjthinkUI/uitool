@@ -50,7 +50,7 @@ const router = createBrowserRouter([
 
 ### 왜 리덕스를 사용했나?
 
-![props.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4b2ad0d3-3021-4e07-aeb9-3321fd3b5a2a/props.png)
+![props.png](/ui_tool/readmeSrc/props.png)
 
 리액트를 사용하다보면 컴포넌트간의 계층 구조로 인해 컴포넌트간의 정보를 전달이 힘들어진다
 
@@ -80,7 +80,7 @@ const router = createBrowserRouter([
 
 ### 예제
 
-![기존 웅진씽크빅 사이트의 상세페이지 형태](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1c7c356e-b4df-401e-8ac7-069a63e8a84b/Untitled.png)
+![기존 웅진씽크빅 사이트의 상세페이지 형태](/ui_tool/readmeSrc/Untitled.png)
 
 기존 웅진씽크빅 사이트의 상세페이지 형태
 
@@ -136,7 +136,7 @@ UI Editor를 통해 웹 표준을 따르는 웹페이지를 구성해보세요. 
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/43c8785c-119f-4a8e-8ef7-4f981bce7702/Untitled.png)
+![Untitled](/ui_tool/readmeSrc/atomic.png)
 
 **아토믹 디자인 :** 
 
@@ -176,11 +176,11 @@ UI 요소들의 그룹이 하나의 단위로 기능하는 것들입니다. 예�
 
 예시
 
-![Group 427321518.svg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8420f351-90ee-4510-bed0-72452f260d75/Group_427321518.svg)
+![Group 427321518.svg](/ui_tool/readmeSrc/ex1.png)
 
-![Group 427321518 (1).svg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c2285313-8443-4b72-9ab1-1e427eb6211e/Group_427321518_(1).svg)
+![Group 427321518 (1).svg](/ui_tool/readmeSrc/ex2.png)
 
-![Group 427321584.svg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/878a8dfc-b943-4993-9dd2-6596320030ee/Group_427321584.svg)
+![Group 427321584.svg](/ui_tool/readmeSrc/ex3.png)
 
 이러한 3개의 비슷한 모달이 존재합니다. 
 
